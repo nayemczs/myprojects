@@ -1,4 +1,4 @@
-{% include 'layout.html' %}
+{% extends 'layout.html' %}
 
 {% block body %}
     <!-- Start Slider -->
@@ -57,7 +57,7 @@
                 <div class="col-lg-12">
                     <div class="title-all text-center">
                         <h1>Available Products</h1>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sit amet lacus enim.</p>
+                        <p>Discover our curated collection of premium footwear for every occasion and style.</p>
                     </div>
                 </div>
             </div>
@@ -65,145 +65,121 @@
 
             <div class="row special-list">
                 <div class="col-lg-3 col-md-6 special-grid best-seller">
-                    <a href="">
+                    <a href="{% url 'pages:single_product' %}">
                     <div class="products-single fix">
                         <div class="box-img-hover">
-                            <!-- <div class="type-lb">
-                                <p class="sale">Sale</p>
-                            </div> -->
                             <img src="/static/images/img-pro-01.jpg" class="img-fluid" alt="Image">
                         </div>
                         <div class="why-text">
-                            <h4>Lorem ipsum dolor sit amet</h4>
-                            <p> Adidas</p>
-                            <p> Sizes: 36 38 40 23 2/3 </p>
-                            <h5> $7.79</h5>
+                            <h4>Nike Air Max 270 React</h4>
+                            <p> Nike</p>
+                            <p> Sizes: 7 8 9 10 11 </p>
+                            <h5> $149.99</h5>
                         </div>
                     </div>
                 </a>
                 </div>
                 <div class="col-lg-3 col-md-6 special-grid best-seller">
-                    <a href="">
+                    <a href="{% url 'pages:single_product' %}">
                     <div class="products-single fix">
                         <div class="box-img-hover">
-                            <!-- <div class="type-lb">
-                                <p class="sale">Sale</p>
-                            </div> -->
                             <img src="/static/images/img-pro-02.jpg" class="img-fluid" alt="Image">
                         </div>
                         <div class="why-text">
-                            <h4>Lorem ipsum dolor sit amet</h4>
+                            <h4>Adidas Ultraboost 22</h4>
                             <p> Adidas</p>
-                            <p> Sizes: 36 38 40 23 2/3 </p>
-                            <h5> $7.79</h5>
+                            <p> Sizes: 7 8 9 10 12 </p>
+                            <h5> $189.99</h5>
                         </div>
                     </div>
                 </a>
                 </div>
                 <div class="col-lg-3 col-md-6 special-grid best-seller">
-                    <a href="">
+                    <a href="{% url 'pages:single_product' %}">
                     <div class="products-single fix">
                         <div class="box-img-hover">
-                            <!-- <div class="type-lb">
-                                <p class="sale">Sale</p>
-                            </div> -->
                             <img src="/static/images/img-pro-03.jpg" class="img-fluid" alt="Image">
                         </div>
                         <div class="why-text">
-                            <h4>Lorem ipsum dolor sit amet</h4>
-                            <p> Adidas</p>
-                            <p> Sizes: 36 38 40 23 2/3 </p>
-                            <h5> $7.79</h5>
+                            <h4>Salomon Speedcross 5</h4>
+                            <p> Salomon</p>
+                            <p> Sizes: 8 9 10 11 </p>
+                            <h5> $134.95</h5>
                         </div>
                     </div>
                 </a>
                 </div>
                 <div class="col-lg-3 col-md-6 special-grid best-seller">
-                    <a href="">
+                    <a href="{% url 'pages:single_product' %}">
                     <div class="products-single fix">
                         <div class="box-img-hover">
-                            <!-- <div class="type-lb">
-                                <p class="sale">Sale</p>
-                            </div> -->
                             <img src="/static/images/img-pro-04.jpg" class="img-fluid" alt="Image">
                         </div>
                         <div class="why-text">
-                            <h4>Lorem ipsum dolor sit amet</h4>
-                            <p> Adidas</p>
-                            <p> Sizes: 36 38 40 23 2/3 </p>
-                            <h5> $7.79</h5>
+                            <h4>New Balance 574 Core</h4>
+                            <p> New Balance</p>
+                            <p> Sizes: 6 7 8 9 10 </p>
+                            <h5> $79.99</h5>
                         </div>
                     </div>
                 </a>
                 </div>
                 <div class="col-lg-3 col-md-6 special-grid best-seller">
-                    <a href="">
+                    <a href="{% url 'pages:single_product' %}">
                     <div class="products-single fix">
                         <div class="box-img-hover">
-                            <!-- <div class="type-lb">
-                                <p class="sale">Sale</p>
-                            </div> -->
                             <img src="/static/images/img-pro-04.jpg" class="img-fluid" alt="Image">
                         </div>
                         <div class="why-text">
-                            <h4>Lorem ipsum dolor sit amet</h4>
-                            <p> Adidas</p>
-                            <p> Sizes: 36 38 40 23 2/3 </p>
-                            <h5> $7.79</h5>
+                            <h4>Puma RS-X Reinvention</h4>
+                            <p> Puma</p>
+                            <p> Sizes: 7 8 9 10 11 </p>
+                            <h5> $109.99</h5>
                         </div>
                     </div>
                 </a>
                 </div>
                 <div class="col-lg-3 col-md-6 special-grid best-seller">
-                    <a href="">
+                    <a href="{% url 'pages:single_product' %}">
                     <div class="products-single fix">
                         <div class="box-img-hover">
-                            <!-- <div class="type-lb">
-                                <p class="sale">Sale</p>
-                            </div> -->
                             <img src="/static/images/img-pro-03.jpg" class="img-fluid" alt="Image">
                         </div>
                         <div class="why-text">
-                            <h4>Lorem ipsum dolor sit amet</h4>
-                            <p> Adidas</p>
-                            <p> Sizes: 36 38 40 23 2/3 </p>
-                            <h5> $7.79</h5>
+                            <h4>Reebok Classic Leather</h4>
+                            <p> Reebok</p>
+                            <p> Sizes: 6 7 8 9 10 </p>
+                            <h5> $74.99</h5>
                         </div>
                     </div>
                 </a>
                 </div>
                 <div class="col-lg-3 col-md-6 special-grid best-seller">
-                    <a href="">
+                    <a href="{% url 'pages:single_product' %}">
                     <div class="products-single fix">
                         <div class="box-img-hover">
-                            <!-- <div class="type-lb">
-                                <p class="sale">Sale</p>
-                            </div> -->
                             <img src="/static/images/img-pro-02.jpg" class="img-fluid" alt="Image">
                         </div>
                         <div class="why-text">
-                            <h4>Lorem ipsum dolor sit amet</h4>
-                            <p> Adidas</p>
-                            <p> Sizes: 36 38 40 23 2/3 </p>
-                            <h5> $7.79</h5>
+                            <h4>Under Armour HOVR Phantom</h4>
+                            <p> Under Armour</p>
+                            <p> Sizes: 8 9 10 11 12 </p>
+                            <h5> $159.99</h5>
                         </div>
                     </div>
                 </a>
                 </div>
                 <div class="col-lg-3 col-md-6 special-grid best-seller">
-                    <a href="">
+                    <a href="{% url 'pages:single_product' %}">
                     <div class="products-single fix">
                         <div class="box-img-hover">
-                            <!-- <div class="type-lb">
-                                <p class="sale">Sale</p>
-                            </div> -->
                             <img src="/static/images/img-pro-01.jpg" class="img-fluid" alt="Image">
                         </div>
                         <div class="why-text">
-                            <h4>Lorem ipsum dolor sit amet</h4>
-                            <p> Adidas</p>
-                            <p> Sizes: 36 38 40 23 2/3 </p>
-                            <h5> $7.79</h5>
+                            <h4>Asics Gel-Kayano 28</h4>
+                            <p> Asics</p>
+                            <p> Sizes: 7 8 9 10 11 </p>
+                            <h5> $159.95</h5>
                         </div>
                     </div>
                 </a>
