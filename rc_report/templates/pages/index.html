@@ -1,0 +1,608 @@
+{% extends 'layout.html' %}
+{% block styles%}
+
+
+  <style>
+    .owl-item {
+      width: 300px !important;
+      text-align: center;
+    }
+
+    .owl-wrapper {
+      width: 100% !important;
+      display: flex !important;
+      justify-content: center !important;
+    }
+
+    .owl-carousel .owl-item img {
+
+      width: 50px !important;
+    }
+
+    .overlay {
+      position: fixed;
+      display: none;
+      background-color: #4e4e4e29;
+      width: 100%;
+      height: 100%;
+      padding-top: 4rem;
+      z-index: 5;
+      overflow-y: auto;
+    }
+  </style>
+
+{% endblock %}
+{% block body %}
+  <!--/ Nav Star /-->
+  <nav class="navbar navbar-b navbar-trans navbar-expand-md fixed-top" id="mainNav">
+    <div class="container">
+      <a class="navbar-brand js-scroll" href="/"><img src="/static/img/logo.png" alt=""></a>
+      <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarDefault"
+        aria-controls="navbarDefault" aria-expanded="false" aria-label="Toggle navigation">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <div class="navbar-collapse collapse justify-content-end" id="navbarDefault">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link js-scroll" href="">Why</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link js-scroll" href="/free_report">Sample Report</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link js-scroll" href="#service">Benefits</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link js-scroll" href="#work">Testimonials</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link js-scroll" href="#blog">About</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link js-scroll" href="#contact">Blog</a>
+          </li>
+          <li class="nav-item custom_report_item">
+            <a class="nav-link js-scroll custom_report_item_a" href="#contact">Check Report</a>
+          </li>
+          <li class="nav-item custom_login_item">
+            <a class="nav-link js-scroll custom_login_item_a login_button" href="#">Login</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <!--/ Nav End /-->
+
+  <div class="overlay" id="login_overlay">
+    {% include 'pages/_login.html' %}
+  </div>
+  <div class="overlay" id="register_overlay">
+    {% include 'pages/_register.html' %}
+  </div>
+  <!--/ Intro Skew Star /-->
+  <div id="home" class="intro route bg-image" style="">
+    <div class="overlay-itro"></div>
+    <div class="intro-content display-table">
+      <div class="table-cell">
+        <div class="container-fluid">
+          <div class="row" style="margin-right: 0px;  margin-left: 0px;">
+            <div class="col-md-6">
+              <img src="/static/img/car_banner.png" width="80%" alt="">
+            </div>
+            <div class="col-md-6 custom_f_banner">
+              <div>
+                <h1 class="intro-title mb-4">Go,Get Your Dream Car</h1>
+                <p>But get the facts checked in click of a button</p>
+                <form action="">
+                  <input class="custom_input_home" placeholder="Enter Vichle Registration Number" type="text">
+                  <input value="Check Report" class="btn btn-primary custom_submit" type="submit">
+                </form>
+              </div>
+
+              <!-- <p class="intro-subtitle">
+                <span class="text-slider-items">
+                  CEO DevFolio,Web Developer,Web Designer,Frontend Developer,Graphic Designer</span><strong class="text-slider"></strong></p>
+             -->
+
+            </div>
+          </div>
+          <!--<p class="display-6 color-d">Hello, world!</p>-->
+  <!-- <p class="pt-3"><a class="btn btn-primary btn js-scroll px-4" href="#about" role="button">Learn More</a></p> -->
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--/ Intro Skew End /-->
+
+  <section id="about" class="about-mf sect-pt4 route" style=" border: none;   background-color: white;">
+    <div class="container">
+      <div class="row" style="margin-right: 0px;  margin-left: 0px;">
+        <div class="col-sm-12">
+        
+            <div class="row" style="margin-right: 0px;  margin-left: 0px;">
+              <div class="col-md-6">
+                <div class="about-me pt-4 pt-md-0">
+                  <div class="title-box-2">
+                    <p class="lead">
+                      Why get a Report?
+                    </p>
+                    <h5 class="title-left">
+                      Purchasing a pre-owned vichle should not be like a gamble
+                    </h5>
+                  </div>
+
+                  <p class="lead">
+                    A report will generally have all the basic information along with specifics which not just restricts to the below
+                    <br> <br>
+                    - Accident and theft records
+                    <br>
+                    - Number of owners
+                    <br>
+                    - Fitness certificate
+                    <br>
+                   - Loan history
+                  </p>
+
+                </div>
+              </div>
+              <div class="col-md-6">
+              <img src="/static/img/banner-pic.png" width="100%" alt="">
+              </div>
+            </div>
+       
+        </div>
+      </div>
+    </div>
+  </section>
+  <div class="container-fluid" style="margin: top 90px;">
+    <div class="row" style="margin-right: 0px;  margin-left: 0px;">
+      <div class="col-md-12" style="padding-right: 0px; padding-left: 0px;">
+
+        <img src="/static/img/banner-3rd.png" width="100%" alt="">
+      </div>
+    </div>
+  </div>
+
+  <!--/ Section Services Star /-->
+  <section id="service" class="services-mf route" style="background-color: #f8fbff;">
+    <div class="container">
+      <div class="row" style="margin-right: 0px;  margin-left: 0px;">
+        <div class="col-sm-12">
+          <div class="title-box text-left">
+            <p class="subtitle-a">
+              Benefits
+            </p>
+            <h3 class="title-a">
+              Why People Come To Us
+            </h3>
+
+            <div class="line-mf"></div>
+          </div>
+        </div>
+      </div>
+      <div class="row" style="margin-right: 0px;  margin-left: 0px;">
+        <div class="col-md-4">
+          <div class="service-box" style="padding-top: 55px;">
+            <div class="service-ico">
+              <img src="/static/img/easy.png" width="50" alt="">
+            </div>
+            <div class="service-content">
+              <h2 class="s-title">Easy Search</h2>
+              <p class="s-description">
+                All you need is vichle registration number
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="service-box">
+            <div class="service-ico">
+              <img src="/static/img/dollar_hand.png" width="50" alt="">
+            </div>
+            <div class="service-content">
+              <h2 class="s-title">Affordable Reports</h2>
+              <p class="s-description">
+                29 is all you need to get a detail report for you to make a bigger decision
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="service-box">
+            <div class="service-ico">
+              <img src="/static/img/man.png" width="50" alt="">
+            </div>
+            <div class="service-content">
+              <h2 class="s-title">Accurate Data</h2>
+              <p class="s-description">
+Information gathered from the most respected and trusted data providers and experts in the industry
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="service-box">
+            <div class="service-ico">
+              <img src="/static/img/dollar_bag.png" width="50" alt="">
+            </div>
+            <div class="service-content">
+              <h2 class="s-title">Instant Access</h2>
+              <p class="s-description">
+Reports are available immediately for quick decision making
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="service-box">
+            <div class="service-ico">
+              <img src="/static/img/dollar_bag.png" width="50" alt="">
+            </div>
+            <div class="service-content">
+              <h2 class="s-title">Payment Options</h2>
+              <p class="s-description">
+                Credit, debit, UPI, net banking
+
+                we do it all
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="service-box">
+            <div class="service-ico">
+              <img src="/static/img/dollar_bag.png" width="50" alt="">
+            </div>
+            <div class="service-content">
+              <h2 class="s-title">Mileage History</h2>
+              <p class="s-description">
+Know the real number before buying it
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!--/ Section Services End /-->
+  <!--/ Section Services Star /-->
+  <section id="service" class="services-mf route" style="min-height: 370px; width: 100%; background-color: #46127e;">
+    <div class="container">
+      <div class="row" style="margin-right: 0px;  margin-left: 0px;">
+        <div class="col-sm-12" style="padding-top: 20px;">
+          <div class="title-box text-left">
+            <p class="subtitle-a" style="
+            color: #ffffff;
+            font-size: 22px; ">
+              Testimonial
+            </p>
+            <h3 class="title-a" style="color: white; font-size: 30px;">
+              Customers testimonials two <br> line heading
+            </h3>
+
+            <div class="line-mf"></div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+  <!--/ Section Services End /-->
+  
+    <div class="container-fluid" style="min-height: 400px; position: relative ; background-color: white;">
+        <div class="row" style="margin-right: 0px;  margin-left: 0px;">
+            <div class="col-md-12 text-right">
+                <div id="testimonial-slider" class="owl-carousel" style="position: absolute; top: -100px;">
+                    <div class="testimonial">
+                        <span class="icon fa fa-quote-left"></span>
+                        <p class="description">
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam justo neque, aliquet sit amet elementum vel, vehicula eget eros. Vivamus arcu metus, mattis sed sagittis at, sagittis quis neque. Praesent.
+                        </p>
+                        <hr>
+                        <div class="testimonial-content">
+                          
+                            <div class="pic" style="float: left;"><img src="/static/img/testimonial-2.jpg" width="40" alt=""></div>
+                            <h3 class="title" style="float: left; color: black; padding-left: 20px;">williamson
+                            <br>
+                            <span class="post" style="    color: #111;
+                            font-weight: 400;
+                            padding-top: 10px;">Honda City</span>
+                          </h3>
+                            
+                        </div>
+                    </div>
+                    <div class="testimonial">
+                        <span class="icon fa fa-quote-left"></span>
+                        <p class="description">
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam justo neque, aliquet sit amet elementum vel, vehicula eget eros. Vivamus arcu metus, mattis sed sagittis at, sagittis quis neque. Praesent.
+                        </p>
+                        <hr>
+                        <div class="testimonial-content">
+                          
+                            <div class="pic" style="float: left;"><img src="/static/img/testimonial-2.jpg" width="40" alt=""></div>
+                            <h3 class="title" style="float: left; color: black; padding-left: 20px;">williamson
+                            <br>
+                            <span class="post" style="    color: #111;
+                            font-weight: 400;
+                            padding-top: 10px;">Honda City</span>
+                          </h3>
+                            
+                        </div>
+                    </div>
+                    <div class="testimonial">
+                        <span class="icon fa fa-quote-left"></span>
+                        <p class="description">
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam justo neque, aliquet sit amet elementum vel, vehicula eget eros. Vivamus arcu metus, mattis sed sagittis at, sagittis quis neque. Praesent.
+                        </p>
+                        <hr>
+                        <div class="testimonial-content">
+                          
+                            <div class="pic" style="float: left;"><img src="/static/img/testimonial-2.jpg" width="40" alt=""></div>
+                            <h3 class="title" style="float: left; color: black; padding-left: 20px;">williamson
+                            <br>
+                            <span class="post" style="    color: #111;
+                            font-weight: 400;
+                            padding-top: 10px;">Honda City</span>
+                          </h3>
+                            
+                        </div>
+                    </div>
+                    <div class="testimonial">
+                        <span class="icon fa fa-quote-left"></span>
+                        <p class="description">
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam justo neque, aliquet sit amet elementum vel, vehicula eget eros. Vivamus arcu metus, mattis sed sagittis at, sagittis quis neque. Praesent.
+                        </p>
+                        <hr>
+                        <div class="testimonial-content">
+                          
+                            <div class="pic" style="float: left;"><img src="/static/img/testimonial-2.jpg" width="40" alt=""></div>
+                            <h3 class="title" style="float: left; color: black; padding-left: 20px;">williamson
+                            <br>
+                            <span class="post" style="    color: #111;
+                            font-weight: 400;
+                            padding-top: 10px;">Honda City</span>
+                          </h3>
+                            
+                        </div>
+                    </div>
+
+
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <section id="about" class="about-mf sect-pt4 route" style=" border: none;   background-color: #f8fbff;">
+      <div class="container">
+        <div class="row" style="margin-right: 0px;  margin-left: 0px;">
+          <div class="col-sm-12">
+          
+              <div class="row" style="margin-right: 0px;  margin-left: 0px;">
+
+                <div class="col-md-6">
+                <img src="/static/img/meeting.jpg" style="border-radius: 5px;" width="80%" alt="">
+
+                </div>
+                <div class="col-md-6">
+                  <div class="about-me pt-4 pt-md-0">
+                    <div class="title-box-2">
+                      <p class="lead">
+                        About Us
+                      </p>
+                      <h5 class="title-left">
+                       Who We Are
+                      </h5>
+                    </div>
+  
+                    <p class="lead">
+                      Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+                      Delectus sequi repellendus nihil iste iusto facilis quaerat laudantium. Veritatis, </p>
+  
+                  </div>
+                </div>
+              </div>
+         
+          </div>
+        </div>
+      </div>
+    </section>
+
+  <!--/ Section Portfolio Star /-->
+  <div class="container-fluid recent fh5co-portfolio" id="portfolio">
+    <div class="container">
+      <div class="about-me pt-4 pt-md-0" style="min-height: 140px;">
+        <div class="title-box-2" style="    width: 50%;
+        float: left;">
+          <p class="lead">
+            Our Blogs
+          </p>
+          <h5 class="title-left">
+          About Blog Online Heading
+          </h5>
+        </div>
+<div class="more" style="float: right;">
+  <ul>
+    <li class="nav-item custom_login_item" style="list-style: none;    margin-top: 40px;">
+      <a class="nav-link js-scroll custom_login_item_a" href="#">Load More</a>
+    </li>
+  </ul>
+</div>
+      </div>
+      <div class="row" style="margin-right: 0px;  margin-left: 0px;">
+
+        <div class="bx bx-4">
+          <div class="card"> <img class="card-img" src="/static/img/portfolio-img4.png" alt="">
+            <div class="card-img-overlay">  <div class="bottom-text">
+              <p>16/03/2020</p>
+                <h5 class="card-title">Historical place shots</h5>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="bx bx-middle" style="padding: 0;">
+          <div class="bx bx-5">
+            <div class="card"> <img class="card-img" src="/static/img/portfolio-img5.png" alt="">
+              <div class="card-img-overlay"> <div class="bottom-text">
+                <p>16/03/2020</p>
+                  <h5 class="card-title">Lorem ipsum dolor</h5>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="bx bx-6">
+            <div class="card"> <img class="card-img" src="/static/img/portfolio-img6.png" alt="">
+              <div class="card-img-overlay">  <div class="bottom-text">
+                <p>16/03/2020</p>
+                  <h5 class="card-title">Lorem ipsum dolor</h5>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div>
+            <div class="bx bx-7">
+              <div class="card"> <img class="card-img" src="/static/img/portfolio-img7.png" alt="">
+                <div class="card-img-overlay"> 
+                 
+                  <div class="bottom-text">
+                    <p>16/03/2020</p>
+                    <h5 class="card-title">Lorem ipsum dolor</h5>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="bx bx-8">
+              <div class="card"> <img class="card-img" src="/static/img/portfolio-img8.png" alt="">
+                <div class="card-img-overlay"> 
+                 
+                  <div class="bottom-text">
+                    <p>16/03/2020</p>
+                    <h5 class="card-title">Lorem ipsum dolor</h5>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!--/ Section Portfolio End /-->
+
+  <div class="container-fluid used_car">
+<div class="used_wrapper">
+  <div class="row" style="margin-right: 0px;  margin-left: 0px;">
+    <div class="col-md-5" style="margin: 80px auto; display: flex;justify-content: center; align-items: center;">
+      <div>
+        <h1 class="intro-title mb-4" style="color: white;"><span style="font-weight: 100;">Buying</span><br>A USED CAR?</h1>
+        <p style="color: white;">Get the vichle facts cHecked in a click of a button</p>
+        <form action="">
+          <input class="custom_input_home" placeholder="Enter Vichle Registration Number" type="text">
+          <input value="Check Report" class="btn btn-primary custom_submit" type="submit">
+        </form>
+      </div>
+
+      <!-- <p class="intro-subtitle">
+        <span class="text-slider-items">
+          CEO DevFolio,Web Developer,Web Designer,Frontend Developer,Graphic Designer</span><strong class="text-slider"></strong></p>
+     -->
+
+    </div>
+  </div>
+</div>
+  </div>
+            <!-- Footer Start -->
+            <div class="footer">
+              <div class="container">
+                <h2 style="color: white;">Quick Links</h2>
+                  <div class="row" style="margin-right: 0px;  margin-left: 0px;">
+                      <div class="col-md-6 col-lg-4">
+                          <div class="footer-link">
+                              
+                              <a href="">Why</a>
+                              <a href="">Benefits</a>
+                              <a href="">Testimonials</a>
+                              <a href="">Blog</a>
+                              <a href="">About</a>
+                          </div>
+                      </div>
+                      <div class="col-md-6 col-lg-8">
+                          <div class="row" style="margin-right: 0px;  margin-left: 0px;">
+                      <div class="col-md-6 col-lg-4">
+                          <div class="footer-link">
+                           
+                              <a href="">Login</a>
+                              <a href="">Sample Report</a>
+                              <a href="">Check Report</a>
+                        
+                          </div>
+                      </div>
+                      <div class="col-md-6 col-lg-4">
+                          <div class="footer-link">
+
+                              <a href="">Term of Use</a>
+                              <a href="">Privacy Policy</a>
+                          </div>
+                      </div>
+                      <div class="col-md-6 col-lg-4">
+                          <div class="footer-contact">
+                             
+                              <div class="footer-social">
+                                  <a href=""><i class="fab fa-twitter"></i></a>
+                                  <a href=""><i class="fab fa-facebook-f"></i></a>
+                                  <a href=""><i class="fab fa-youtube"></i></a>
+                                  <a href=""><i class="fab fa-instagram"></i></a>
+                                  <a href=""><i class="fab fa-linkedin-in"></i></a>
+                              </div>
+                          </div>
+                      </div>
+                      </div>
+                  </div>
+                  </div>
+              </div>
+
+
+          </div>
+
+
+
+  <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
+  <!-- <div id="preloader"></div> -->
+
+
+{% endblock %}
+
+{% block scripts %}
+  <script>
+    const login_overlay = document.querySelector('#login_overlay')
+    const register_overlay = document.querySelector('#register_overlay')
+
+    document.querySelectorAll('.login_button').forEach(login_button => {
+      login_button.addEventListener('click', (event) => {
+        event.preventDefault()
+        register_overlay.style.display = 'none'
+        login_overlay.style.display = 'block'
+      })
+    })
+
+    document.querySelectorAll('.register_button').forEach(register_button => {
+      register_button.addEventListener('click', (event) => {
+        event.preventDefault()
+        login_overlay.style.display = 'none'
+        register_overlay.style.display = 'block'
+      })
+    })
+
+    document.querySelectorAll('.close_overlay').forEach(close_button => {
+      close_button.addEventListener('click', (event) => {
+        event.preventDefault()
+        login_overlay.style.display = 'none'
+        register_overlay.style.display = 'none'
+      })
+    })
+  </script>
+{% endblock %}

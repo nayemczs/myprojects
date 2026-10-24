@@ -1,0 +1,267 @@
+{% extends 'layout.html' %}
+{% block styles%}
+<style>
+.title-box{
+  margin-bottom: 0px;
+  margin-top: 4rem;
+}
+.edit_profile_content{
+  display: flex;
+    justify-content: center;
+    align-items: center;
+}
+ .table th {
+
+    border-top: none;
+}
+  </style>
+{% endblock %}
+{% block body %}
+
+  <!--/ Nav Star /-->
+  <nav class="navbar navbar-b navbar-trans navbar-expand-md fixed-top" id="mainNav">
+    <div class="container">
+      <a class="navbar-brand js-scroll" href="/"><img src="/static/img/logo.png" alt=""></a>
+      <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarDefault"
+        aria-controls="navbarDefault" aria-expanded="false" aria-label="Toggle navigation">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <div class="navbar-collapse collapse justify-content-end" id="navbarDefault">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link js-scroll" href="">Why</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link js-scroll" href="">Sample Report</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link js-scroll" href="#service">Benefits</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link js-scroll" href="#work">Testimonials</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link js-scroll" href="#blog">About</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link js-scroll" href="#contact">Blog</a>
+          </li>
+          <li class="nav-item custom_report_item">
+            <a class="nav-link js-scroll custom_report_item_a" href="#contact">Check Report</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link js-scroll" href="#contact">Kishan <img style="width: 20px;  border-radius: 50%;
+              margin-left: 5px" src="/static/img/profile.png" alt=""></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <!--/ Nav End /-->
+
+
+
+  <section id="service" class="services-mf route" style="display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center; min-height: 370px; width: 100%; background-color: #48276c;">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-12" style="padding-top: 20px;">
+          <div class="title-box">
+            <h3 class="title-a" style="color: white; font-size: 30px;">
+              My Account
+             </h3>
+            <p class="subtitle-a" style=" color: #ffffff; font-size: 22px; ">
+              Lorem Lorem Lorem Ipsum ipsum
+            </p>
+
+
+            <div class="line-mf" style="margin: 0 auto;"></div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+  <div class="container-fluid"  style="position: relative;">
+    <div class="row">
+      <div class="col-md-10 edit_profile">
+        <div class="row">
+          <div class="col-md-2 edit_profile_content">
+            <img src="/static/img/edit_profile.png" alt="">
+          </div>
+          <div class="col-md-2 edit_profile_content">
+            <div>
+              <p style="color: lightgray;">Name</p>
+              <p style="color: black;">Kishan Ahmed</p>
+              <p style="color: lightgray;">Mobile Number</p>
+              <p style="color: black;">+9190000000</p>
+              <p style="color: lightgray;">Password</p>
+              <p style="color: black;">*****************</p>
+              
+            </div>
+
+          </div>
+          <div class="col-md-4 edit_profile_content">
+            <div>
+              <p style="color: lightgray;">Email</p>
+              <p style="color: black;">KishanAhmed@email.com</p>
+            </div>
+
+          </div>
+          <div class="col-md-4 edit_profile_content">
+            <div>
+  <ul>
+    <li class="nav-item custom_login_item" style="list-style: none;">
+      <a class="nav-link js-scroll custom_login_item_a" href="#contact"><i style="margin-right: 10px;" class="fas fa-edit"></i>EDIT PROFILE</a>
+    </li>
+  </ul>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<div class="conatiner">
+  <div class="row" style="    margin-right: 0px; margin-left: 0px;">
+    <div class="col-md-12">
+      <h2 style="    margin-left: 80px;">Order History</h2>
+      <div class="table-responsive">
+        <table class="table table-striped text-center">
+          <thead>
+            <tr>
+              <th scope="col">Vechile Registration No.</th>
+              <th scope="col">Order Id</th>
+              <th scope="col">Date</th>
+              <th scope="col">Email</th>
+              <th scope="col">Download Report</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row"><span><img src="/static/img/car.png" alt=""></span> 
+                <span style="padding-left: 10px;">TS 18 P 9150</span></th>
+              <td>7892RC73</td>
+              <td>16 Nov 2020</td>
+              <td>Kishanahmed@gmail.com</td>
+              <td><img src="/static/img/download-solid.svg" width="40" alt=""></td>
+            </tr>
+            <tr>
+              <th scope="row"><span><img src="/static/img/bike.png" alt=""></span> 
+                <span style="padding-left: 10px;">TS 18 P 9150</span></th>
+              <td>7892RC73</td>
+              <td>16 Nov 2020</td>
+              <td>Kishanahmed@gmail.com</td>
+              <td><img src="/static/img/download-solid.svg" width="40" alt=""></td>
+            </tr>
+            <tr>
+              <th scope="row"><span><img src="/static/img/car.png" alt=""></span> 
+                <span style="padding-left: 10px;">TS 18 P 9150</span></th>
+              <td>7892RC73</td>
+              <td>16 Nov 2020</td>
+              <td>Kishanahmed@gmail.com</td>
+              <td><img src="/static/img/download-solid.svg" width="40" alt=""></td>
+            </tr>
+            <tr>
+              <th scope="row"><span><img src="/static/img/bike.png" alt=""></span> 
+                <span style="padding-left: 10px;">TS 18 P 9150</span></th>
+              <td>7892RC73</td>
+              <td>16 Nov 2020</td>
+              <td>Kishanahmed@gmail.com</td>
+              <td><img src="/static/img/download-solid.svg" width="40" alt=""></td>
+            </tr>
+
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container-fluid used_car">
+  <div class="used_wrapper">
+    <div class="row">
+      <div class="col-md-5" style="margin: 80px auto; display: flex;justify-content: center; align-items: center;">
+        <div class="text-center">
+          <h1 class="intro-title mb-4" style="color: white;">
+            Go, Get Your Car</h1>
+          <p style="color: white;">But get the facts checked in a click of a button</p>
+          <form action="">
+            <input class="custom_input_home" placeholder="Enter Vichle Registration Number" type="text">
+            <input value="Check Report" class="btn btn-primary custom_submit" type="submit">
+          </form>
+        </div>
+  
+        <!-- <p class="intro-subtitle">
+          <span class="text-slider-items">
+            CEO DevFolio,Web Developer,Web Designer,Frontend Developer,Graphic Designer</span><strong class="text-slider"></strong></p>
+       -->
+  
+      </div>
+    </div>
+  </div>
+    </div>
+              <!-- Footer Start -->
+              <div class="footer">
+                <div class="container">
+                  <h2 style="color: white;">Quick Links</h2>
+                    <div class="row">
+                        <div class="col-md-6 col-lg-4">
+                            <div class="footer-link">
+                                
+                                <a href="">Why</a>
+                                <a href="">Benefits</a>
+                                <a href="">Testimonials</a>
+                                <a href="">Blog</a>
+                                <a href="">About</a>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-lg-8">
+                            <div class="row">
+                        <div class="col-md-6 col-lg-4">
+                            <div class="footer-link">
+                             
+                                <a href="">Login</a>
+                                <a href="">Sample Report</a>
+                                <a href="">Check Report</a>
+                          
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-lg-4">
+                            <div class="footer-link">
+  
+                                <a href="">Term of Use</a>
+                                <a href="">Privacy Policy</a>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-lg-4">
+                            <div class="footer-contact">
+                               
+                                <div class="footer-social">
+                                    <a href=""><i class="fab fa-twitter"></i></a>
+                                    <a href=""><i class="fab fa-facebook-f"></i></a>
+                                    <a href=""><i class="fab fa-youtube"></i></a>
+                                    <a href=""><i class="fab fa-instagram"></i></a>
+                                    <a href=""><i class="fab fa-linkedin-in"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+  
+  
+            </div>
+  
+
+  
+            {% endblock %}
+            {% block scripts %}
+            
+              {% endblock %}
