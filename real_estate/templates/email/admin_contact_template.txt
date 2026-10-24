@@ -1,0 +1,8 @@
+Hello Admin,
+
+{{ name }} has the following query:
+
+{{ message }}
+
+Thank you,
+The HunchGroup Team

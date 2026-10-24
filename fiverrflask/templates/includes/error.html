@@ -1,0 +1,15 @@
+
+{% with messages = get_flashed_messages(with_categories=true) %}
+
+  {% if messages %}
+    <div class="custom_list">
+    <ul class=flashes>
+    {% for category, message in messages %}
+    <ul class="custom_ul">
+        <li class="custom_list_{{ category }}">{{ message }}</li>
+    </ul>
+    {% endfor %}
+    </ul>
+    </div>
+  {% endif %}
+{% endwith %}

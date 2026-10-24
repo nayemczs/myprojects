@@ -1,0 +1,13 @@
+<ul class="custom_color_filter">
+  {% for function in functions %}
+    <li class="custom_color_item">
+      <input type="checkbox"
+             name="functions"
+             value="{{ function }}"
+             id="id_{{ function|cut:' ' }}_{{ suffix|default:0 }}"
+             {% if function in filters.functions %} checked {% endif %}
+      >
+      <label for="id_{{ function|cut:' ' }}_{{ suffix|default:0 }}">{{ function }}</label>
+    </li>
+  {% endfor %}
+</ul>

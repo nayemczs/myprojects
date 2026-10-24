@@ -1,0 +1,11 @@
+{% import 'admin/lib.html' as lib with context %}
+<div class="inline-form-field">
+  {% if field.link %}
+    <div class="estate_images_wrapper" link_id="{{ field.link.id }}">
+      <a href="#"><img src="" alt="" width="50%"  style="padding-bottom: 1rem"></a>
+      {{ lib.render_form_fields(field.form, form_opts=form_opts) }}
+    </div>
+  {% else %}
+    {{ lib.render_form_fields(field.form, form_opts=form_opts) }}
+  {% endif %}
+</div>

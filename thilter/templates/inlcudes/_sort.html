@@ -1,0 +1,4 @@
+<input type="radio" id="low_high_{{ suffix|default:0 }}" name="price_sort" value="0" {% if filters.price_sort == '0' %} checked {% endif %}>
+<label for="low_high_{{ suffix|default:0 }}">Price: Low to High</label><br>
+<input type="radio" id="high_low_{{ suffix|default:0 }}" name="price_sort" value="1" {% if filters.price_sort == '1' %} checked {% endif %}>
+<label for="high_low_{{ suffix|default:0 }}">Price: High to Low</label><br>

@@ -1,0 +1,12 @@
+{% for delivery in deliveries %}
+  <div class="mb-2">
+    <input type="checkbox"
+           class=""
+           value="{{ delivery }}"
+           name="deliveries"
+           id="id_{{ delivery|cut:' ' }}_{{ suffix|default:0 }}"
+           {% if delivery in filters.deliveries %} checked {% endif %}
+    >
+    <label for="id_{{ delivery|cut:' ' }}_{{ suffix|default:0 }}" style="">{{ delivery }}</label>
+  </div>
+{% endfor %}

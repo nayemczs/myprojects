@@ -1,0 +1,514 @@
+{% extends 'layout.html' %}
+
+{% block styles %}
+<style>
+  a {
+    color: black;
+    text-decoration: none;
+  }
+  a:hover {
+    color: black;
+    text-decoration: none;
+  }
+</style>
+{% endblock %}
+
+{% block body %}
+  <main>
+   <section class="container-fluid custom_bigs_filter mt-5">
+      <form action="" method="POST">
+        {% csrf_token %}
+        <div class="accordion" id="accordionExample">
+          <div class="accordion-item custom_accordion_item">
+            <h2 class="accordion-header" id="headingOne">
+              <div class="d-flex custom_filter_scroll">
+                <div class="custom_filter">
+                  <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                    Sort
+                  </button>
+                </div>
+                <div class="custom_filter">
+                  <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                    Price
+                  </button>
+                </div>
+                <div class="custom_filter">
+                  <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                    Color
+                  </button>
+                </div>
+                <div class="custom_filter">
+                  <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                    Functions
+                  </button>
+                </div>
+                <div class="custom_filter">
+                  <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                    Brands
+                  </button>
+                </div>
+                <div class="custom_filter">
+                  <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                    Delivery
+                  </button>
+                </div>
+              </div>
+            </h2>
+            <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+              <div class="accordion-body">
+                <div class="d-flex">
+                  <div class="custom_filter custom_filter_body  custom_accordion_body">
+                    {% include 'inlcudes/_sort.html' %}
+                  </div>
+                  <div class="custom_filter custom_filter_body  custom_accordion_body">
+                    {% include 'inlcudes/_price_range.html' %}
+                  </div>
+                  <div class="custom_filter custom_filter_body  custom_accordion_body">
+                    {% include 'inlcudes/_color.html' %}
+                  </div>
+                  <div class="custom_filter custom_filter_body  custom_accordion_body">
+                    {% include 'inlcudes/_function.html' %}
+                  </div>
+                  <div class="custom_filter custom_filter_body  custom_accordion_body">
+                    {% include 'inlcudes/_brand.html' %}
+                  </div>
+                  <div class="custom_filter custom_filter_body  custom_accordion_body">
+                    {% include 'inlcudes/_delivery.html' %}
+                    <button class="btn btn-primary mt-4 btn_custom_filter" name="filter_form">Apply Filters</button>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
+      </section>
+      <section class="container-fluid py-5">
+        <div class="row justify-content-between">
+          <div class="custom_filter_img">
+            <img id="thilter_filter_mobile" src="/static/img/mobile_filter.png" class="custom_mobile_t" alt="">
+          </div>
+          {% comment %}<div class="custom_filter_Results pb-3">
+            <div class="custom_overflow p-0">
+              <div class="">
+                <div class="filter_results">
+                  <div class="filter_result">
+                    <p>Price: Low to High <span class="ps-2"><i id="id_result_close" class="fas fa-times custom_cross_result"></i></span></p>
+                  </div>
+                  <div class="filter_result">
+                    <p>$20- $300 <span class="ps-2"><i id="id_result_close" class="fas fa-times custom_cross_result"></i></span></p>
+                  </div>
+                  <div class="filter_result">
+                    <p>Yellow <span class="ps-2"><i id="id_result_close" class="fas fa-times custom_cross_result"></i></span></p>
+                  </div>
+                  <div class="filter_result">
+                    <p>Solar <span class="ps-2"><i id="id_result_close" class="fas fa-times custom_cross_result"></i></span></p>
+                  </div>
+                  <div class="filter_result">
+                    <p>Apple <span class="ps-2"><i id="id_result_close" class="fas fa-times custom_cross_result"></i></span></p>
+                  </div>
+                  <div class="filter_result">
+                    <p>Free Delivery <span class="ps-2"><i id="id_result_close" class="fas fa-times custom_cross_result"></i></span></p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>{% endcomment %}
+        </div>
+          <div class="row">
+              <div class="col-md-12 text-center">
+                  <h1 class="font-weight-bold py-5">MENS SMART WATCHES</h1>
+              </div>
+          </div>
+      </section>
+    <!-- <section class="container custom_bigs_filter">
+        <form action="">
+        <div class="d-flex justify-content-between custom_filters">
+            <div class="custom_filter">
+                <div class="accordion" id="accordionExample">
+                    <div class="accordion-item custom_accordion_item">
+                      <h2 class="accordion-header" id="headingOne">
+                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                          Sort
+                        </button>
+                      </h2>
+                      <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                        <div class="accordion-body custom_accordion_body">
+                           <input type="radio" name="" id="low_high"> <label for="low_high">Price: Low to High</label> <br>
+                           <input type="radio" name="" id="high_low"> <label for="high_low">Price: High to Low</label>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+            </div>
+            <div class="custom_filter">
+                <div class="accordion" id="accordionExample">
+                    <div class="accordion-item custom_accordion_item">
+                      <h2 class="accordion-header" id="headingOne">
+                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                          Sort
+                        </button>
+                      </h2>
+                      <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                        <div class="accordion-body custom_accordion_body">
+                            <div class="d-flex">
+                                <input type="text" class="custom_range_input" value="$0" name="" id="low_range"> 
+                                <input type="text" class="custom_range_input" value="$400" name="" id="high_range"> 
+                            </div>
+<br>
+                            <br>
+                            <input type="range" class="form-range" min="2" max="5" step="0.5" id="customRange3">
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+            </div>
+            <div class="custom_filter">
+                <div class="accordion" id="accordionExample">
+                    <div class="accordion-item custom_accordion_item">
+                      <h2 class="accordion-header" id="headingOne">
+                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                          Color
+                        </button>
+                      </h2>
+                      <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                        <div class="accordion-body  custom_accordion_body">
+                          <ul class="custom_color_filter">
+                            <li class="custom_color_item">
+                              <input type="checkbox" class="custom_color_check" name="" id="id_black">
+                              <label for="id_black">Black</label>
+                            </li>
+                            <li class="custom_color_item">
+                              <input type="checkbox" class="custom_color_check" name="" id="id_gray">
+                              <label for="id_gray">Gray</label>
+                            </li>
+                            <li class="custom_color_item">
+                              <input type="checkbox" class="custom_color_check" name="" id="id_green">
+                              <label for="id_green">Green</label>
+                            </li>
+                            <li class="custom_color_item">
+                              <input type="checkbox" class="custom_color_check" name="" id="id_clear">
+                              <label for="id_clear">Clear</label>
+                            </li>
+                            <li class="custom_color_item">
+                              <input type="checkbox" class="custom_color_check" name="" id="id_yellow">
+                              <label for="id_yellow">Yellow</label>
+                            </li>
+                            <li class="custom_color_item">
+                              <input type="checkbox" class="custom_color_check" name="" id="id_green">
+                              <label for="id_green">Green</label>
+                            </li>
+                            <li class="custom_color_item">
+                              <input type="checkbox" class="custom_color_check" name="" id="id_clear">
+                              <label for="id_clear">Clear</label>
+                            </li>
+                            <li class="custom_color_item">
+                              <input type="checkbox" class="custom_color_check" name="" id="id_yellow">
+                              <label for="id_yellow">Yellow</label>
+                            </li>
+                            <li class="custom_color_item">
+                              <input type="checkbox" class="custom_color_check" name="" id="id_red">
+                              <label for="id_red">Red</label>
+                            </li>
+                            <li class="custom_color_item mobile_color_items">
+                              <input type="checkbox" class="custom_color_check" name="" id="id_blue">
+                              <label for="id_blue">Blue</label>
+                            </li>
+                            <li class="custom_color_item">
+                              <input type="checkbox" class="custom_color_check" name="" id="id_purple">
+                              <label for="id_purple">Purple</label>
+                            </li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+            </div>
+            <div class="custom_filter">
+                <div class="accordion" id="accordionExample">
+                    <div class="accordion-item custom_accordion_item">
+                      <h2 class="accordion-header" id="headingOne">
+                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                          Functions
+                        </button>
+                      </h2>
+                      <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                        <div class="accordion-body custom_accordion_body">
+                          <ul class="custom_color_filter">
+                            <li class="custom_color_item">
+                              <input type="radio" class="" name="" id="id_solar">
+                              <label for="id_solar">Solar</label>
+                            </li>
+                            <li class="custom_color_item">
+                              <input type="radio" class="" name="" id="id_battery">
+                              <label for="id_solar">Battery</label>
+                            </li>
+                            <li class="custom_color_item">
+                              <input type="radio" class="" name="" id="id_heart">
+                              <label for="id_solar">Heart Rate</label>
+                            </li>
+                            <li class="custom_color_item">
+                              <input type="radio" class="" name="" id="id_oxygen">
+                              <label for="id_solar">Oxygen</label>
+                            </li>
+
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+            </div>
+            <div class="custom_filter">
+                <div class="accordion" id="accordionExample">
+                    <div class="accordion-item custom_accordion_item">
+                      <h2 class="accordion-header" id="headingOne">
+                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                          Brands
+                        </button>
+                      </h2>
+                      <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                        <div class="accordion-body custom_accordion_body">
+                          <ul class="custom_color_filter">
+                            <li class="custom_color_item">
+                              <input type="radio" class="" name="" id="id_solar">
+                              <label for="id_solar">Nike</label>
+                            </li>
+                            <li class="custom_color_item">
+                              <input type="radio" class="" name="" id="id_solar">
+                              <label for="id_solar">Apple</label>
+                            </li>
+                            <li class="custom_color_item">
+                              <input type="radio" class="" name="" id="id_solar">
+                              <label for="id_solar">Garmin</label>
+                            </li>
+                            <li class="custom_color_item">
+                              <input type="radio" class="" name="" id="id_solar">
+                              <label for="id_solar">Fitbit</label>
+                            </li>
+                            <li class="custom_color_item">
+                              <input type="radio" class="" name="" id="id_solar">
+                              <label for="id_solar">Samsung</label>
+                            </li>
+
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+            </div>
+        </div>
+    </form>
+    </section> -->
+    <section class="custom_mobile_filter" id="thilter_filter_div" style="display: none;">
+      <form action="" method="POST">
+        {% csrf_token %}
+      <div class="row">
+        <div class="d-flex">
+          <div class="custom_cross2">
+            <p id="filter_cross"><i class="fas fa-times"></i></p>
+          </div>
+          <div class="custom_reset">
+            <p><input class="custom_filter_reset" type="reset" value="Reset"></p>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="custom_filter_Results d-flex align-items-center" style="    min-height: 50px;
+        justify-content: space-between;
+        width: 100%;
+        padding: 0px 23px 0px 30px;">
+          <img src="/static/img/icons/4 GRID VIEW grey off.svg" class="img-fluid custom_four_div" id="four_div_btn" alt="">
+          <img src="/static/img/icons/1 GRID VIEW Grey off.svg" class="img-fluid custom_four_div"  id="one_div_btn"  alt="">
+        </div>
+      </div>
+      <div class="row mt-5">
+        <div class="custom_mobile_filter_part">
+          <div class="accordion" id="sort_mobile">
+              <div class="accordion-item custom_mobile_accordion_item">
+                <h2 class="accordion-header" id="headingOne">
+                  <button class="accordion-button" type="button" data-bs-toggle="collapse" 
+                  data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                    Sort
+                  </button>
+                </h2>
+                <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" 
+                data-bs-parent="#sort_mobile">
+                <div class="accordion-body">
+                  {% include 'inlcudes/_sort.html' with suffix=1 %}
+                </div>
+             </div>
+            </div>
+          </div>
+        </div>
+      </div>
+        <div class="custom_mobile_filter_part mt-4">
+          <div class="accordion" id="price_mobile">
+            <div class="accordion-item custom_accordion_item">
+              <h2 class="accordion-header" id="price_mobile2">
+                <button class="accordion-button" type="button" data-bs-toggle="collapse" 
+                data-bs-target="#collapsePrice" aria-expanded="true" aria-controls="collapsePrice">
+                  Price
+                </button>
+              </h2>
+              <div id="collapsePrice" class="accordion-collapse collapse show" aria-labelledby="price_mobile2" 
+              data-bs-parent="#price_mobile">
+                <div class="accordion-body">
+                  {% include 'inlcudes/_price_range.html' with suffix=1 %}
+                </div>
+              </div>
+            </div>
+            </div>
+      </div>
+        <div class="custom_mobile_filter_part">
+          <div class="accordion" id="price_delivery">
+            <div class="accordion-item custom_accordion_item">
+              <h2 class="accordion-header" id="headingOne">
+                <button class="accordion-button" type="button" data-bs-toggle="collapse" 
+                data-bs-target="#collapsethree" aria-expanded="true" aria-controls="collapsethree">
+                  Delivery
+                </button>
+              </h2>
+              <div id="collapsethree" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#price_delivery">
+                <div class="accordion-body">
+                  {% include 'inlcudes/_delivery.html' with suffix=1 %}
+                </div>
+              </div>
+            </div>
+            </div>
+      </div>
+        <div class="custom_mobile_filter_part">
+          <div class="accordion" id="color_mobile">
+            <div class="accordion-item custom_accordion_item">
+              <h2 class="accordion-header" id="headingOne">
+                <button class="accordion-button" type="button" data-bs-toggle="collapse" 
+                data-bs-target="#collapseColor" aria-expanded="true" aria-controls="collapseColor">
+                  Color
+                </button>
+              </h2>
+              <div id="collapseColor" class="accordion-collapse collapse show" aria-labelledby="headingOne" 
+              data-bs-parent="#color_mobile">
+                <div class="accordion-body">
+                  {% include 'inlcudes/_color.html' with suffix=1 %}
+                </div>
+              </div>
+            </div>
+            </div>
+      </div>
+      <div class="custom_mobile_filter_part">
+        <div class="accordion" id="mobile_function">
+            <div class="accordion-item custom_accordion_item">
+              <h2 class="accordion-header" id="headingOne">
+                <button class="accordion-button" type="button" data-bs-toggle="collapse" 
+                data-bs-target="#collapseFunction" aria-expanded="true" aria-controls="collapseFunction">
+                  Functions
+                </button>
+              </h2>
+              <div id="collapseFunction" class="accordion-collapse collapse show" aria-labelledby="headingOne" 
+              data-bs-parent="#mobile_function">
+                <div class="accordion-body">
+                  {% include 'inlcudes/_function.html' with suffix=1 %}
+                </div>
+              </div>
+            </div>
+          </div>
+    </div>
+      <div class="custom_mobile_filter_part">
+        <div class="accordion" id="mobile_function">
+            <div class="accordion-item custom_accordion_item">
+              <h2 class="accordion-header" id="headingOne">
+                <button class="accordion-button" type="button" data-bs-toggle="collapse" 
+                data-bs-target="#collapseBrand" aria-expanded="true" aria-controls="collapseFunction">
+                  Brands
+                </button>
+              </h2>
+              <div id="collapseBrand" class="accordion-collapse collapse show" aria-labelledby="headingOne" 
+              data-bs-parent="#mobile_brand">
+                <div class="accordion-body">
+                    <ul class="custom_color_filter">
+                    {% include 'inlcudes/_brand.html' with suffix=1 %}
+                    </ul>
+             
+
+                </div>
+              </div>
+            </div>
+          </div>
+    </div>
+      <div class="custom_mobile_filter_part">
+      <button class="btn btn-primary mt-3 btn_custom_filter" name="filter_form">Apply Filters</button>
+    </div>
+          </div>
+    </div>
+      </div>
+    </form>
+    </section>
+    <section class="container my-5 table-responsive">
+      <div class="row gy-5" id="for_one_div">
+        {% for watch in watches %}
+        <div class="col-md-4">
+          <div class="custom_product text-center">
+            <p class="custom_add_wishlist"><i id="add_wishlist_{{ watch.id }}" class="far fa-heart  shop-item-button"></i> </p>
+              <!-- <button class="btn btn-primary shop-item-button">Add to cart</button></p> -->
+              <a href="{{ watch.source_link }}"> <img src="{{ watch.image_url }}"
+                 class="img-fluid w-75 shop-item-image" alt="" srcset=""> </a>
+                 <a class="source_link" href="{{ watch.source_link }}">   
+                   <h2 class="pt-3 fs-5 text-capitalize shop-item-title">{{ watch.name }}</h2>
+                   </a>
+              <p class="custom_product_price">
+                <span class="small_price">£</span><span class="shop-item-price">{{ watch.price_integer }}</span>
+                <span class="small_price shop-item-subprice">{{ watch.price_fraction }}</span></p>
+              <p class="custom_delivery delivery_option">{{ watch.delivery}}</p>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+      <div class="row gy-5" id="for_four_div" style="display: none;">
+        {% for watch in watches %}
+        <div class="col-md-4 col-6">
+          <div class="custom_product text-center">
+            <p class="custom_add_wishlist"><button class="btn btn-primary shop-item-button">Add to cart</button></p>
+            <img src="{{ watch.image_url }}" class="img-fluid w-75 shop-item-image" alt="" srcset="">
+            <h2 class="pt-3 text-capitalize custom_header_four_div">{{ watch.name }}</h2>
+              <p class="custom_product_price">
+                <span class="small_price">£</span>{{ watch.price_integer }}<span class="small_price">{{ watch.price_fraction }}</span></p>
+              <p class="custom_delivery">{{ watch.delivery}}</p>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </section>
+
+  </main>
+  <script>
+    const fourDivBtn = document.getElementById('four_div_btn')
+    const oneDivBtn = document.getElementById('one_div_btn')
+    const forOneDivBtn = document.getElementById('for_one_div')
+    const forFourDivBtn = document.getElementById('for_four_div')
+    fourDivBtn.addEventListener('click', () => {
+      forFourDivBtn.style.display= 'flex'
+      forOneDivBtn.style.display = 'none'
+    })
+    oneDivBtn.addEventListener('click', () => {
+      forOneDivBtn.style.display= 'flex'
+      forFourDivBtn.style.display = 'none'
+    })
+
+  </script>
+
+  <script>
+    const thilterFilter = document.getElementById('thilter_filter_mobile')
+    const thilterFilterDiv = document.getElementById('thilter_filter_div')
+    const filterCross = document.getElementById('filter_cross')
+    thilterFilter.addEventListener('click', function(){
+          thilterFilterDiv.style.display = 'block'
+    })
+    filterCross.addEventListener('click', function(){
+      thilterFilterDiv.style.display= 'none'
+    })
+  </script>
+      <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+      integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="crossorigin="anonymous"></script>
+      <script src="/static/scripts/jquery-ui.js"></script>
+      <script src="/static/scripts/custom.js"></script>
+{% endblock %}

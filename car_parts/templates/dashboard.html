@@ -1,0 +1,110 @@
+{% extends 'layout.html' %}
+{% load i18n %}
+{% block body %}
+    <!-- Breadcrumb Section Begin -->
+    <div class="breadcrumb-option spad set-bg" data-setbg="/static/img/breadcrumb-bg.jpg">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <div class="breadcrumb__text">
+                        <h2>{% translate 'Orders' %}</h2>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Breadcrumb Section End -->
+
+    <!-- Shop Section End -->
+    <!-- Shop Section Begin -->
+    <section class="shop spad">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 order-lg-2">
+                    <h1 style="text-align: center;    font-size: 50px;font-weight: 600;
+                     margin-bottom: 20px;">{% translate 'Pending Orders' %}</h1>
+                    <table class="table table-bordered">
+                        <thead>
+                          <tr style="text-align: center;">
+                            <th scope="col">#</th>
+                            <th scope="col">{% translate 'Product' %}</th>
+                            <th scope="col">{% translate 'Name' %}</th>
+                            <th scope="col">{% translate 'Model' %}</th>
+                            <th scope="col">{% translate 'Vendor' %}</th>
+                            <th scope="col">{% translate 'Quantity' %} </th>
+                            <th scope="col">{% translate 'Sub Total' %}</th>
+                            <th scope="col">{% translate 'Date Created' %}</th>
+
+
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {% for pending_order in pending_orders %}
+                          <tr style="text-align: center;">
+                            <th scope="row">{{ forloop.counter }}</th>
+                            <td><img src="{{ pending_order.product.images.first.image_url }}" width="100" alt=""></td>
+                            <td>{{ pending_order.product.part_name }}</td>
+                            <td>{{ pending_order.product.model_name }}</td>
+                            <td>{{ pending_order.product.vendor }}</td>
+                            <td>{{ pending_order.quantity }}</td>
+                            <td>{{ pending_order.sub_total }}</td>
+                            <td>{{ pending_order.order.date_purchased }}</td>
+
+                          </tr>
+                          {% endfor %}
+
+                        </tbody>
+                      </table>
+                </div>
+
+        </div>
+    </section>
+    <!-- Shop Section End -->
+
+        <!-- Shop Section Begin -->
+        <section class="shop spad">
+          <div class="container">
+              <div class="row">
+                  <div class="col-lg-12 order-lg-2">
+                      <h1 style="text-align: center;    font-size: 50px;font-weight: 600;
+                      margin-bottom: 20px;">Completed Orders</h1>
+                      <table class="table table-bordered">
+                          <thead>
+                            <tr style="text-align: center;">
+                              <th scope="col">#</th>
+                              <th scope="col">{% translate 'Product' %}</th>
+                              <th scope="col">{% translate 'Name' %}</th>
+                              <th scope="col">{% translate 'Model' %}</th>
+                              <th scope="col">{% translate 'Vendor' %}</th>
+                              <th scope="col">{% translate 'Quantity' %} </th>
+                              <th scope="col">{% translate 'Sub Total' %}</th>
+                              <th scope="col">{% translate 'Date Created' %}</th>
+                              <th scope="col">{% translate 'Date Completed' %}</th>
+
+
+                            </tr>
+                          </thead>
+                          <tbody>
+                          {% for complete_order in completed_orders %}
+                          <tr style="text-align: center;">
+                            <th scope="row">{{ forloop.counter }}</th>
+                            <td><img src="{{ complete_order.product.images.first.image_url }}" width="100" alt=""></td>
+                            <td>{{ complete_order.product.part_name }}</td>
+                            <td>{{ complete_order.product.model_name }}</td>
+                            <td>{{ complete_order.product.vendor }}</td>
+                            <td>{{ complete_order.quantity }}</td>
+                            <td>{{ complete_order.sub_total }}</td>
+                            <td>{{ complete_order.order.date_purchased }}</td>
+                            <td>{{ complete_order.date_confirmed }}</td>
+                          </tr>
+                          {% endfor %}
+
+                          </tbody>
+                        </table>
+                  </div>
+
+          </div>
+      </section>
+      <!-- Shop Section End -->
+{% endblock %}

@@ -1,0 +1,14 @@
+{
+  "version": 2,
+  "builds": [
+    {
+      "src": "footwear_store/wsgi.py",
+      "use": "@vercel/python",
+      "config": { "maxLambdaSize": "50mb", "runtime": "python3.12" }
+    }
+  ],
+  "routes": [
+    { "src": "/static/(.*)", "headers": { "Cache-Control": "public, max-age=31536000, immutable" }, "dest": "footwear_store/wsgi.py" },
+    { "src": "/(.*)", "dest": "footwear_store/wsgi.py" }
+  ]
+}

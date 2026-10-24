@@ -1,0 +1,127 @@
+/{% extends 'layout.html' %}
+{% load i18n %}
+{% block body %}
+    <!-- Breadcrumb Section Begin -->
+    <div class="breadcrumb-option spad set-bg" data-setbg="/static/img/breadcrumb-bg.jpg">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <div class="breadcrumb__text">
+                        <h2>{% translate 'Cart' %}</h2>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Breadcrumb Section End -->
+    {% if cart_items %}
+    <!-- Shop Section End -->
+    <!-- Shop Section Begin -->
+    <section class="shop spad">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 order-lg-2">
+
+                    <table class="table" style="border-bottom: 1px solid #dee2e6;    font-size: 20px;">
+                        <thead>
+                          <tr style="text-align: center;">
+                            <th scope="col">#</th>
+                            <th scope="col">{% translate 'Product' %}</th>
+                            <th scope="col">{% translate 'Name' %}</th>
+                            <th scope="col">{% translate 'Price' %} </th>
+                            <th scope="col">{% translate 'Quantity' %}</th>
+                            <th scope="col">{% translate 'Subtotal' %}</th>
+                            <th scope="col"></th>
+
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {% for cart_item in cart_items %}
+                          <tr style="text-align: center;">
+                            <th scope="row">{{ forloop.counter }}</th>
+                            <td><img src="{{ cart_item.product.images.first.image_url }}" width="100" alt=""></td>
+                            <td>{{ cart_item.product.part_name }}</td>
+                            <td>{{ cart_item.product.price }}</td>
+                            <td>{{ cart_item.quantity }}</td>
+                            <td>{{ cart_item.sub_total }}</td>
+                            <td><a href="{% url 'users:cart_remove' cart_item.product.id %}">{% translate 'Remove Item' %}</a></td>
+                          </tr>
+                          {% endfor %}
+                        </tbody>
+                      </table>
+                </div>
+
+        </div>
+    </section>
+    <!-- Shop Section End -->
+
+        <!-- Shop Section Begin -->
+        <section class="shop" >
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12 order-lg-2">
+    
+                        <div class="row" style="text-align: center;">
+    
+                            <div class="col-lg-6 col-md-6 col-sm-12" style="margin: 0 auto;">
+                                <div class="product__item" style="    width: 600px;
+                                background-color: lightgray;">
+                                    <div class="product__item__text" style="    padding-top: 30px;
+                                    padding-bottom: 30px;">
+                                 
+                                        <h6 style="    font-size: 24px;
+                                        font-weight: bold;"><span style="margin-right: 300px;">{% translate 'Order Total' %}</span><span>{{ cart_total }}</span></h6>
+                                        <a href="{% url 'users:place_order' %}" class="btn btn-primary" style="font-size: 24px;
+                                        font-weight: bold;">{% translate 'Place Order' %}</a>
+                                   </div>
+                                </div>
+                            </div>
+    
+                    </div>
+    
+                </div>
+            </div>
+        </section>
+        <!-- Shop Section End -->
+        {% else %}
+          <!-- Shop Section Begin -->
+    <section class="shop spad">
+      <div class="container">
+          <div class="row">
+              <div class="col-lg-12 order-lg-2">
+
+              </div>
+
+      </div>
+  </section>
+  <!-- Shop Section End -->
+
+      <!-- Shop Section Begin -->
+      <section class="shop" >
+          <div class="container">
+              <div class="row">
+                  <div class="col-lg-12 order-lg-2">
+  
+                      <div class="row" style="text-align: center;">
+  
+                          <div class="col-lg-6 col-md-6 col-sm-12" style="margin: 0 auto;">
+                              <div class="product__item" style="    width: 600px;
+                              background-color: lightgray;">
+                                  <div class="product__item__text" style="    padding-top: 30px;
+                                  padding-bottom: 30px;">
+                                    <h6 style="    font-size: 24px;
+                                      font-weight: bold;"><span style="">{% translate 'There is no item for checkout' %}</span></h6>
+
+                                  </div>
+                              </div>
+                          </div>
+  
+                  </div>
+  
+              </div>
+          </div>
+      </section>
+      <!-- Shop Section End -->
+      {% endif %}
+{% endblock %}

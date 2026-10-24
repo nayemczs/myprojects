@@ -1,0 +1,19 @@
+<ul class="custom_color_filter custom_mobile_color_filter" >
+
+  {% for colour in colours %}
+    <li class="custom_color_item mobile_color_items">
+      <input type="checkbox"
+             class="custom_color_check"
+             name="colours"
+             value="{{ colour.0 }}"
+             id="id_{{ colour.0 }}_{{ suffix|default:0 }}"
+             {% if colour.0 in filters.colours %} checked {% endif %}
+      >
+      <label for="id_{{ colour.0 }}_{{ suffix|default:0 }}">
+        <span  class="custom_black_color custom_mobile_color {{ colour.1 }}"></span>
+        <span class="custom_bigs_color">{{ colour.1 }}</span>
+      </label>
+    </li>
+  {% endfor %}
+
+</ul>

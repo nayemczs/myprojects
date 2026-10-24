@@ -1,0 +1,50 @@
+{% extends 'layout.html' %}
+{% from 'includes/_form_helpers.html' import render_field %}
+
+{% block body %}
+  <!--last Contact Form Area -->
+  <div class="container">
+    <div class="row">
+
+      <!-- Single Featured Property -->
+
+      <div class="col-12 col-md-6 col-xl-4" style="    margin: 10px auto;">
+        <div class="single-featured-property mb-50 custom_schedule">
+
+          <!-- Property Content -->
+          <div class="property-content" style="text-align: center;">
+            <a><h5> {{ slot.date }} </h5></a>
+            <div class="custom_slot">
+              <p> From {{ slot.start_time.strftime("%I%p") }} To {{ slot.end_time.strftime("%I%p") }} </p>
+              <input slot-id="" style="display: none;">
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-12 col-lg-8 custom_appointment ">
+        <div class="contact-form">
+          <form action="" method="POST" style="text-align: center;">
+            {{ appointment_form.csrf_token }}
+            {{ appointment_form.slot_id(value=slot.id) }}
+            <div class="form-group">
+            {{ render_field(appointment_form.name) }}
+            </div>
+            <div class="form-group">
+               {{ render_field(appointment_form.contact_no) }}
+            </div>
+            <div class="form-group">
+               {{ render_field(appointment_form.email) }}
+            </div>
+            <button type="submit" class="btn south-btn" name="appointment">Confirm</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}

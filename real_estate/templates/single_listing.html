@@ -1,0 +1,108 @@
+{% extends 'layout.html' %}
+{% from 'includes/_form_helpers.html' import render_field %}
+{% block body %}
+<!-- ##### Listings Content Area Start ##### -->
+    <section class="listings-content-wrapper section-padding-100">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <!-- Single Listings Slides -->
+
+                    <div class="single-listings-sliders owl-carousel">
+                        <!-- Single Slide -->
+                        {% for image in estate.images %}
+                        <img src="{{ image.link }}" alt="">
+                        {% endfor %}
+
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="row justify-content-center">
+                <div class="col-12 col-lg-8">
+                    <div class="listings-content">
+                        <!-- Price -->
+                        <div class="list-price">
+                            <p>${{ estate.price|int }}</p>
+                        </div>
+                        <h5>{{ estate.title }}</h5>
+                        <p class="location"><img src="/static/img/icons/location.png" alt="">{{ estate.location }}</p>
+                        <p> {{ estate.description }}</p>
+                        <!-- Meta -->
+                        <div class="property-meta-data d-flex align-items-end">
+                            <div class="new-tag">
+                                <img src="/static/img/icons/new.png" alt="">
+                            </div>
+                            <div class="bathroom">
+                                <img src="/static/img/icons/bathtub.png" alt="">
+                                <span>{{ estate.bathrooms }}</span>
+                            </div>
+                            <div class="garage">
+                                <img src="/static/img/icons/garage.png" alt="">
+                                <span>{{ estate.bedrooms }}</span>
+                            </div>
+                            <div class="space">
+                                <img src="/static/img/icons/space.png" alt="">
+                                <span>{{ estate.area }}</span>
+                            </div>
+                        </div>
+                        <!-- Core Features -->
+
+                        <ul class="listings-core-features d-flex align-items-center">
+                          {% for feature in estate.features %}
+                            <li><i class="fa fa-check" aria-hidden="true"></i> {{ feature.name }}</li>
+
+                          {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-12 col-md-6 col-lg-4">
+                    <div class="contact-realtor-wrapper">
+                        <div class="realtor-info">
+                            <img src="/static/img/bg-img/listing.jpg" alt="">
+                            <div class="realtor---info">
+                                <h2>Jeremy Scott</h2>
+                                <p>Realtor</p>
+                                <h6><img src="/static/img/icons/phone-call.png" alt=""> +45 677 8993000 223</h6>
+                                <h6><img src="/static/img/icons/envelope.png" alt=""> office@template.com</h6>
+                            </div>
+                            <div class="realtor--contact-form">
+                                <form action="#" method="post">
+                                  {{ contact_form.csrf_token }}
+                                    <div class="form-group">
+                                        {{ render_field(contact_form.name) }}
+                                    </div>
+                                    <div class="form-group">
+                                        {{ render_field(contact_form.contact_no) }}
+                                    </div>
+                                    <div class="form-group">
+                                        {{ render_field(contact_form.email) }}
+                                    </div>
+                                    <div class="form-group">
+                                         {{ render_field(contact_form.text) }}
+                                    </div>
+                                    <button type="submit" class="btn south-btn">Send Message</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Listing Maps -->
+            <div class="row">
+                <div class="col-12">
+                    <div class="listings-maps mt-100">
+                        <div id="googleMap"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- ##### Listings Content Area End ##### -->
+
+
+{% endblock %}
+<!-- Google Maps -->
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAwuyLRa1uKNtbgx6xAJVmWy-zADgegA2s"></script>
+    <script src="js/map-active.js"></script>

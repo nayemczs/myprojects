@@ -1,0 +1,31 @@
+<!-- Nav Start -->
+<div class="classynav">
+  <ul>
+    <li><a href="/">Home</a></li>
+    <li><a href="/about_us/">About Us</a></li>
+    <li><a href="/listing/">Listing</a></li>
+    <li><a href="/contact/">Contact</a></li>
+    <li><a href="/appointments/">Appointment</a></li>
+
+  </ul>
+
+  <!-- Search Form -->
+  <div class="south-search-form">
+    <form action="{{ url_for('listing') }}" method="post">
+      <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
+      <input
+              type="search"
+              name="search"
+              id="search"
+              placeholder="Search Anything ..."
+              {% if session.active_filters and session.active_filters.search %}
+                value="{{ session.active_filters.search }}">
+              {% endif %}
+      <button type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
+    </form>
+  </div>
+
+  <!-- Search Button -->
+  <a href="#" class="searchbtn"><i class="fa" aria-hidden="true"></i></a>
+</div>
+<!-- Nav End -->

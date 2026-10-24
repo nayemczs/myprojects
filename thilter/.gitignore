@@ -1,0 +1,5 @@
+.idea
+__pycache__
+venv
+keys.py
+nkc_firebase_service_account.json

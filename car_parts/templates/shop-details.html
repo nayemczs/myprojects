@@ -1,0 +1,51 @@
+{% extends 'layout.html' %}
+{% load i18n %}
+{% block body %}
+   <!-- Shop Details Section Begin -->
+<section class="shop-details" xmlns="http://www.w3.org/1999/html">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="shop__details__pic">
+                        <div class="shop__details__big__img">
+                            <img class="product__big__img" width="300" src="{{ images.first.image_url }}" alt="">
+                        </div>
+                        <div class="shop__details__thumb__pic">
+                          {% for image in images %}
+                            <div class="pt" data-imgbigurl="{{ image.image_url }}">
+                                <img width="100" src="{{ image.image_url }}" alt="">
+                            </div>
+                          {% endfor %}
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="shop__details__text">
+                        <h3>{{ product.part_name }}</h3>
+                      <h3>{{ product.model_name }}</h3>
+                        <div class="price">{{ product.price }}</div>
+                        <p>{{ product.description }}</p>
+
+                        {% if request.user.is_authenticated and not request.user.is_vendor %}
+                          <div class="shop__details__widget">
+                            <form action="{% url 'users:cart_add' product.id %}" method="POST">
+                              {% csrf_token %}
+                              <div class="quantity">
+                                  <div class="pro-qty"><input type="text" name="quantity" value="1"></div>
+                              </div>
+                              <input type="submit" value="{% translate 'Add to Cart' %}" class="primary-btn">
+                            </form>
+                          </div>
+                        {% endif %}
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Shop Details Section End -->
+
+
+{% endblock %}

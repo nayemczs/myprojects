@@ -1,0 +1,125 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+
+  {% include 'includes/_advanced_search.html' %}
+
+  <!-- ##### Listing Content Wrapper Area Start ##### -->
+  <section class="listings-content-wrapper section-padding-100">
+    <div class="container">
+      <div class="row">
+        <div class="col-12">
+          <div class="listings-top-meta d-flex justify-content-between mb-100">
+            <div class="order-by-area d-flex align-items-center">
+              <span class="mr-15">Order by:</span>
+              <div id="order_by_wrapper">
+                <select id="order_by_select">
+                  <option value="">Default</option>
+                  {% for ordering in orderings %}
+                    <option
+                            value="{{ ordering.id }}"
+                            {% if session.active_filters and session.active_filters.order_by|int == ordering.id %}
+                              selected
+                            {% endif %}>
+                      {{ ordering.text }}
+                    </option>
+                  {% endfor %}
+                </select>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+
+        <!-- Single Featured Property -->
+        {% for estate in estates.items %}
+        <div class="col-12 col-md-6 col-xl-4">
+          <div class="single-featured-property mb-50">
+            <!-- Property Thumbnail -->
+            <div class="property-thumb">
+             <a href="{{ url_for('show', estate_id=estate.id) }}"> <img src="{{ estate.image_link }}" alt=""></a>
+
+              <div class="tag">
+                <span>For Sale</span>
+              </div>
+            {% if estate.offer.value %}
+              <div class="tag2" style="">
+                <span>{{ estate.offer.value}}</span>
+              </div>
+              {% endif %}
+              <div class="list-price">
+                <p>$ {{ estate.price|int }}</p>
+              </div>
+
+            </div>
+            <!-- Property Content -->
+            <div class="property-content">
+               <a href="{{ url_for('show', estate_id=estate.id) }}"><h5>{{ estate.title }}</h5></a>
+              <p class="location">
+                <img src="/static/img/icons/location.png" alt="">
+                {{ estate.location }}, {{ estate.city.name }}
+              </p>
+              <p> {{ estate.description }} </p>
+              <div class="property-meta-data d-flex align-items-end justify-content-between">
+                <div class="new-tag">
+                  <img src="/static/img/icons/new.png" alt="">
+                </div>
+                <div class="bathroom">
+                  <img src="/static/img/icons/bathtub.png" alt="">
+                  <span>{{ estate.bathrooms }}</span>
+                </div>
+                <div class="garage">
+                  <img src="/static/img/icons/garage.png" alt="">
+                  <span>{{ estate.bedrooms }}</span>
+                </div>
+                <div class="space">
+                  <img src="/static/img/icons/space.png" alt="">
+                  <span>{{ estate.area }}</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+
+      <div class="row">
+        <div class="col-12">
+          <div class="south-pagination d-flex justify-content-end">
+            <nav aria-label="Page navigation">
+              <ul class="pagination">
+                {% for page_num in estates.iter_pages(left_edge=1, right_edge=1, left_current=1, right_current=2) %}
+                  {% if page_num %}
+                    {% if estates.page == page_num %}
+                      <li class="page-item"><a class="page-link active"
+                                               href="{{ url_for('listing', page=page_num) }}">{{ page_num }}</a></li>
+                    {% else %}
+                      <li class="page-item"><a class="page-link"
+                                               href="{{ url_for('listing', page=page_num) }}">{{ page_num }}</a></li>
+                    {% endif %}
+                  {% else %}
+                    ...
+                  {% endif %}
+                {% endfor %}
+              </ul>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- ##### Listing Content Wrapper Area End ##### -->
+{% endblock %}
+
+{% block script %}
+  <script>
+    $("#order_by_wrapper").on('change', () => {
+      const order_by = $("#order_by_select").val();
+      search_form['order_by'].value = order_by
+      search_form_submit_handler()
+      search_form.submit()
+    });
+  </script>
+{% endblock %}

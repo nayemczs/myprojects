@@ -1,0 +1,84 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+  <main>
+    <section class="container-fluid p-0 custom_banner d-flex justify-content-center align-items-center"
+    style="background-image: url({{ banners.main }});">
+      <div class="row m-0 justify-content-center align-items-center">
+        <div class="col-lg-8 col-10 text-center">
+          <h1 class="custom_title">Find The
+            Perfect Watch </h1>
+            <a href="">
+              <button class="btn custom_main_button mt-4">Shop Now</button>
+            </a>
+        </div>
+      </div>
+    </section>
+    <section class="container-fluid p-0">
+          <img src="{{ banners.top }}" class="w-100 mt-4" alt="">
+      </div>
+    </section>
+    <section class="container-fluid">
+      <div class="row">
+        <div class="col-md-6  bg-light d-flex justify-content-center align-items-center">
+          <div class="row g-4">
+            <div class="col-md-6 mt-5 mb-5 text-center">
+              <div class=" custom_brand_img">
+              <img src="/static/img/rolax.png" alt="rolex watch" class="img-fluid custom_image_width" srcset="">
+              </div>
+              <div class="mt-4">
+                <a href="" class="fs-3 text-decoration-none" >Discover ></a>
+              </div>
+            </div>
+            
+            <div class="col-md-6 mt-5 mb-1  text-center">
+              <div class=" custom_brand_img">
+              <img src="/static/img/chanel.png" alt="rolex watch" class="img-fluid custom_image_width" srcset="">
+             </div>
+              <div class="mt-4">
+                <a href="" class="fs-3 text-decoration-none" >Discover ></a>
+              </div>
+            </div>
+            
+            <div class="col-md-6 mt-5 mb-1s text-center">
+              <div class=" custom_brand_img">
+                <img src="/static/img/gucci.png" alt="rolex watch" 
+                class="img-fluid custom_image_width" srcset="">
+              </div>
+
+              <div class="mt-4">
+                <a href="" class="fs-3 text-decoration-none" >Discover ></a>
+              </div>
+            </div>
+            
+            <div class="col-md-6 mt-5 mb-5 text-center">
+              <div class=" custom_brand_img">
+                <img src="/static/img/cartier.png" alt="rolex watch" 
+                class="img-fluid custom_image_width" srcset="">
+              </div>
+
+              <div class="mt-4">
+                <a href="" class="fs-3 text-decoration-none" >Discover ></a>
+              </div>
+            </div>
+            
+          </div>
+        </div>
+
+        <div class="col-md-6">
+          <img src="{{ banners.middle_right }}" class="img-fluid" alt="">
+        </div>
+      </div>
+    </section>
+    <section class="container-fluid">
+      <div class="row">
+        <div class="col-md-6">
+          <img src="{{ banners.bottom_left }}" class="img-fluid w-100" alt="">
+        </div>
+        <div class="col-md-6">
+          <img src="{{ banners.bottom_right }}" class="img-fluid w-100" alt="">
+        </div>
+      </div>
+    </section>
+  </main>
+{% endblock %}

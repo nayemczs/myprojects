@@ -1,0 +1,8 @@
+{# Defined Macros #}
+{% macro render_estate_image(model, column) %}
+  <a href="{{ model.image_link }}"><img src="{{ model.image_link }}" alt="Estate Image" style="width: 100%"></a>
+{% endmacro %}
+
+{% macro render_image(model, column) %}
+  <a href="{{ model.link }}"><img src="{{ model.link }}" alt="Image" style="width: 200px"></a>
+{% endmacro %}

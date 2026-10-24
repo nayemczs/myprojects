@@ -1,0 +1,64 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+<div class="container">
+  <div class="row">
+    <div class="col-md-4 text-center" style="margin: 0 auto;">
+        <h1 class="login_header_line">Store App</h1>
+   <div class="custom_audio_parent">
+      <h3>Product ID: {{ product.id }}</h3>
+      <h3>{{ product.name }}</h3>
+      <p>
+        Price: {{ product.price }} <br>
+        Quantity: {{ product.quantity }}
+      </p>
+     {% if current_user.is_authenticated %}
+        <button class="package_checkout" pid="{{ product.id }}">Buy Now</button>
+     {% endif %}
+   </div>
+    {% if current_user.is_authenticated %}
+      <a href="{{ url_for('logout') }}">Logout</a>
+    {% else %}
+      <a href="{{ url_for_security('login') }}">Login</a>
+      <a href="{{ url_for_security('register') }}">Register</a>
+    {% endif %}
+    </div>
+  </div>
+</div>
+
+{% endblock %}
+
+{% block scripts %}
+  {% if current_user.is_authenticated %}
+    <script src="https://js.stripe.com/v3/"></script>
+
+    <script defer>
+      const stripe = Stripe('{{ stripe_public_key }}')
+      const createCheckoutSession = function(product_id) {
+        const form_data = new FormData()
+        form_data.set('product_id', product_id)
+        return fetch("/checkout/create/", {
+          method: "POST",
+          headers: {'X-CSRFToken': '{{ csrf_token() }}'},
+          body: form_data
+        }).then(function(result) {
+          return result.json();
+        });
+      };
+
+      document.querySelectorAll(".package_checkout").forEach(subscribe_button => {
+        subscribe_button.addEventListener('click', (event) => {
+          const product_id = event.target.getAttribute('pid');
+          createCheckoutSession(product_id).then(function(data) {
+            // Call Stripe.js method to redirect to the new Checkout page
+            stripe
+              .redirectToCheckout({
+                sessionId: data.sessionId
+              })
+              .then(handleResult);
+          });
+        });
+      });
+    </script>
+  {% endif %}
+{% endblock %}

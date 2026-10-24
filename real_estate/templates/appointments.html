@@ -1,0 +1,51 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+  <div class="map-area mb-100">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12 text-center">
+          <h5 class="custom_schedule_header">Slots within next 7 days</h5>
+        </div>
+      </div>
+      <div class="row">
+
+        <form action="{{ url_for('make_appointment') }}" method="POST" id="make_appointment_form">
+          <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
+          <input type="hidden" name="slot_id">
+        </form>
+
+        <!-- Single Featured Property -->
+        {% for day, slots in slots|groupby('date') %}
+          <div class="col-12 col-md-6 col-xl-4">
+            <div class="single-featured-property mb-50 custom_schedule">
+              <!-- Property Content -->
+              <div class="property-content" style="text-align: center;">
+                <a><h5> {{ day }} </h5></a>
+                {% for slot in slots %}
+                  <div class="custom_slot">
+                    <p> From {{ slot.start_time.strftime("%I:%M %p") }} To {{ slot.end_time.strftime("%I:%M %p") }} </p>
+                    <button class="btn south-btn slot_select" type="button" slot_id="{{ slot.id }}">
+                      <a href="/make_appointment/" slot_id="{{ slot.id }}" style="color: #ffffff !important">Make Appointment</a>
+                    </button>
+                  </div>
+                {% endfor %}
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+  <script>
+    const make_appointment_form = document.querySelector('#make_appointment_form')
+    document.querySelectorAll('.slot_select').forEach(link => {
+      link.addEventListener('click', (event) => {
+        event.preventDefault()
+
+        make_appointment_form['slot_id'].value = event.target.getAttribute('slot_id')
+        make_appointment_form.submit()
+      })
+    })
+  </script>
+{% endblock %}

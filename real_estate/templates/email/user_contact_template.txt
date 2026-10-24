@@ -1,0 +1,10 @@
+Hello {{ name }},
+
+We have received your following query message:
+
+{{ message }}
+
+We will reach out to you soon.
+
+Thank you,
+The HunchGroup Team

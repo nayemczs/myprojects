@@ -1,0 +1,10 @@
+<div class="sliders pb-4">
+  <div class="d-flex">
+    <input type="text" class="custom_range_input amount_low" value="{{ filters.min_price|default:0 }}"
+      name="min_price">
+    <input type="text" class="custom_range_input amount_high"
+      value="{{ filters.max_price|default:400 }}" name="max_price">
+  </div>
+  <br>
+  <div class="slider_range_mobile  slider-range"></div>
+</div>

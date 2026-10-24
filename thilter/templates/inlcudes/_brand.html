@@ -1,0 +1,11 @@
+{% for brand in brands %}
+  <li class="custom_color_item">
+    <input type="checkbox"
+           name="brands"
+           value="{{ brand.0 }}"
+           id="id_{{ brand.0 }}_{{ suffix|default:0 }}"
+           {% if brand.0 in filters.brands %} checked {% endif %}
+    >
+    <label for="id_{{ brand.0 }}_{{ suffix|default:0 }}">{{ brand.1 }}</label>
+  </li>
+{% endfor %}

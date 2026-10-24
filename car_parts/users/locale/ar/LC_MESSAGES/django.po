@@ -1,0 +1,108 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-10-29 23:16+0600\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 "
+"&& n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
+
+#: .\forms.py:44 .\forms.py:83
+msgid "Password does NOT match with the confirmation field"
+msgstr ""
+
+#: .\models.py:29
+msgid "A user with that username already exists."
+msgstr ""
+
+#: .\models.py:30
+msgid "Required. 10 characters or fewer."
+msgstr ""
+
+#: .\models.py:35
+msgid "username"
+msgstr ""
+
+#: .\models.py:38
+msgid "This email address has already been registered."
+msgstr ""
+
+#: .\models.py:41
+msgid "email address"
+msgstr ""
+
+#: .\models.py:78
+msgid "first name"
+msgstr ""
+
+#: .\models.py:79
+msgid "last name"
+msgstr ""
+
+#: .\models.py:80 .\models.py:172
+msgid "address"
+msgstr ""
+
+#: .\models.py:130
+msgid "Cart has no items"
+msgstr ""
+
+#: .\models.py:168
+msgid "company name"
+msgstr ""
+
+#: .\models.py:169
+msgid "region"
+msgstr ""
+
+#: .\models.py:170
+msgid "country"
+msgstr ""
+
+#: .\models.py:171
+msgid "city"
+msgstr ""
+
+#: .\models.py:181 .\models.py:227
+msgid "Product does NOT exist"
+msgstr ""
+
+#: .\models.py:198 .\models.py:205 .\models.py:212
+msgid "Image does NOT exist"
+msgstr ""
+
+#: .\views.py:31 .\views.py:51
+msgid "Account has been registered SUCCESSFULLY"
+msgstr ""
+
+#: .\views.py:80
+msgid "You're logged in Successfully"
+msgstr ""
+
+#: .\views.py:82
+msgid "Email or Password does not match"
+msgstr ""
+
+#: .\views.py:91
+msgid "You're logged out Successfully"
+msgstr ""
+
+#: .\views.py:137
+msgid "Your order has been placed Successfully"
+msgstr ""
+
+#: .\views.py:153
+msgid "Order Marked"
+msgstr ""

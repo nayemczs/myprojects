@@ -1,0 +1,137 @@
+{%  extends "layout.html" %}
+
+{% block content %}
+
+<div class="main_root">
+  {% include 'includes/error.html' %}
+  <div class="custom_root">
+    <div class="container-fluid align-middle container_body">
+      <div class="row">
+        <div class="col-sm-8 col-md-8 col-lg-4 text-center custom_field">
+          <div class="custom_url_input">
+            <form action="" method="POST">
+              {{ form.csrf_token }}
+              <!-- <label for="url"></label> -->
+              {{ form.url(class_='custom_url', placeholder='Enter the url:') }}
+              {# <input type="url" id="url" placeholder="Enter the url:" class="custom_url" name="url"> #}
+              <br><br>
+              <input class="custom_btn" type="submit">
+            </form>
+            {% if recent_audio %}
+            <div class="custom_audio_parent">
+              <label class="custom_audio_title">{{ recent_audio.title }}</label>
+              <audio class="custom_audio" id="cus_aud" title="Someone's song" player_id="{{ recent_audio.id }}"
+                controls>
+                <source src="{{ recent_audio.link }}" type="audio/mpeg">
+              </audio>
+              <label>{{ recent_audio.date_added.strftime('%Y-%m-%d')  }}</label>
+              <br>
+              <form action="{{url_for('delete_audio')}}" method="POST">
+                {{ delete_form.csrf_token }}
+                <!-- <label for="url"></label> -->
+                {{ delete_form.player_id(value=recent_audio.id) }}
+               <button class="custom_btn" type="submit">Delete</button>
+                <br><br>
+              </form>
+              
+            </div>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  {% if remaining_audios %}
+
+  <div class="custom_root">
+    <div class="container-fluid align-middle container_body">
+      <h1 class="custom_heading">Audios You Haven't Finished Listening</h1>
+      <div class="row">
+        <div class="col-sm-9 col-md-8 col-lg-10 col-xl-8 text-center custom_field one">
+          <div class="row">
+            {% for audio in remaining_audios %}
+            <div class="col-sm-12 col-md-12 col-lg-6">
+              <div class="custom_audio_parent">
+                <label class="custom_audio_title">{{ audio.title }}</label>
+                <audio class="custom_audio" id="cus_aud" title="Someone's song" player_id="{{ audio.id }}"
+                  controls>
+                  <source src="{{ audio.link }}#t={{ audio.cursor_position }}" type="audio/mpeg">
+                </audio>
+                <label>{{ audio.date_added.strftime('%Y-%m-%d') }}</label>
+                <br>
+                <form action="{{ url_for('delete_audio') }}" method="POST">
+                  {{ delete_form.csrf_token }}
+                  <!-- <label for="url"></label> -->
+                  {{ delete_form.player_id(value=audio.id) }}
+                   <button class="custom_btn" type="submit">Delete</button>
+                  <br><br>
+                </form>
+              </div>
+            </div>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  {% endif %}
+  {% if listened_audios %}
+
+  <div class="custom_root">
+    <div class="container-fluid align-middle container_body">
+      <h1 class="custom_heading heading2">LISTENED</h1>
+      <div class="row">
+        <div class="col-sm-9 col-md-8 col-lg-10 col-xl-8 text-center custom_field one">
+          <div class="row">
+            {% for audio in listened_audios %}
+            <div class="col-sm-12 col-md-12 col-lg-6">
+              <div class="custom_audio_parent">
+                <label class="custom_audio_title">{{ audio.title }}</label>
+                <audio class="custom_audio" id="cus_aud" title="Someone's song" player_id="{{ audio.id }}"
+                  controls>
+                  <source src="{{ audio.link }}#t={{ audio.cursor_position }}" type="audio/mpeg">
+                </audio>
+                <label>{{ audio.date_added.strftime('%Y-%m-%d') }}</label>
+                <br>
+                <form action="{{ url_for('delete_audio') }}" method="POST">
+                  {{ delete_form.csrf_token }}
+                  <!-- <label for="url"></label> -->
+                  {{ delete_form.player_id(value=audio.id) }}
+                   <button class="custom_btn" type="submit">Delete</button> 
+                  <br><br>
+                </form>
+              </div>
+            </div>
+            {% endfor %}
+          </div>
+        </div>
+        <!-- unlistend end -->
+      </div>
+    </div>
+  </div>
+
+  {% endif %}
+  {% if not (listened_audios or remaining_audios) %}
+
+  <div class="custom_root">
+    <div class="container-fluid align-middle container_body">
+     
+      <div class="row">
+        <div class="col-sm-7 text-center custom_field">
+          <h1 class="custom_heading heading2">There is no audio</h1>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  {% endif %}
+</div>
+<script type="text/javascript">
+    const csrf_token = '{{ csrf_token() }}'
+    const save_position_url = '{{ url_for('store_audio_position') }}'
+    const mark_listened_url = '{{ url_for('mark_listened') }}'
+</script>
+<script src="{{ url_for('static', filename='js/home.js') }}"></script>
+{% endblock %}

@@ -1,0 +1,77 @@
+<div class="mobile_header">
+  <div class="container-fluid">
+    <div class="row custom_nav">
+      <div class="col-md-3 col-3 text-center">
+        <a class="" href="{% url 'pages:index' %}">
+          <img src="/static/img/Homepage-Thilter-for-Slack-PSD.png" class="custom_logo" alt=""></a>
+      </div>
+
+      <div class="col-lg-7 col-12 p-0 custom_mobile_search">
+        <form action="{% url 'pages:watches' %}" method="POST">
+          {% csrf_token %}
+          <div class="input-group custom_search_div">
+
+            <input type="text"
+                   class="form-control custom_search_input"
+                   id="search_input"
+                   name="text"
+                   value="{{ request.session.search_text }}"
+                   placeholder="Discover And Shop ">
+            <button class="input-group-text custom_cross" type="reset">
+              <i class="fas fa-times custom_delete"></i>
+            </button>
+            <button class="input-group-text custom_search_label" type="submit" name="search_form">
+              <i class="fas fa-search fs-3"></i>
+            </button>
+          </div>
+        </form>
+      </div>
+      <div class="col-md-2 col-2 text-center custom_mobile_heart ">
+        <a  style="cursor: pointer;" class="favourites" id="id_wishlist_show"><i class="far fa-heart custom_heart"></i>
+          <span class="custom_badge" id="wishlist_count">0</span>
+        </a>
+
+      </div>
+
+    </div>
+  </div>
+  <header class="custom_header custom_sticky">
+    <nav class="navbar navbar-expand-lg navbar-light  custom_menu">
+      <div class="container-fluid">
+        <button class="navbar-toggler custom_toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
+                aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav w-100 d-flex justify-content-around custom_mobile_toggler">
+            <li class="nav-item">
+              <a class="nav-link custom_option" aria-current="page" href="{% url 'pages:watches' %}">Men</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link custom_option" aria-current="page" href="#">Women</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link custom_option" href="#">Kids</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link custom_option" href="#">Brands</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link custom_option" href="#">Luxury</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link custom_option" href="#">Smart</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link custom_option" href="#">Categories</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </header>
+</div>
+
+<div class="ceiling"></div>
+

@@ -1,0 +1,10 @@
+Hello Admin,
+
+{{ name }} has booked an appointment for the following schedule:
+
+Date: {{ slot.date }}
+From: {{ slot.start_time.strftime("%I:%M %p") }}
+To: {{ slot.end_time.strftime("%I:%M %p") }}
+
+Thank you,
+The HunchGroup Team

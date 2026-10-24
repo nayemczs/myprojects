@@ -1,0 +1,68 @@
+{% extends 'layout.html' %}
+{% from 'includes/_form_helpers.html' import render_field %}
+
+{% block body %}
+
+  <section class="south-contact-area section-padding-100">
+    <div class="container">
+      <div class="row">
+        <div class="col-12">
+          <div class="contact-heading">
+            <h6>Contact info</h6>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-12 col-lg-4 custom_contact_form">
+          <div class="content-sidebar">
+            <!-- Office Hours -->
+            <div class="weekly-office-hours">
+              <ul>
+                <li class="d-flex align-items-center justify-content-between"><span>Monday - Friday</span> <span>09 AM - 19 PM</span>
+                </li>
+                <li class="d-flex align-items-center justify-content-between"><span>Saturday</span>
+                  <span>09 AM - 14 PM</span></li>
+                <li class="d-flex align-items-center justify-content-between"><span>Sunday</span> <span>Closed</span>
+                </li>
+              </ul>
+            </div>
+            <!-- Address -->
+            <div class="address mt-30">
+              <h6><img src="/static/img/icons/phone-call.png" alt=""> +45 677 8993000 223</h6>
+              <h6><img src="/static/img/icons/envelope.png" alt=""> office@template.com</h6>
+              <h6><img src="/static/img/icons/location.png" alt=""> Main Str. no 45-46, b3, 56832,<br>Los Angeles, CA
+              </h6>
+            </div>
+          </div>
+        </div>
+
+        <!-- Contact Form Area -->
+        <div class="col-12 col-lg-8 ">
+          <h1 style="font-size: 21px; color: #CC5500 !important;margin-bottom: 20px;">To find the current value of your house please include your address with the message</h1>
+          <div class="contact-form">
+            <form action="" method="post">
+              {{ contact_form.csrf_token }}
+              <div class="form-group">
+                {{ render_field(contact_form.name) }}
+              </div>
+              <div class="form-group">
+               {{ render_field(contact_form.contact_no) }}
+              </div>
+              <div class="form-group">
+                {{ render_field(contact_form.email) }}
+              </div>
+              <div class="form-group">
+              {{ render_field(contact_form.text) }}
+              </div>
+              <button type="submit" class="btn south-btn">Send Message</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+
+{% endblock %}

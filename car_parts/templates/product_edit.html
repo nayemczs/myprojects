@@ -1,0 +1,110 @@
+{% extends 'layout.html' %}
+{% load i18n %}
+{% block body %}
+  <!-- Hero Section Begin -->
+  <section class="hero spad set-bg" data-setbg="/static/img/hero-bg.jpg">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="hero__text custom_hero" style="text-align: center;">
+            <h2>
+              <span>{% translate 'UPDATE' %}</span>
+              {% translate 'PRODUCT' %}
+            </h2>
+            <div class="custom_form">
+              <form action="{% url 'products:update' product_id %}" style="color: white;" method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="form-group">
+                  {#                             <input type="text" class="form-control custom_option" id="" placeholder="Model Name">#}
+                  {{ product_update_form.model_name }}
+                  {{ product_update_form.model_name.errors }}
+                </div>
+                <div class="form-group">
+                  {#                             <input type="text" class="form-control custom_option" id="" placeholder="Part name">#}
+                  {{ product_update_form.part_name }}
+                  {{ product_update_form.part_name.errors }}
+                </div>
+                <div class="form-group">
+                  {#                             <input type="text" class="form-control custom_option" id="" placeholder="Part grade">#}
+                  {{ product_update_form.description }}
+                  {{ product_update_form.description.errors }}
+                </div>
+                <div class="form-group">
+                  {#                             <input type="text" class="form-control custom_option" id="" placeholder="Price">#}
+                  {{ product_update_form.price }}
+                  {{ product_update_form.price.errors }}
+                </div>
+                <div class="form-group">
+                  {#                             <input type="text" class="form-control custom_option" id="" placeholder="Price">#}
+                  {{ product_update_form.quantity }}
+                  {{ product_update_form.quantity.errors }}
+                </div>
+                <button type="submit" class="btn btn-primary">{% translate 'Update Product' %}</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- Hero Section End -->
+  <!-- Shop Section Begin -->
+  <section class="shop spad">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 order-lg-2">
+                <h1 style="font-size: 26px;
+                font-weight: 800;margin: 30px 0px;">Add New Images:</h1>
+              <form action="{% url 'products:image_add' product_id %}" style="    width: 500px;
+    margin: 0 auto;" method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+
+                <input type="file" accept="image/*" class="custom_file" name="image" id="image">
+                <button type="submit" class="btn btn-primary">Add New Image</button>
+              </form>
+                <h1 style="font-size: 26px;
+                font-weight: 800; margin: 30px 0px;">Update Images:</h1>
+                <table class="table table-bordered" style="    font-size: 20px;">
+                    <thead>
+                      <tr style="text-align: center;">
+                        <th scope="col">#</th>
+                        <th scope="col">Images</th>
+                        <th scope="col">Update Images</th>
+                        <th scope="col"></th>
+                       
+
+                     </tr>
+                    </thead>
+                    <tbody>
+                    {% for image in images %}
+                    <form action="{% url 'products:image_update' product_id image.id %}" method="POST" enctype="multipart/form-data">
+                      {% csrf_token %}
+                      <tr style="text-align: center;">
+                        <th scope="row">{{ forloop.counter }}</th>
+                        <td><img src="{{ image.image_url }}" width="100" alt=""></td>
+                        <td><input class="custom_file" type="file" accept="image/*" id="myFile" name="image"><button type="submit" class="btn btn-primary">Update</button></td>
+                       
+                        <td><a href="{% url 'products:image_remove' product_id image.id %}">Remove</a></td>
+
+
+
+                      </tr>
+                    </form>
+                    {% endfor %}
+                 
+
+                    </tbody>
+                  </table>
+            </div>
+
+    </div>
+</section>
+
+
+
+
+
+
+
+
+{% endblock %}

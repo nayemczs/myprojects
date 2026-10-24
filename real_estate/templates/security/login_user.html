@@ -1,0 +1,24 @@
+{% extends 'layout.html' %}
+{% from "security/_macros.html" import render_field as security_render_field %}
+{% include "security/_messages.html" %}
+{% from 'includes/_form_helpers.html' import render_field %}
+
+{% block body %}
+<!--login_form start-->
+<div class="container">
+  <div class="row">
+    <div class="col-md-4 custom_login_form">
+  <h1>{{ _('Login') }}</h1>
+  <form action="{{ url_for_security('login') }}" method="POST" name="login_user_form">
+    {{ login_user_form.hidden_tag() }}
+    {{ render_field(login_user_form.email, class="custom_login_input") }}
+    {{ render_field(login_user_form.password, class="custom_login_input") }}
+    {{ render_field(login_user_form.remember, class="custom_login_remember") }} <span style="color:white;">Remember Me</span>
+    {{ security_render_field(login_user_form.submit, class="btn south-btn custom_login_button") }}
+    </form>
+    </div>
+    </div>
+    </div>
+    <!--login_form end-->
+
+{% endblock %}

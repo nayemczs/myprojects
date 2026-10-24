@@ -1,0 +1,76 @@
+{% load i18n %}
+
+<!-- Header Section Begin -->
+<header class="header">
+  <!-- <div class="header__top">
+      <div class="container">
+          <div class="row">
+              <div class="col-lg-7">
+                  <ul class="header__top__left">
+                      <li><span class="icon_mobile"></span> (+123) 4567-7890-123</li>
+                      <li><span class="icon_clock_alt"></span> Mon-Sat: 10:00 - 16:00 / Sunday Close</li>
+                  </ul>
+              </div>
+              <div class="col-lg-5">
+                  <div class="header__top__right">
+                      <a href="#" class="map-btn">Find us on map <span class="arrow_right"></span></a>
+                      <div class="header__right__social">
+                          <a href="#"><span class="social_facebook"></span></a>
+                          <a href="#"><span class="social_twitter"></span></a>
+                          <a href="#"><span class="social_vimeo"></span></a>
+                          <a href="#"><span class="social_pinterest"></span></a>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div> -->
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-3">
+        <div class="header__logo">
+          <a href="{% url 'products:index' %}"><img src="/static/img/logo.png" alt=""></a>
+        </div>
+      </div>
+      <div class="col-lg-7">
+        <nav class="header__menu">
+          <ul>
+            <li><a href="{% url 'products:index' %}">{% translate 'Home' %}</a></li>
+            {% if request.user.is_authenticated %}
+              <li><a href="{% url 'users:dashboard' %}">{% translate 'Dashboard' %}</a></li>
+              <li><a href="{% url 'users:logout' %}">{% translate 'Logout' %}</a></li>
+            {% else %}
+              <li><a href="{% url 'users:login' %}">{% translate 'Login' %}</a></li>
+              <li><a href="{% url 'users:customer_register' %}">{% translate 'Register' %}</a></li>
+            {% endif %}
+            <li><a href="#">Pages</a>
+              <ul class="dropdown">
+                {% if request.user.is_authenticated and request.user.is_vendor %}
+                  <li><a href="{% url 'users:orders' %}">{% translate 'Orders' %}</a></li>
+                {% endif %}
+                <li><a href="{% url 'products:about' %}">{% translate 'About Us' %}</a></li>
+                <li><a href="{% url 'products:contact' %}">{% translate 'Contact' %}</a></li>
+              </ul>
+            </li>
+
+          </ul>
+        </nav>
+      </div>
+      <div class="col-lg-2">
+        <ul class="header__right">
+{#          <li><a href="#" class="search-switch"><span class="icon_search"></span></a></li>#}
+          {% if request.user.is_authenticated %}
+            {% if not request.user.is_vendor %}
+              <li><a href="{% url 'users:cart' %}"><span class="icon_cart_alt"></span></a></li>
+            {% endif %}
+            <li>{{ request.user.full_name }}</li>
+          {% endif %}
+        </ul>
+      </div>
+    </div>
+    <div class="canvas__open">
+      <i class="fa fa-bars"></i>
+    </div>
+  </div>
+</header>
+<!-- Header Section End -->

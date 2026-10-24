@@ -1,0 +1,13 @@
+<span>Hello Admin,</span>
+<br>
+<br>
+<p><span style="font-size: 16px; font-weight: 600;">{{ name }}</span> has booked an appointment for the following schedule:</p>
+<br>
+
+<span style="font-size: 16px; font-weight: 600;">Date: {{ slot.date }} </span><br>
+<span style="font-size: 16px; font-weight: 600;">From: {{ slot.start_time.strftime("%I:%M %p")  }} </span><br>
+<span style="font-size: 16px; font-weight: 600;">To: {{ slot.end_time.strftime("%I:%M %p")  }} </span><br>
+<br>
+<br>
+<p>Thank you,</p>
+<p>The HunchGroup Team</p>
