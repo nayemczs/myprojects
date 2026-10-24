@@ -1,0 +1,387 @@
+{% load i18n %}
+{% get_current_language as LANGUAGE_CODE %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="italien specialisten">
+    <meta name="keywords" content="italien specialisten">
+    <meta name="author" content="italien specialisten">
+    <link rel="icon" href="/static/images/logo.png" type="image/x-icon" />
+ 
+
+  {% block default_meta %}
+  {% endblock %}
+
+  {% block meta %}{% endblock %}
+
+  {% load static %}
+  <!-- Title bar icon -->
+{#  <link rel="icon" href="{% static 'images/title_logo.png' %}" type="image/png">#}
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css">
+      <!--Google font-->
+      <link
+      href="https://fonts.googleapis.com/css?family=Nunito:300,300i,400,400i,600,600i,700,700i,800,800i,900,900i&display=swap"
+      rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Work+Sans:400,500,600,700,800,900&display=swap"
+      rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Vampiro+One&display=swap" rel="stylesheet">
+
+  <!-- Icons -->
+  <link rel="stylesheet" type="text/css" href="/static/css/font-awesome.css">
+
+  <!-- Themify icon -->
+  <link rel="stylesheet" type="text/css" href="/static/css/themify-icons.css">
+
+  <!-- Animation -->
+  <link rel="stylesheet" type="text/css" href="/static/css/animate.css">
+
+  <!-- Date-time picker css -->
+  <link rel="stylesheet" type="text/css" href="/static/css/datepicker.min.css">
+
+    <!-- magnific css -->
+    <link rel="stylesheet" href="/static/css/magnific-popup.css">
+  <!--Slick slider css-->
+  <link rel="stylesheet" type="text/css" href="/static/css/slick.css">
+  <link rel="stylesheet" type="text/css" href="/static/css/slick-theme.css">
+
+  <!-- Bootstrap css -->
+  <link rel="stylesheet" type="text/css" href="/static/css/bootstrap.css">
+
+    <!-- Theme css -->
+    <link rel="stylesheet" type="text/css" href="/static/css/color1.css">
+  <!-- Theme css -->
+  <link rel="stylesheet" type="text/css" href="/static/css/color5.css">
+
+  {% block styles %}{% endblock %}
+
+  <title>{% block title %}Italien specialisten{% endblock %}</title>
+</head>
+<body>
+  
+
+
+    <!-- header start -->
+    <header class="light_header">
+      <div class="container">
+          <div class="row">
+              <div class="col">
+                  <div class="menu">
+                        <div class="logo">
+                            <a href="/">
+                                <img src="/static/images/logo.png" width="150" alt="">
+                            </a>
+                           
+                        </div>
+                      <nav>
+                          <div class="main-navbar">
+                              <div id="mainnav">
+                                  <div class="toggle-nav"><i class="fa fa-bars sidebar-bar"></i></div>
+                                  <div class="menu-overlay"></div>
+                                  <ul class="nav-menu">
+                                      <li class="back-btn">
+                                          <div class="mobile-back text-right">
+                                              <span>{% translate 'Back' %}</span>
+                                              <i aria-hidden="true" class="fa fa-angle-right pl-2"></i>
+                                          </div>
+                                      </li>
+                                      <li><a href="/{{ LANGUAGE_CODE }}/">{% translate 'Home' %}</a>
+                                      </li>
+                                      <li class="dropdown">
+                                          <a href="{% url 'pages:explore' 'italy' %}" class="nav-link menu-title">
+                                            {% translate 'Explore Italy' %}</a>
+                                          <!-- <ul class="nav-submenu menu-content">
+                                              <li><a href="#">by location</a>  
+                                              </li>
+                                              <li><a href="#">by interest</a> 
+                                              </li>
+                                          </ul> -->
+                                      </li>
+                                      <li><a href="{% url 'pages:regions' 'italy' %}">
+                                        {% translate 'Italian regions' %}</a>
+                                      </li>
+                                      <li><a href="{% url 'pages:hotels' %}">{% translate 'Hotel' %}</a>
+                                      </li>
+                                      <li class="dropdown">
+                                       <a href="#" class="nav-link menu-title">{% translate 'House' %}</a>
+                                       <ul class="nav-submenu menu-content">
+                                      <li><a href="{% url 'pages:house_rents' %}">{% translate 'House for rent' %}</a>
+                                     </li>
+                                    <li><a href="{% url 'pages:house_sales' %}">{% translate 'House for sale' %}</a>
+                                   </li>
+                                   </ul>
+                                   </li>
+<!-- 
+                  <li><a href="#">Tips & Råd</a>
+                  </li>
+                  <li><a href="#">Buy house in Italy (advice)</a>
+                  </li> -->
+                                  <li><a href="/about_us">{% translate 'About us' %}</a>
+                                  </li>
+                                  <li><a href="#">{% translate 'Contact us' %}</a>
+                                  </li>
+
+                                  </ul>
+                              </div>
+                          </div>
+                      </nav>
+                     
+                  </div>
+              </div>
+          </div>
+      </div>
+  </header>
+  <!--  header end -->
+
+
+{% block body %}
+{% endblock %}
+
+{% block footer %}{% endblock %}
+
+<!-- footer start -->
+<footer>
+  <div class="footer section-b-space section-t-space">
+      <div class="container">
+          <div class="row order-row">
+              <div class="col-xl-2 col-md-6 order-cls">
+                  <div class="footer-title mobile-title">
+                      <h5>{% translate 'contact us' %}</h5>
+                  </div>
+                  <div class="footer-content">
+                      <div class="contact-detail">
+                          <div class="footer-logo">
+                              <a href="/">
+                                <img src="/static/images/logo.png" alt=""
+                                class="img-fluid blur-up lazyload">
+                            </a>
+
+                          </div>
+                          <p>{% blocktranslate %}
+                            Italienspecialisten is your trusted guide to Italy — helping travellers
+                            discover authentic Italian experiences, find the perfect accommodation,
+                            and make their dream of living in Italy a reality since 2015.
+                            {% endblocktranslate %}  </p>
+                         
+                      </div>
+                  </div>
+              </div>
+              <div class="col-xl-2 col-md-3">
+                  <div class="footer-space">
+                      <div class="footer-title">
+                          <h5>{% translate 'about' %}</h5>
+                      </div>
+                      <div class="footer-content">
+                          <div class="footer-links">
+                              <ul>
+                                  <li><a href="/about_us">{% translate 'about us' %}</a></li>
+               <li><a href="#">contact us</a></li>
+                                  <li><a href="#">{% translate 'FAQ' %}</a></li>
+                                  <li><a href="#">{% translate 'terms & co.' %}</a></li>
+                                  <li><a href="#">{% translate 'privacy' %}</a></li>
+               <li><a href="#">{% translate 'sitemap' %}</a></li>
+                              </ul>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+              <div class="col-xl-3 col-md-6">
+                  <div class="footer-title">
+                      <h5>{% translate 'contact us' %}</h5>
+                  </div>
+                  <div class="footer-content">
+
+                  <form>
+                      <div class="form-group">
+                          <div class="row">
+                              <div class="col first-name">
+                               
+                                  <input type="text" id="firstName" class="form-control" placeholder="Name">
+                              </div>
+                              
+                          </div>
+                      </div>
+                      <div class="form-group">
+                         
+                          <input type="email" class="form-control" placeholder="Enter email">
+                          
+                      </div>
+                      <div class="form-group">
+                      
+                          <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"
+                              placeholder="Message"></textarea>
+                      </div>
+                      
+                      <div class="submit-btn">
+                          <button onclick="window.location.href='tour-checkout.html';" class="btn btn-solid"
+                              type="button">{% translate 'send' %}</button>
+                      </div>
+                  </form>
+         
+        
+        
+        
+        
+        
+                  </div>
+              </div>
+              <div class="col-xl-2 col-md-3 order-cls">
+                  <div class="footer-space">
+                      <div class="footer-title">
+                          <h5>{% translate 'useful links' %}</h5>
+                      </div>
+                      <div class="footer-content">
+                          <div class="footer-links">
+                              <ul>
+                                  <li><a href="#">{% translate 'home' %}</a></li>
+                                  <li><a href="#">{% translate 'articles' %}</a></li>
+                                  <li><a href="#">{% translate 'hotels' %}</a></li>
+                                  <li><a href="#">{% translate 'house for rent' %}</a></li>
+                                  <li><a href="#">{% translate 'hourse for sale' %}</a></li>
+                              </ul>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+              <div class="col-xl-3 col-md-6">
+                  <div class="footer-title">
+                      <h5>{% translate 'Home' %}last topics</h5>
+                  </div>
+                  <div class="footer-content">
+                      <div class="footer-blog">
+                          <div class="media">
+                              <div class="img-part">
+                                  <a href="#"><img src="/static/images/cab/blog-footer/1.jpg"
+                                          class="img-fluid blur-up lazyload" alt=""></a>
+                              </div>
+                              <div class="media-body">
+                                  <h5>{% translate 'recent news' %}</h5>
+                                  <p>{% blocktranslate %}
+                                    Discover the hidden gems of Puglia — from the whitewashed trulli
+                                    of Alberobello to the crystal-clear waters of Polignano a Mare.
+                                    {% endblocktranslate %}  </p>
+                              </div>
+                          </div>
+                          <div class="media">
+                              <div class="img-part">
+                                  <a href=""><img src="/static/images/cab/blog-footer/2.jpg"
+                                          class="img-fluid blur-up lazyload" alt=""></a>
+                              </div>
+                              <div class="media-body">
+                                  <h5>{% translate 'recent news' %}</h5>
+                                  <p>{% blocktranslate %}
+                                    Tuscany wine season is here — explore the best vineyards and
+                                    countryside estates now available for rent and purchase.
+                                    {% endblocktranslate %}  </p>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+  <div class="sub-footer">
+      <div class="container">
+          <div class="row ">
+              <div class="col-xl-6 col-md-6 col-sm-12">
+                  <div class="footer-social">
+                      <ul>
+                          <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+                          <li><a href="#"><i class="fab fa-instagram"></i></a></li>
+                          <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                          <li><a href="#"><i class="fab fa-google"></i></a></li>
+                      </ul>
+                  </div>
+              </div>
+
+          </div>
+      </div>
+  </div>
+</footer>
+<!-- footer end -->
+
+<!-- tap to top -->
+<div class="tap-top">
+  <div>
+      <i class="fas fa-angle-up"></i>
+  </div>
+</div>
+<!-- tap to top end -->
+
+
+    <!-- setting start -->
+    <div class="theme-setting">
+        <div class="dark">
+            <input class="tgl tgl-skewed" id="dark" type="checkbox">
+            <label class="tgl-btn" data-tg-off="Dark" data-tg-on="Light" for="dark"></label>
+        </div>
+        <div class="rtl">
+            <input class="tgl tgl-skewed" id="rtl" type="checkbox">
+            <label class="tgl-btn" data-tg-off="RTL" data-tg-on="LTR" for="rtl"></label>
+        </div>
+    </div>
+    <!-- setting end -->
+
+
+<!-- latest jquery-->
+<script src="/static/js/jquery-3.5.1.min.js"></script>
+
+<!-- popper js-->
+<script src="/static/js/popper.min.js"></script>
+
+    <!-- portfolio js -->
+    <script src="/static/js/jquery.magnific-popup.js"></script>
+    <script src="/static/js/zoom-gallery.js"></script>
+
+<!-- slick js-->
+<script src="/static/js/slick.js"></script>
+    <!-- video js-->
+    <script src="/static/js/jquery.vide.min.js"></script>
+
+    <!-- sticky sidebar -->
+    <script src="/static/js/sticky-kit.js"></script>
+<!-- wow js-->
+<script src="/static/js/wow.min.js"></script>
+
+<!-- Bootstrap js-->
+<script src="/static/js/bootstrap.js"></script>
+
+<!-- date-time picker js -->
+<script src="/static/js/date-picker.js"></script>
+
+<!-- lazyload js-->
+<script src="/static/js/lazysizes.min.js"></script>
+
+<!-- Theme js-->
+<script src="/static/js/script.js"></script>
+
+<script>
+  new WOW().init();
+  $('#datepicker').datepicker({
+      uiLibrary: 'bootstrap4',
+      format: 'dd mmmm'
+  });
+  $('#datepicker1').datepicker({
+      uiLibrary: 'bootstrap4',
+      format: 'dd mmmm'
+  });
+  $(document).ready(function () {
+            if ($(window).width() > 991) {
+                $(".product_img_scroll, .pro_sticky_info").stick_in_parent();
+            }
+  });
+  $(".view-map").click(function () {
+            mymap.invalidateSize();
+  });
+  new WOW().init();
+</script>
+
+{% block scripts %}{% endblock %}
+</body>
+</html>

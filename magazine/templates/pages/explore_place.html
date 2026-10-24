@@ -1,0 +1,142 @@
+{% extends 'layout.html' %}
+{% load i18n %}
+{% block body %}
+
+
+
+  <!-- breadcrumb start -->
+  <section class="breadcrumb-section pt-0">
+    <img src="/static/images/explore_page_banner.jpg" class="bg-img img-fluid blur-up lazyload" alt="">
+    <div class="breadcrumb-content">
+      <div>
+        <h2>explore {{ place.get_name|title }}</h2>
+        <nav aria-label="breadcrumb" class="theme-breadcrumb">
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="/">{% translate 'Back' %}Home</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Explore {{ place.name|title }}</li>
+          </ol>
+        </nav>
+      </div>
+    </div>
+    <div class="title-breadcrumb"></div>
+  </section>
+  <!-- breadcrumb end -->
+
+
+
+
+
+  <!-- section start -->
+  <section class="xs-section bg-inner">
+    <div class="container">
+      <div class="row">
+
+        <div class="col-12">
+          <div class="filter-panel">
+            <div class="left-filter">
+              <div class="sticky-cls-top">
+                <div class="blog-sidebar">
+                  <div class="blog-wrapper">
+                    <div class="sidebar-title">
+                      <h5>{% translate 'Back' %}Filter by location or interest</h5>
+                    </div>
+                    <div class="sidebar-content">
+                      <ul class="tags">
+                        <li data-filter="*"><a href="{% url 'pages:explore' place.search_key %}">All</a></li>
+                        {% for landscape in landscapes %}
+                        <li data-filter="*">
+                          <a href="{% url 'pages:explore_landscapes' place.search_key landscape.search_key %}">
+                            {{ landscape.get_name }}</a>
+                        </li>
+                        {% endfor %}
+                      </ul>
+                      <br>
+                      <ul class="tags">
+                        <li data-filter="*"><a href="{% url 'pages:explore' place.search_key %}">All</a></li>
+                        {% for interest in interests %}
+                        <li data-filter="*">
+                          <a href="{% url 'pages:explore_interests' place.search_key interest.search_key %}">
+                            {{ interest.get_name }}</a>
+                        </li>
+                        {% endfor %}
+                      </ul>
+                    </div>
+
+                  </div>
+                </div>
+              </div>
+            </div>
+
+
+            <div class="right-panel">
+              <div class="blog-sidebar">
+                <div class="blog-wrapper">
+                  <div class="search-bar">
+                    <form action="" method="POST">
+                      {% csrf_token %}
+                      <input type="text" name="city" value="{{ request.session.city }}" placeholder="Search by city">
+                      <i class="fas fa-search"></i>
+                    </form>
+
+                  </div>
+                </div>
+              </div>
+
+
+            </div>
+
+          </div>
+
+        </div>
+
+        <div class="col-lg-12 ratio3_2">
+          <div class="product-wrapper-grid special-section grid-box">
+            <div class="row  content grid">
+              {% for destination in destinations %}
+              <div class="col-xl-3 col-lg-4 col-sm-6 popular grid-item wow fadeInUp" data-class="popular">
+                <a href="{% url 'pages:explore_destination' destination.region.place.search_key destination.search_key %}">
+                  <div class="special-box p-0">
+                    <div class="special-img">
+
+                      <img src="{{ destination.image_url }}"
+                           class="img-fluid blur-up lazyload bg-img" alt="">
+
+
+                    </div>
+                    <div class="special-content">
+
+                      <h5>{{ destination.get_article_title }}</h5>
+
+                      <p>
+                        {{ destination.get_description }}
+                      </p>
+                      <h7><i class="fas fa-map-marker-alt custom_i_margin"></i>{{ destination.get_location }}</h7>
+                      <div class="bottom-section">
+
+                        <div class="price">
+                     
+
+                        
+                          <div class="facility-detail">
+                            {% for landscape in destination.get_landscapes %}
+                            <span>{{ landscape.get_name }}</span>
+                            {% endfor %}
+                          </div>
+
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </a>
+              </div>
+              {% endfor %}
+            </div>
+          </div>
+          {% include 'inlcudes/_pagination.html' %}
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- section End -->
+
+{% endblock %}

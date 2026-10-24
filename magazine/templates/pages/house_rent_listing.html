@@ -1,0 +1,228 @@
+{% extends 'layout.html' %}
+{% load i18n %}
+{% block body %}
+
+
+    <!-- breadcrumb start -->
+    <section class="breadcrumb-section pt-0">
+        <img src="/static/images/house_rent_page.jpg" class="bg-img img-fluid blur-up lazyload" alt="">
+        <div class="breadcrumb-content">
+            <div>
+                <h2>{% translate 'Houses and apartments for rent in Italy' %}</h2>
+                <nav aria-label="breadcrumb" class="theme-breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="/">{% translate 'Home' %}</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">{% translate 'rent house in italy' %}
+                            </li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+        <div class="title-breadcrumb"></div>
+    </section>
+    <!-- breadcrumb end -->
+
+<!-- introduction text start -->
+    <section class="bg-white pt-0 search-panel" id="searchBar">
+        <div class="container">
+            <div class="row">
+                    <div class="col-12">
+                        <div class="title-1 detail-title">
+                            <h2>{% translate 'Rent house in Italy' %}</h2>
+                            <p class="text-dark">
+                              {% blocktranslate %}
+                                Find your ideal Italian holiday rental — whether it is a beachfront apartment
+                                on the Sardinian coast, a Tuscan farmhouse surrounded by olive groves, or a
+                                stylish flat in the heart of Florence. Weekly and monthly rentals available
+                                with flexible booking options.
+                              {% endblocktranslate %}
+                            </p>
+                            <p><br></p>
+                        </div>
+                    </div>
+                </div>
+        </div>
+    </section>
+    <!-- introduction text end -->
+
+    <!-- section start -->
+    <section class="xs-section bg-inner">
+        <div class="container">
+            <div class="row">
+ 
+                <div class="col-xl-12 onclick-map">
+                    <div class="map" id="mapid"></div>
+                </div>
+                <div class="col-lg-3">
+                    <form action="" method="POST">
+                        {% csrf_token %}
+                    <div class="left-sidebar">
+                        <div class="back-btn">
+                            {% translate 'back' %}
+                        </div>
+                        <div class="search-bar">
+                            <form action="" method="POST">
+                                {% csrf_token %}
+                                <input type="text" name="city" value="{{ request.session.city }}" placeholder="Search by city">
+                                <i class="fas fa-search"></i>
+                              </form>
+                        </div>
+                        <div class="middle-part collection-collapse-block open">
+                            <a href="javascript:void(0)" class="section-title collapse-block-title">
+                                <h5>filter</h5>
+                                <img src="/static/images/icon/adjust.png" class="img-fluid blur-up lazyload" alt="">
+                            </a>
+                            <div class="collection-collapse-block-content ">
+                                <div class="filter-block">
+                                    <div class="collection-collapse-block open">
+                                      
+                                            <input type="submit" class="btn btn-lower btn-curve" value="filter results">
+                                        <h6 class="collapse-block-title">{% translate 'typology' %}</h6>
+                                        <div class="collection-collapse-block-content">
+                                            <div class="collection-brand-filter">
+
+                                              
+                                                {% for house_type in house_types %}
+                                                <div class="custom-control custom-checkbox collection-filter-checkbox">
+                                                    <input
+                                                            {% if house_type.id in request.session.house_filters.house_types %}
+                                                              checked
+                                                            {% endif %}
+                                                            type="checkbox"
+                                                            class="custom-control-input"
+                                                            name="house_types"
+                                                            value="{{ house_type.id }}"
+                                                            id="house_type_{{ house_type.id }}">
+
+                                                    <label class="custom-control-label" for="house_type_{{ house_type.id }}">
+                                                        {{ house_type.get_name }} ({{ house_type.house_count }})
+                                                    </label>
+													<!-- <span class="ml-1">(46)</span> -->
+                                                </div>
+                                                {% endfor %}
+                                               
+                                            
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+								
+								            <div class="filter-block">
+                                    <div class="collection-collapse-block open">
+                                        <h6 class="collapse-block-title">{% translate 'italian regions' %} </h6>
+                                        <div class="collection-collapse-block-content">
+                                            <div class="collection-brand-filter">
+                                                {% for region in regions %}
+                                                <div class="custom-control custom-checkbox collection-filter-checkbox">
+                                                    <input
+                                                            {% if region.search_key in request.session.house_filters.regions %}
+                                                              checked
+                                                            {% endif %}
+                                                            type="checkbox"
+                                                            class="custom-control-input"
+                                                            name="regions"
+                                                            value="{{ region.search_key }}"
+                                                            id="region_{{ region.search_key }}">
+                                                    <label class="custom-control-label" for="region_{{ region.search_key }}">{{ region.get_name }}</label>
+                                                </div>
+                                                {% endfor %}
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+								
+
+                                <div class="filter-block">
+                                    <div class="collection-collapse-block open">
+                                        <h6 class="collapse-block-title">{% translate 'facility' %} </h6>
+                                        <div class="collection-collapse-block-content">
+                                            <div class="collection-brand-filter">
+                                                {% for facility in facilities %}
+                                                <div class="custom-control custom-checkbox collection-filter-checkbox">
+                                                    <input
+                                                            {% if facility.id in request.session.house_filters.facilities %}
+                                                              checked
+                                                            {% endif %}
+                                                            type="checkbox"
+                                                            class="custom-control-input"
+                                                            name="facilities"
+                                                            value="{{ facility.id }}"
+                                                            id="facility_{{ facility.id }}">
+                                                    <label class="custom-control-label"
+                                                        for="facility_{{ facility.id }}">{{ facility.get_name }}</label>
+                                                </div>
+                                                {% endfor %}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                
+                                
+                            </div>
+                        </div>
+                        
+                    </div>
+                </form>
+                </div>
+                <div class="col-lg-9 ratio3_2">
+                    <a href="javascript:void(0)" class="mobile-filter">
+                        <h5>{% translate 'filter' %}</h5>
+                        <img src="/static/images/icon/adjust.png" class="img-fluid blur-up lazyload" alt="">
+                    </a>
+                    <div class="product-wrapper-grid special-section grid-box">
+                        <div class="row content grid">
+                            {% for house_for_rent in houses %}
+                            <div class="col-xl-4 col-sm-6 latest grid-item wow fadeInUp" data-class="latest">
+                                <div class="special-box" data-class="second">
+                                    <div class="special-img">
+                                        <a href="{% url 'pages:house_rent_show' house_for_rent.search_key%}">
+                                            <img src="{{ house_for_rent.image_url }}"
+                                                class="img-fluid blur-up lazyload bg-img" alt="">
+                                        </a>
+                                    </div>
+                                    <div class="special-content">
+                                        <a href="{% url 'pages:house_rent_show' house_for_rent.search_key %}">
+                                            <h5>{{ house_for_rent.get_article_title }}</h5></a>
+											<span><i class="fas fa-map-marker-alt"></i> <i>{{ house_for_rent.get_location }}</i></span>
+                                        <p>
+                                            {{ house_for_rent.get_description }}
+                                        </p>
+										<div>
+														<div><span>{{ house_for_rent.get_type }}</span></div>
+														<span>{{ house_for_rent.get_guests }} {% translate 'guests' %}</span> |
+                                                        <span>{{ house_for_rent.get_bedrooms }} {% translate 'rooms' %}</span> |
+                                                        <span>{{ house_for_rent.get_bathrooms }} {% translate 'bathrooms' %}</span>
+										</div>
+										
+                                        <div class="bottom-section">
+                                             <div class="price">
+                                                <span>* {% translate 'from' %} €{{ house_for_rent.get_price }} / {% translate 'week' %}</span>
+                                            </div>
+
+                                             <div class="price">
+                                                  <div class="facility-detail">
+                                                    {% for feature in house_for_rent.get_facilities %}
+                                                    <span>{{ feature.get_name }}</span>
+                                                    {% endfor %}
+                                                </div>
+                                              
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            {% endfor%}
+                        </div>
+                    </div>
+  {% include 'inlcudes/_pagination.html' %}
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- section End -->
+
+
+    {% endblock %}

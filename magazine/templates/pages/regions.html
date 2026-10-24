@@ -1,0 +1,94 @@
+{% extends 'layout.html' %}
+{% load i18n %}
+
+{% block styles %}
+<style>
+    a{
+        color: black;
+    }
+</style>
+{% endblock %}
+
+{% block body %}
+
+    <!-- breadcrumb start -->
+    <section class="breadcrumb-section pt-0">
+        <img src="/static/images/inner-pages/bg-bread.jpg" class="bg-img img-fluid blur-up lazyload" alt="">
+        <div class="breadcrumb-content">
+            <div>
+                <h2>{% translate 'Italian regions' %}</h2>
+                <nav aria-label="breadcrumb" class="theme-breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="/">{% translate 'Home' %}</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">{% translate 'discover italian regions' %}</li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+        <div class="title-breadcrumb"></div>
+    </section>
+    <!-- breadcrumb end -->
+
+
+
+    <!-- portfolio section start -->
+    <section class="portfolio-section bg-white small-section ratio2_3">
+        <div class="container">
+		
+				<div class="row">
+                    <div class="col-12">
+                        <div class="title-1 detail-title">
+                            <h2>{% translate 'Discover Italy by regions' %}</h2>
+							<p class="text-dark">{% blocktranslate %}
+                                Italy is made up of twenty unique regions, each with its own distinct
+                                character, cuisine, and landscapes. From the Alpine valleys of Trentino
+                                to the sun-baked shores of Sicily, explore what makes each region
+                                a world of its own.
+                                {% endblocktranslate %} </p>
+					<p><br></p>
+                        </div>
+                    </div>
+                </div>
+		
+            <div class="filter-button-group">
+                <ul>
+                    <li class="" data-filter="*"><a href="{% url 'pages:regions' place.search_key %}">All Regions</a></li>
+                  
+                    {% for land in lands %}
+                    <li data-filter="*">
+                      <a href="{% url 'pages:explore_lands' place.search_key land.search_key %}">
+                      
+                        {{ land.get_name }}</a>
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
+            <div class="row content grid">
+                {% for region in regions %}
+                <div class="popular grid-item wow fadeInUp col-lg-3 col-sm-6">
+                    <a href="{% url 'pages:explore_region' region.place.search_key region.search_key %}">
+                    <div class="overlay">
+                        <div class="portfolio-image">
+                            <a href="{% url 'pages:explore_region' region.place.search_key region.search_key %}">
+                                <img src="{{ region.image_url }}" alt=""
+                                    class="img-fluid blur-up lazyload bg-img">
+                                </a>
+                        </div>
+                        <div class="portfolio-text">
+						  
+                            <h3>{{ region.get_article_title }}</h3>
+							<h6>{{ region.get_description }}</h6>
+					
+                        </div>
+                    </div>
+                </a>
+                </div>
+                {% endfor %}
+            </div>
+            {% include 'inlcudes/_pagination.html' %}
+        </div>
+    </section>
+    <!-- portfolio section end -->
+
+
+    {% endblock %}

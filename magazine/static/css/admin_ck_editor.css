@@ -1,0 +1,9 @@
+.field-article > div
+{
+  display: flex;
+  flex-direction: column;
+}
+
+.ck-content {
+  height: 600px;
+}

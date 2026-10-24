@@ -1,0 +1,463 @@
+{% extends 'layout.html' %}
+{% load i18n %}
+
+{% block styles %}
+<style>
+  @media screen and (max-width: 480px) {
+    .welcome_title h1 {
+    font-size: 44px;
+   
+}
+}
+</style>
+{% endblock %}
+{% block body %}
+  <!-- home section start -->
+  <section class="home_section tour_layout slide-1 p-0">
+    <div>
+      <div class="home home-long">
+        <img src="/static/images/banner.jpg" class="img-fluid blur-up lazyload bg-img bg-top"
+             alt="">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-12">
+              <div class="welcome_title">
+                <div>
+                  <h1>{% translate 'Welcome to' %} <span style="    color: #ffa700;">
+                                        {% translate 'Italy' %}</span></h1>
+                  <p>{% translate 'For us, Italy is a love story' %}</p>
+                </div>
+
+              </div>
+              <div class="home-content mix-layout justify-content-center">
+
+                <div class="w-80 bg-transparent">
+
+
+                  <div class="search-panel">
+
+                    <div class="search-section">
+                      <div class="search-box rounded10">
+                        <div class="left-part">
+                          <div class="search-body title-hotel">
+                            <a href="/explore_italy">
+                              <h6>{% translate 'where to' %}</h6>
+                              <input type="text" name="text" placeholder="locations"
+                                     class="form-control ">
+                            </a>
+                          </div>
+                          <div class="search-body title-hotel">
+                            <a href="/hotel_listing">
+                              <h6>{% translate 'Accomodation' %}</h6>
+                              <input type="text" name="text" placeholder="Hotels B&B"
+                                     class="form-control ">
+                            </a>
+                          </div>
+                          <div class="search-body title-hotel">
+                            <a href="/house_rent_listing">
+                              <h6>{% translate 'House' %}</h6>
+                              <input type="text" name="text" placeholder="for rent"
+                                     class="form-control ">
+                            </a>
+                          </div>
+
+                          <div class="search-body title-hotel">
+                            <a href="/house_sale_listing">
+                              <h6>{% translate 'Property' %}</h6>
+                              <input type="text" name="text" placeholder="for sale"
+                                     class="form-control ">
+                            </a>
+                          </div>
+
+
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- home section end -->
+
+
+  <!-- tour section start -->
+  <section class="section-b-space layout-3">
+    <div class="tourSection ratio_asos">
+      <div class="container">
+        <div class="row">
+          <div class="col-12">
+            <div class="title-3">
+              <span class="title-label">{% translate 'explore italy' %}</span>
+              <h2>{% translate 'Italian locations chosen for you' %}</h2>
+            </div>
+            <div class="slide-6 no-arrow">
+              {% for destination in destinations %}
+                <div>
+                  <a href="{% url 'pages:explore_destination' destination.region.place.search_key destination.search_key %}">
+                    <div class="tourBox wow zoomIn">
+                      <div class="tourImg">
+                        <img src="/static/images/region_01.jpg"
+                             class="img-fluid blur-up lazyload bg-img" alt="">
+                      </div>
+                      <div class="tourContent">
+
+                        <h3>{{ destination.get_article_title }}</h3>
+                        <!-- <h6>tag 1/tag 2</h6> -->
+
+                      </div>
+                    </div>
+                  </a>
+                </div>
+              {% endfor %}
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- tour section end -->
+
+
+  <!-- how to start section start -->
+  <section class="section-b-space process-steps icon-large">
+    <img src="/static/images/explore_italy_banner.jpg" class="bg-img img-fluid blur-up lazyload" alt="">
+    <div class="container">
+      <div class="title-1 detail-title">
+        <h2 class="pt-0">{% translate 'Explore Italy by your interest' %}</h2>
+        <p class="text-dark">{% blocktranslate %}
+          From sun-drenched Amalfi coastlines to the snow-capped peaks of the Dolomites,
+          Italy offers something for every traveller. Explore golden beaches, world-class
+          ski resorts, legendary wine regions, and championship golf courses across
+          twenty stunning regions.
+        {% endblocktranslate %}   </p>
+      </div>
+      <div class="step-bg">
+        <div class="row">
+          <div class="col-md-3">
+            <div class="step-box">
+              <div>
+                <img src="/static/images/tour/vector/13.png" class="img-fluid blur-up lazyload"
+                     alt="">
+                <a href="/explore_italy">
+                  <h4>{% translate 'Beach' %}</h4>
+                </a>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="step-box">
+              <div>
+                <img src="/static/images/tour/vector/14.png" class="img-fluid blur-up lazyload"
+                     alt="">
+                <a href="/explore_italy">
+                  <h4>{% translate 'Ski' %}</h4>
+                </a>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="step-box">
+              <div>
+                <img src="/static/images/tour/vector/15.png" class="img-fluid blur-up lazyload"
+                     alt="">
+                <a href="/explore_italy">
+                  <h4>{% translate 'Wine areas' %}</h4>
+                </a>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="step-box">
+              <div>
+                <img src="/static/images/tour/vector/16.png" class="img-fluid blur-up lazyload"
+                     alt="">
+                <a href="/explore_italy">
+                  <h4>{% translate 'Golf' %}</h4>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="bird-animation">
+      <div class="bird-container bird-container--one">
+        <div class="bird bird--one"></div>
+      </div>
+      <div class="bird-container bird-container--two">
+        <div class="bird bird--two"></div>
+      </div>
+      <div class="bird-container bird-container--three">
+        <div class="bird bird--three"></div>
+      </div>
+      <div class="bird-container bird-container--four">
+        <div class="bird bird--four"></div>
+      </div>
+    </div>
+  </section>
+  <!-- how to start section end -->
+
+
+  <!-- tour section start -->
+  <section class="section-b-space layout-3">
+    <div class="tourSection ratio_asos">
+      <div class="container">
+        <div class="row">
+          <div class="col-12">
+            <div class="title-3  detail-title">
+              <span class="title-label">{% translate 'Properties For Sale' %}</span>
+              <h2 class="pt-0">{% translate 'Buy House In Italy' %}</h2>
+              <p class="text-dark">{% blocktranslate %}
+                Owning a home in Italy is a dream within reach. Whether you are looking for a
+                rustic farmhouse in Tuscany, a seaside villa on the Amalfi Coast, or a charming
+                apartment in a historic city centre, we help you find the perfect property
+                at the right price.
+              {% endblocktranslate %}  </p>
+            </div>
+
+            <div class="slide-6 no-arrow">
+
+              {% for apartment_type in apartment_types %}
+                <form action="{% url 'pages:house_sales' %}" method="POST">
+                  {% csrf_token %}
+                  <input type="hidden" name="house_types" value="{{ apartment_type.id }}">
+                  <div>
+                    <div class="tourBox wow zoomIn">
+                      <div class="tourImg">
+                        <img src="/static/images/towhouse.jpg"
+                             class="img-fluid blur-up lazyload bg-img" alt="">
+                      </div>
+                      <div class="tourContent">
+                        <a href="#">
+                          <h3>{{ apartment_type.get_name }}</h3>
+                          <h6>
+                            {% translate 'starting from' %}
+                            {% if apartment_type.starting_price %}
+                              ${{ apartment_type.starting_price }}
+                            {% else %}
+                              NA
+                            {% endif %}
+                          </h6>
+                          <input type="submit" class="btn btn-curve custom_apart_view" value="View">
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                </form>
+              {% endfor %}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- tour section end -->
+
+
+  <!-- full banner start -->
+  <section class="banner-section full-banner overlay-banner">
+    <img src="/static/images/consultation_banner.jpg" alt="" class="bg-img bg-top">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-4">
+          <div class="place-image">
+            <img src="/static/images/flights/place.png " alt=""
+                 class="img-fluid blur-up lazyload wow zoomIn">
+            <div class="animation-place">
+              <div class=" plane-l">
+                <img src="/static/images/flights/banner/1.png" alt=""
+                     class="zoomIn wow img-fluid blur-up lazyload ">
+              </div>
+              <div class="cloud-l">
+                <img src="/static/images/flights/banner/2.png" alt=""
+                     class="img-fluid blur-up lazyload wow zoomIn">
+              </div>
+              <div class="cloud-r">
+                <img src="/static/images/flights/banner/3.png" alt=""
+                     class="img-fluid blur-up lazyload wow zoomIn">
+              </div>
+              <div class=" plane-r">
+                <img src="/static/images/flights/banner/4.png" alt=""
+                     class="img-fluid blur-up lazyload zoomIn wow">
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-6 offset-lg-1">
+          <div class="banner-content">
+            <div>
+              <h5>{% translate 'Buy house in Italy?' %}</h5>
+              <h2><span>{% translate 'Consultation when buying real estate in Italy' %}</span></h2>
+              <p>{% blocktranslate %}
+                Navigating Italian real estate can be complex — from legal requirements and
+                property surveys to negotiating the best deal. Our experienced consultants
+                guide you through every step, ensuring a smooth and secure purchase so you
+                can focus on enjoying la dolce vita.
+              {% endblocktranslate %}  </p>
+
+              <div class="bottom-section">
+                <a href="{% url 'pages:hotels' %}" class="btn btn-rounded btn-sm color1">{% translate 'More details' %}
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- full banner end -->
+
+
+  <!-- blog section start -->
+  <section class="blog-section section-b-space">
+    <div class="container">
+      <div class="title-1">
+        <h2 class="pt-0">{% translate 'Featured property for sale' %}</h2>
+        <p>{% translate 'See all properties' %}</p>
+
+      </div>
+      <div class="slide-2  no-arrow ">
+        {% for house_for_sale in houses_for_sale %}
+        <div>
+          <div class="blog-box">
+            <div class="img-part">
+              <div>
+                <img src="{{ house_for_sale.image_url }}" class="img-fluid blur-up lazyload w-100"
+                     alt="">
+              </div>
+              <div class="blog-date">
+                <div>
+                  <h6>{{ house_for_sale.get_price }} €</h6>
+                </div>
+              </div>
+            </div>
+            <div class="blog-content">
+              <div>
+
+                <p>{{ house_for_sale.get_name }}</p>
+                <h5>{{ house_for_sale.get_location }}</h5>
+
+                <h6>{{ house_for_sale.get_type }} </h6>
+                <h6>{{ house_for_sale.get_bedrooms }} {% translate 'rooms' %} | {{ house_for_sale.get_bathrooms }} {% translate 'bathroom' %} </h6>
+                <h6>Living area: {{ house_for_sale.living_area }} {% translate 'sqm' %} sqm</h6>
+                <a href="{% url 'pages:house_sale_show' house_for_sale.search_key %}" class="btn btn-curve">{% translate 'read more' %}</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+
+      </div>
+    </div>
+  </section>
+  <!-- blog section end -->
+
+  <!-- blog section start -->
+
+  <section class="blog-section section-b-space">
+    <div class="container">
+      <div class="title-1">
+        <h2 class="pt-0">{% translate 'Featured property for rent' %}</h2>
+        <p>{% translate 'See all properties' %}</p>
+
+      </div>
+      <div class="slide-2  no-arrow ">
+
+        {% for house_for_rent in houses_for_rent %}
+        <div>
+          <div class="blog-box">
+            <div class="img-part">
+              <div>
+                <img src="{{ house_for_rent.image_url }}" class="img-fluid blur-up lazyload w-100"
+                     alt="">
+              </div>
+              <div class="blog-date">
+                <div>
+                  <h6>{% translate 'From' %} {{ house_for_rent.get_price }} €/ {% translate 'week' %}</h6>
+                </div>
+              </div>
+            </div>
+            <div class="blog-content">
+              <div>
+
+                <p>{{ house_for_rent.get_name }}</p>
+                <h5>{{ house_for_rent.get_location }}</h5>
+
+                <h6>{{ house_for_rent.get_type }} </h6>
+                <h6>{{ house_for_rent.get_bedrooms }} {% translate 'rooms' %} | {{ house_for_rent.get_bathrooms }} {% translate 'bathroom' %} </h6>
+                <h6>Living area: {{ house_for_rent.living_area }} {% translate 'sqm' %}</h6>
+                <a href="{% url 'pages:house_rent_show' house_for_rent.search_key %}" class="btn btn-curve">{% translate 'read more' %}</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+
+
+      </div>
+    </div>
+  </section>
+  <!-- blog section end -->
+
+
+  
+  <!-- tour section start -->
+  <section class="section-b-space layout-3">
+    <div class="tourSection ratio_asos">
+      <div class="container">
+        <div class="row">
+          <div class="col-12">
+            <div class="title-3  detail-title">
+              <span class="title-label">{% translate 'Hotels' %}</span>
+              <h2 class="pt-0">{% translate 'Hotel in italy' %}</h2>
+              <p class="text-dark">{% blocktranslate %}
+                Discover hand-picked hotels, boutique B&Bs, and cosy agriturismos across Italy.
+                From luxurious lakeside retreats on Lake Como to family-run guesthouses in the
+                heart of Rome, find the perfect stay for your Italian adventure at
+                unbeatable prices.
+              {% endblocktranslate %}  </p>
+            </div>
+
+            <form action="">
+            <div class="slide-6 no-arrow">
+               
+              {% for hotel in hotels %}
+              <div>
+                <a href="{% url 'pages:hotel_show' hotel.search_key %}">
+                  <div class="tourBox wow zoomIn">
+                    <div class="tourImg">
+                      
+                      <img src="{{ hotel.image_url }}"
+                           class="img-fluid blur-up lazyload bg-img" alt="">
+                    </div>
+                    <div class="tourContent">
+                      <a href="{% url 'pages:hotel_show' hotel.search_key %}">
+                        <h3>{{ hotel.get_name }}</h3>
+                        <h6>{% translate 'starting from' %} ${{ hotel.price }}</h6>
+                      </a>
+                    </div>
+                  </div>
+                </a>
+              </div>
+              {% endfor %}
+      
+          
+            </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+
+{% endblock %}

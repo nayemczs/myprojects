@@ -1,0 +1,11 @@
+.idea/
+__pycache__/
+*.pyc
+*.pyo
+venv/
+keys.py
+nkc_firebase_service_account.json
+staticfiles_build/
+staticfiles_build_temp/
+*.log
+.env

@@ -1,0 +1,11 @@
+<nav aria-label="Page navigation example" class="pagination-section mt-0">
+  <ul class="pagination">
+    {% for link in pagination_links %}
+      {% if link.class != 'blank' %}
+        <li class="page-item {{ link.class }}"><a class="page-link" href="{{ link.url }}">{{ link.text }}</a></li>
+      {% else %}
+        <li class="page-item">...</li>
+      {% endif %}
+    {% endfor %}
+  </ul>
+</nav>

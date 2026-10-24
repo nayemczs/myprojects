@@ -1,0 +1,7 @@
+Django>=4.2,<5
+googlemaps>=4.4.5
+Pillow
+requests>=2.31
+sqlparse
+pytz
+whitenoise

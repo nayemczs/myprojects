@@ -1,0 +1,197 @@
+{% extends 'layout.html' %}
+
+{% load i18n %}
+
+{% block body %}
+
+  <!-- breadcrumb start -->
+  <section class="breadcrumb-section pt-0">
+    <img src="/static/images/hotel_page.jpg" class="bg-img img-fluid blur-up lazyload" alt="">
+    <div class="breadcrumb-content">
+      <div>
+        <h2>{% translate 'hotels and B&B in italy' %}</h2>
+        <nav aria-label="breadcrumb" class="theme-breadcrumb">
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="/">{% translate 'Home' %}</a></li>
+            <li class="breadcrumb-item active" aria-current="page">
+              {% translate 'hotels and bed & breakdfast in italy' %}
+            </li>
+          </ol>
+        </nav>
+      </div>
+    </div>
+    <div class="title-breadcrumb"></div>
+  </section>
+  <!-- breadcrumb end -->
+
+
+
+  <!-- section start -->
+  <section class="xs-section bg-inner">
+    <div class="container">
+      <div class="row">
+
+        <div class="col-xl-12 onclick-map">
+          <div class="map" id="mapid"></div>
+        </div>
+        <div class="col-lg-3">
+          <div class="left-sidebar">
+            <form action="" method="POST">
+              {% csrf_token %}
+              <div class="back-btn">
+                back
+              </div>
+              <div class="search-bar">
+
+                  <input type="text" name="city" value="{{ request.session.city }}" placeholder="Search by city">
+                  <i class="fas fa-search"></i>
+           
+              </div>
+              <div class="middle-part collection-collapse-block open">
+                <a href="javascript:void(0)" class="section-title collapse-block-title">
+                  <h5>{% translate 'filter' %} </h5>
+                  <img src="/static/images/icon/adjust.png" class="img-fluid blur-up lazyload" alt="">
+                </a>
+                <div class="collection-collapse-block-content ">
+                  <div class="filter-block">
+                    <div class="collection-collapse-block open">
+
+                      <input type="submit" class="btn btn-lower btn-curve" value="filter results">
+                      <h6 class="collapse-block-title">{% translate 'typology' %}</h6>
+                      <div class="collection-collapse-block-content">
+                        <div class="collection-brand-filter">
+
+
+                          {% for hotel_type in hotel_types %}
+                            <div class="custom-control custom-checkbox collection-filter-checkbox">
+                              <input
+                                      {% if hotel_type.id in request.session.hotel_filters.hotel_types %}
+                                        checked
+                                      {% endif %}
+                                        type="checkbox"
+                                        class="custom-control-input"
+                                        name="hotel_types"
+                                        value="{{ hotel_type.id }}"
+                                        id="hotel_type_{{ hotel_type.id }}">
+
+                              <label class="custom-control-label" for="hotel_type_{{ hotel_type.id }}">
+                                {{ hotel_type.get_name }}</label>
+                              <!-- <span class="ml-1">(46)</span> -->
+                            </div>
+                          {% endfor %}
+
+
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="filter-block">
+                    <div class="collection-collapse-block open">
+                      <h6 class="collapse-block-title">{% translate 'italian regions' %} </h6>
+                      <div class="collection-collapse-block-content">
+                        <div class="collection-brand-filter">
+                          {% for region in regions %}
+                            <div class="custom-control custom-checkbox collection-filter-checkbox">
+                              <input
+                                      {% if region.search_key in request.session.hotel_filters.regions %}
+                                        checked
+                                      {% endif %}
+                                        type="checkbox"
+                                        class="custom-control-input"
+                                        name="regions"
+                                        value="{{ region.search_key }}"
+                                        id="region_{{ region.search_key }}">
+                              <label class="custom-control-label"
+                                     for="region_{{ region.search_key }}">{{ region.get_name }}</label>
+                            </div>
+                          {% endfor %}
+
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+
+                  <div class="filter-block">
+                    <div class="collection-collapse-block open">
+                      <h6 class="collapse-block-title">{% translate 'facility' %} </h6>
+                      <div class="collection-collapse-block-content">
+                        <div class="collection-brand-filter">
+                          {% for facility in facilities %}
+                            <div class="custom-control custom-checkbox collection-filter-checkbox">
+                              <input
+                                      {% if facility.id in request.session.hotel_filters.facilities %}
+                                        checked
+                                      {% endif %}
+                                        type="checkbox"
+                                        class="custom-control-input"
+                                        name="facilities"
+                                        value="{{ facility.id }}"
+                                        id="facility_{{ facility.id }}">
+                              <label class="custom-control-label"
+                                     for="facility_{{ facility.id }}">{{ facility.get_name }}</label>
+                            </div>
+                          {% endfor %}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+        <div class="col-lg-9 ratio3_2">
+          <a href="javascript:void(0)" class="mobile-filter">
+            <h5>filter</h5>
+            <img src="/static/images/icon/adjust.png" class="img-fluid blur-up lazyload" alt="">
+          </a>
+          <div class="product-wrapper-grid special-section grid-box">
+            <div class="row content grid">
+              {% for hotel in hotels %}
+                <div class="col-xl-4 col-sm-6 latest grid-item wow fadeInUp" data-class="latest">
+                  <div class="special-box" data-class="second">
+                    <div class="special-img">
+                      <a href="{% url 'pages:hotel_show' hotel.search_key %}">
+                        <img src="{{ hotel.image_url }}"
+                             class="img-fluid blur-up lazyload bg-img" alt="">
+                      </a>
+
+                    </div>
+                    <div class="special-content">
+                      <a href="{% url 'pages:hotel_show' hotel.search_key %}">
+                        <h5>{{ hotel.get_article_title }}</h5></a>
+                      <span><i class="fas fa-map-marker-alt"></i> <i>{{ hotel.get_location }}</i></span>
+                      <p>
+                        {{ hotel.get_description }}
+                      </p>
+
+                      <div class="bottom-section">
+                        <div class="price">
+                          <span>* from {{ hotel.get_price }} / per night</span>
+                          </div>
+                          <div class="price">
+                          <div class="facility-detail">
+                            {% for feature in hotel.get_facilities %}
+                              <span>{{ feature.get_name }}</span>
+                            {% endfor %}
+                          </div>
+                        </div>
+
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              {% endfor %}
+            </div>
+          </div>
+  {% include 'inlcudes/_pagination.html' %}
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- section End -->
+{% endblock %}

@@ -1,0 +1,242 @@
+{% extends 'layout.html' %}
+{% load i18n %}
+
+{% block styles %}
+
+
+{% endblock %}
+{% block body %}
+
+
+	    <!-- breadcrumb start -->
+    <section class="breadcrumb-section pt-0">
+        <img src="{{ house.image_url }}" class="bg-img img-fluid blur-up lazyload" alt="">
+        
+    </section>
+    <!-- breadcrumb end -->
+
+
+
+    <!-- section start -->
+    <section class="single-section small-section bg-inner">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="hotel_title_section">
+                        <div class="hotel-name">
+                            <div class="left-part">
+                                <div class="top">
+                                    <h2>{{ house.get_article_title }}</h2>
+                                    
+                                    <!-- <div class="share-buttons">
+                                        <a href="#" class="btn btn-solid"><i class="far fa-share-square"></i> share</a>
+                                        <a href="#" class="btn btn-solid"><i class="far fa-heart"></i> save</a>
+                                    </div> -->
+                                </div>
+                                <p>{{ house.get_location }}</p>
+                                <div class="facility-detail">
+                                    {% for feature in house.get_facilities %}
+                                    <span>{{ feature.get_name }}</span>
+                                  {% endfor %}
+                                </div>
+                            </div>
+                            <div class="right-part">
+                                <h2 class="price">€{{ house.get_price }} <span> / {{ house.get_living_area }} sqm</span></h2>
+								<h2 class="price"><span>{{ house.condition.get_name }}</span></h2>
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-9 col-lg-8">
+                    <div class="image_section ">
+                        <div class="row">
+                            <div class="col-sm-8">
+                                <div class="slide-1 arrow-dark zoom-gallery ratio2_3">
+                                    {% for image in house.get_image_gallery %}
+                                    <div>
+                                        <a href="{{ image.image_url }}">
+                                            <img src="{{ image.image_url }}"
+                                                class="img-fluid blur-up lazyload bg-img w-100" alt="">
+                                            <h6 class="view-all">{% translate 'view all images' %}</h6>
+                                        </a>
+                                    </div>
+                                    {% endfor %}
+
+                                </div>
+                            </div>
+                            <div class="col-sm-4 d-none d-sm-block">
+                                <div class="row">
+                                    <div class="col-12 ratio_59">
+                                        <div class="slide-1 zoom-gallery no-arrow">
+                                            {% for image in house.get_room_images %}
+                                            <div>
+                                                <a href="{{ image.image_url }}">
+                                                    <img src="{{ image.image_url }}"
+                                                        class="img-fluid blur-up lazyload bg-img w-100" alt="">
+                                                    <h6 class="view-all">room images</h6>
+                                                </a>
+                                            </div>
+                                            {% endfor %}
+
+                                        </div>
+                                        <div class="slide-1 zoom-gallery no-arrow m-cls">
+                                            {% for image in house.get_room_images %}
+                                            <div>
+                                                <a href="{{ image.image_url }}">
+                                                    <img src="{{ image.image_url }}"
+                                                        class="img-fluid blur-up lazyload bg-img w-100" alt="">
+                                                    <h6 class="view-all">featured images</h6>
+                                                </a>
+                                            </div>
+                                            {% endfor %}
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="description-section tab-section">
+                        <div class="menu-top">
+                            <ul class="nav nav-tabs" id="top-tab" role="tablist">
+							<li class="nav-item"><a data-toggle="tab" class="nav-link active" href="#about">{% translate 'about' %}</a></li>
+                                <li class="nav-item"><a data-toggle="tab" class="nav-link" href="#facility">{% translate 'facility' %}</a>
+                                </li>
+                                <li class="nav-item"><a data-toggle="tab" class="nav-link" href="#location">{% translate 'location' %}</a>
+                                </li>
+                            </ul>
+                            <div class="description-details tab-content" id="top-tabContent">
+                                
+                                <div class="about menu-part tab-pane fade show active" id="about">
+
+                                <p>{{ house.get_article|safe }}</p>
+                                </div>
+                                <div class="menu-part tab-pane fade facility" id="facility">
+                                    <div class="row">
+										<div class="col-xl-4 col-6">
+                                            <h6><img src="/static/images/icon/hotel/verified.png"
+                                                    class="img-fluid blur-up lazyload" alt=""> {% translate 'property details' %} </h6>
+                                            <ul>
+                                              
+												<li><i class="fas fa-check"></i>
+                                                    {% translate 'Condition:' %}  {{ house.condition.get_name }} </li>
+										
+												<li><i class="fas fa-check"></i>
+                                                    {% translate ' Living Area:' %}  {{ house.get_living_Area }} 
+                                                    {% translate 'Sqm' %} </li>
+												<li><i class="fas fa-check"></i>
+                                                    {% translate 'Garden:' %}  {{ house.get_garden }}{% translate 'Sqm' %} </li>
+												<li><i class="fas fa-check"></i>
+                                                    {% translate 'Land:' %}  {{ house.get_land }}{% translate 'Sqm' %} </li>
+												<li><i class="fas fa-check"></i>
+                                                    {% translate 'Bedrooms:' %} {{ house.get_bedrooms }}</li>
+												<li><i class="fas fa-check"></i>
+                                                    {% translate 'Bathrooms:' %} {{ house.get_bathrooms }}</li>
+                                          
+												
+                                            </ul>
+											
+                                        </div>
+                                        <div class="col-xl-3 col-6">
+											<h6><img src="/static/images/icon/hotel/verified.png"
+                                                    class="img-fluid blur-up lazyload" alt="">{% translate 'facility' %} </h6>
+                                            <ul>
+                                                {% for facility in house.get_facilities %}
+                                                <li><i class="fas fa-check"></i>{{ facility }}</li>
+                                                {% endfor %}
+												
+                                            </ul>
+											
+                                        </div>
+                                        
+                                        
+                                        
+                                    </div>
+                                </div>
+                                <div class="menu-part tab-pane fade map" id="location">
+                                    <iframe
+                                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d193595.9147718689!2d-74.11976358820196!3d40.69740344169578!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c24fa5d33f083b%3A0xc80b8f06e177fe62!2sNew%20York%2C%20NY%2C%20USA!5e0!3m2!1sen!2sin!4v1568001991098!5m2!1sen!2sin"
+                                        style="border:0;" allowfullscreen=""></iframe>
+                                </div>
+                                
+                                
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="col-xl-3 col-lg-4" id="booking">
+                    <div class="sticky-cls-top">
+                        <div class="single-sidebar">
+                            <div class="selection-section">
+                                <div class="overlay-map">
+                                    <img src="/static/images/map-image.svg" class="img-fluid blur-up lazyload" alt="">
+                                    <iframe
+                                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d193595.9147718689!2d-74.11976358820196!3d40.69740344169578!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c24fa5d33f083b%3A0xc80b8f06e177fe62!2sNew%20York%2C%20NY%2C%20USA!5e0!3m2!1sen!2sin!4v1568001991098!5m2!1sen!2sin"
+                                        style="border:0;" allowfullscreen=""></iframe>
+                                    <h6>{% translate 'view on map' %}</h6>
+                                </div>
+                                <div class="price-part">
+                                    <div class="left-part">
+                                        <a href="#">{% translate 'Home' %}Details</a>
+                                        <span class="mt-2"><i class="fas fa-check"></i>{{ house.get_condition }}</span>
+                                        <span><i class="fas fa-check"></i> Living area: {{ house.get_living_area }} sqm</span>
+										<span><i class="fas fa-check"></i> Bedrooms: {{ house.get_bedrooms }}</span>
+										<span><i class="fas fa-check"></i> Bedrooms: {{ house.get_bathrooms }}</span>
+										<span><i class="fas fa-check"></i> Garden: {{ house.get_garden }} sqm</span>
+										<span><i class="fas fa-check"></i> Land: {{ house.get_land }} sqm</span>
+
+                                    </div>
+                                    <div class="right-part">
+                                        <span>price*</span>
+                                        <p class="mt-0">{{ house.get_price }}</p>
+                                        
+                                    </div>
+									<div>
+									
+									</div>
+                                </div>
+								<div class="price-part">
+									<p><br><i> * Listed price is indicative. Final price subject to negotiation and legal fees.</i></p>
+								</div>
+                                
+                            </div>
+                        </div>
+
+						
+                        <div class="single-sidebar">
+                            <h6 class="contact-title">{% translate 'contact info' %}</h6>
+                            <p class="address"> <i class="fas fa-map-marker-alt"></i>{{ house.get_contact_address }}
+                            </p>
+                            <!-- <p><i class="fas fa-phone-alt"></i>{{ house.get_contact_number }}</p>
+                            <a href="#">
+                                <p><i class="fas fa-envelope"></i> {{ house.contact_email }}</p>
+                            </a> -->
+                            <div class="social-box">
+                                <ul>
+                                    <li><a href="{{ house.facebook_link }}"><i class="fab fa-facebook-f"></i></a></li>
+                                    <li><a href="{{ house.instagram_link }}"><i class="fab fa-instagram"></i></a></li>
+                                    <li><a href="{{ house.twitter_link }}"><i class="fab fa-twitter"></i></a></li>
+                                    <li><a href="{{ house.google_link }}"><i class="fab fa-google"></i></a></li>
+                                </ul>
+                            </div>
+                            <div class="bottom_sec">
+                                <a href="{{ house.website_link }}" class="btn btn-rounded btn-sm color1">{% translate 'Visit website' %}</a>
+                            </div>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- section end -->
+
+
+    {% endblock %}
+ 
+
+    {% block scripts %}
+
+       {% endblock %}
