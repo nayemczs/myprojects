@@ -5,6 +5,7 @@ from sqlalchemy import event
 from settings.settings import BASE_DIR
 from datetime import datetime
 import os
+import uuid
 
 db = SQLAlchemy()
 
@@ -37,6 +38,7 @@ class User(db.Model, UserMixin, EntityInterface):
     confirmed_at = db.Column(db.DateTime())
     is_active = db.Column(db.Boolean())
     is_admin = db.Column(db.Boolean, default=False, nullable=False)
+    fs_uniquifier = db.Column(db.String(64), unique=True, nullable=False, default=lambda: str(uuid.uuid4()))
     roles = db.relationship('Role', secondary=roles_users, backref=db.backref('users', lazy='dynamic'))
 
     def __init__(self, email, password, first_name, last_name, is_active=False, is_admin=False):
@@ -46,6 +48,7 @@ class User(db.Model, UserMixin, EntityInterface):
         self.last_name = last_name
         self.is_active = is_active
         self.is_admin = is_admin
+        self.fs_uniquifier = str(uuid.uuid4())
 
     def set_password(self, password):
         self.password = hash_password(password)
