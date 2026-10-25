@@ -2,20 +2,22 @@ import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import api from "../../api/client";
 import { DashShell, StatCards, LineChart, Panel } from "../../components/Dashboard";
+import { useLang } from "../../i18n/LanguageContext";
 import {
   STUDENT_STATS, STUDENT_MARKS, STUDENT_PROGRESS, PROGRESS_LABELS, ASSIGNMENTS, withFallback,
 } from "../../api/mockData";
 
 export default function StudentPortal() {
+  const { t } = useLang();
   const [tab, setTab] = useState("overview");
   const navigate = useNavigate();
   const nav = [
-    { key: "overview", label: "Overview", icon: "📊" },
-    { key: "marks", label: "My Marks", icon: "🎯" },
-    { key: "assignments", label: "Assignments", icon: "📝" },
-    { key: "chat", label: "Group Chat", icon: "💬" },
+    { key: "overview", label: t("dash.overview"), icon: "📊" },
+    { key: "marks", label: t("dash.myMarks"), icon: "🎯" },
+    { key: "assignments", label: t("dash.assignments"), icon: "📝" },
+    { key: "chat", label: t("dash.groupChat"), icon: "💬" },
   ];
-  const titles = { overview: "Student Dashboard", marks: "My Results", assignments: "Assignments" };
+  const titles = { overview: t("dash.studentDash"), marks: t("student.myResults"), assignments: t("dash.assignments") };
 
   const onNav = (k) => { if (k === "chat") navigate("/chat"); else setTab(k); };
 

@@ -1,0 +1,30 @@
+.lang-back {
+  position: fixed; inset: 0; z-index: 2000;
+  background: linear-gradient(135deg, rgba(0,43,92,.97), rgba(10,74,136,.97));
+  display: grid; place-items: center; padding: 20px;
+  backdrop-filter: blur(4px);
+}
+.lang-box {
+  background: #fff; border-radius: 20px; padding: 40px 34px; text-align: center;
+  max-width: 460px; width: 100%; box-shadow: 0 24px 60px rgba(0,0,0,.4);
+  animation: langpop .3s ease;
+}
+@keyframes langpop { from { transform: translateY(14px) scale(.97); opacity: 0; } to { transform: none; opacity: 1; } }
+.lang-box .brand-logo.big { width: 64px; height: 64px; font-size: 22px; margin: 0 auto 20px; }
+.lang-q { color: var(--navy); font-size: 22px; margin: 0 0 6px; line-height: 1.35; }
+.lang-q-en { color: var(--muted); font-size: 15px; margin: 0 0 26px; }
+.lang-btns { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.lang-btn {
+  display: flex; flex-direction: column; align-items: center; gap: 8px;
+  padding: 22px 12px; border: 2px solid var(--line); border-radius: 14px;
+  background: #fff; cursor: pointer; font-size: 18px; font-weight: 700; color: var(--navy);
+  transition: transform .12s, border-color .12s, box-shadow .12s;
+}
+.lang-btn:hover { transform: translateY(-3px); border-color: var(--navy); box-shadow: var(--shadow-lg); }
+.lang-btn.bn:hover { border-color: var(--green); }
+.lang-btn .flag { font-size: 34px; }
+@media (max-width: 420px) {
+  .lang-box { padding: 30px 22px; }
+  .lang-q { font-size: 18px; }
+  .lang-btns { grid-template-columns: 1fr; }
+}

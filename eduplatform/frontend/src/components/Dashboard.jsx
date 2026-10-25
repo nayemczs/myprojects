@@ -1,12 +1,14 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
+import { useLang } from "../i18n/LanguageContext";
 import { SCHOOL } from "../api/mockData";
 import "./dashboard.css";
 
 /* Shell: collapsible sidebar + topbar. `nav` = [{key,label,icon}] */
 export function DashShell({ title, nav, active, onNav, children }) {
   const { user, logout } = useAuth();
+  const { t } = useLang();
   const navigate = useNavigate();
   const [open, setOpen] = useState(false);
 
@@ -26,8 +28,8 @@ export function DashShell({ title, nav, active, onNav, children }) {
           ))}
         </nav>
         <div className="dash-side-foot">
-          <button onClick={() => navigate("/")}><span className="ic">🏠</span>Main Site</button>
-          <button onClick={() => { logout(); navigate("/"); }}><span className="ic">🚪</span>Logout</button>
+          <button onClick={() => navigate("/")}><span className="ic">🏠</span>{t("dash.mainSite")}</button>
+          <button onClick={() => { logout(); navigate("/"); }}><span className="ic">🚪</span>{t("nav.logout")}</button>
         </div>
       </aside>
 

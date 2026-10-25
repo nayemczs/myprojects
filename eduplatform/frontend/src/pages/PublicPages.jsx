@@ -5,10 +5,12 @@ import {
   SCHOOL, HERO_SLIDES, STATS, NOTICES, LEADERS, ALUMNI, EVENTS, FACULTIES, FACILITIES, withFallback,
 } from "../api/mockData";
 import Avatar from "../components/Avatar";
+import { useLang } from "../i18n/LanguageContext";
 import "./public.css";
 
 /* ---------------- Home ---------------- */
 export function Home() {
+  const { t } = useLang();
   const [slide, setSlide] = useState(0);
   const [notices, setNotices] = useState(NOTICES);
   const [events, setEvents] = useState(EVENTS);
@@ -33,12 +35,12 @@ export function Home() {
           <div key={i} className={`hero-slide ${i === slide ? "on" : ""}`}
             style={{ backgroundImage: `linear-gradient(rgba(0,22,50,.72),rgba(0,22,50,.72)), url(${s.img})` }}>
             <div className="container hero-content">
-              <span className="chip gold">Admissions Open 2026</span>
+              <span className="chip gold">{t("home.admissionsOpen")}</span>
               <h1>{s.title}</h1>
               <p>{s.subtitle}</p>
               <div className="row wrap">
-                <Link to="/admission"><button className="btn">Apply Now</button></Link>
-                <Link to="/about"><button className="btn ghost">Learn More</button></Link>
+                <Link to="/admission"><button className="btn">{t("common.applyNow")}</button></Link>
+                <Link to="/about"><button className="btn ghost">{t("common.learnMore")}</button></Link>
               </div>
             </div>
           </div>
@@ -66,7 +68,7 @@ export function Home() {
       <section className="section">
         <div className="container two-col">
           <div>
-            <div className="panel-head"><span className="chip">Notice Board</span><Link to="/events" className="see-all">View all →</Link></div>
+            <div className="panel-head"><span className="chip">{t("home.noticeBoard")}</span><Link to="/events" className="see-all">{t("common.viewAll")} →</Link></div>
             <div className="notice-list">
               {notices.slice(0, 5).map((n) => (
                 <div key={n.id} className="notice-row">
@@ -83,15 +85,12 @@ export function Home() {
             </div>
           </div>
           <div className="welcome-card card">
-            <span className="chip soft">Welcome to {SCHOOL.short}</span>
-            <h2>A Legacy of Excellence Since {SCHOOL.established}</h2>
+            <span className="chip soft">{t("home.welcomeChip")} {SCHOOL.short}</span>
+            <h2>{t("home.legacy")} {SCHOOL.established}</h2>
             <p className="muted">
-              {SCHOOL.name} is committed to nurturing well-rounded individuals through
-              quality education, modern facilities and a values-driven environment. Our
-              students consistently achieve outstanding results and go on to the nation's
-              top universities.
+              {SCHOOL.name} {t("home.welcomeBody")}
             </p>
-            <Link to="/about"><button className="btn navy">Read Our Story</button></Link>
+            <Link to="/about"><button className="btn navy">{t("home.readStory")}</button></Link>
           </div>
         </div>
       </section>
@@ -100,8 +99,8 @@ export function Home() {
       <section className="section section-alt">
         <div className="container">
           <div className="sec-head">
-            <div className="kicker">Academics</div>
-            <h2>Our Faculties</h2>
+            <div className="kicker">{t("home.academics")}</div>
+            <h2>{t("home.ourFaculties")}</h2>
             <div className="bar" />
           </div>
           <div className="fac-grid">
@@ -110,7 +109,7 @@ export function Home() {
                 <div className="fac-ic">{f.icon || "🎓"}</div>
                 <h3>{f.name}</h3>
                 <p className="muted">{f.short_desc}</p>
-                <span className="fac-link">Explore →</span>
+                <span className="fac-link">{t("common.explore")} →</span>
               </Link>
             ))}
           </div>
@@ -121,8 +120,8 @@ export function Home() {
       <section className="section">
         <div className="container">
           <div className="sec-head">
-            <div className="kicker">Leadership</div>
-            <h2>Messages from Our Leaders</h2>
+            <div className="kicker">{t("home.leadership")}</div>
+            <h2>{t("home.leaderMessages")}</h2>
             <div className="bar" />
           </div>
           <div className="leader-grid">
@@ -142,8 +141,8 @@ export function Home() {
       <section className="section section-alt">
         <div className="container">
           <div className="sec-head">
-            <div className="kicker">Our Pride</div>
-            <h2>Star Alumni</h2>
+            <div className="kicker">{t("home.ourPride")}</div>
+            <h2>{t("home.starAlumni")}</h2>
             <div className="bar" />
           </div>
           <div className="alumni-grid">
@@ -152,7 +151,7 @@ export function Home() {
                 <Avatar name={a.name} image={a.photo} size={80} style={{ margin: "0 auto 10px" }} />
                 <h4>{a.name}</h4>
                 <p className="chip soft">{a.admitted}</p>
-                <span className="muted">Batch {a.year}</span>
+                <span className="muted">{t("home.batch")} {a.year}</span>
               </div>
             ))}
           </div>
@@ -163,8 +162,8 @@ export function Home() {
       <section className="section">
         <div className="container">
           <div className="sec-head">
-            <div className="kicker">Campus Life</div>
-            <h2>Latest News & Events</h2>
+            <div className="kicker">{t("home.campusLife")}</div>
+            <h2>{t("home.latestNews")}</h2>
             <div className="bar" />
           </div>
           <div className="event-grid">
@@ -183,13 +182,13 @@ export function Home() {
       </section>
 
       {/* CTA */}
-      <section className="cta-band ">
+      <section className="cta-band">
         <div className="container cta-in">
           <div>
-            <h2>Ready to Begin Your Journey?</h2>
-            <p>Admissions for 2026 are now open. Secure your place at {SCHOOL.name}.</p>
+            <h2>{t("home.ctaTitle")}</h2>
+            <p>{t("home.ctaBody")} {SCHOOL.name}.</p>
           </div>
-          <Link to="/admission"><button className="btn">Apply for Admission</button></Link>
+          <Link to="/admission"><button className="btn">{t("home.applyAdmission")}</button></Link>
         </div>
       </section>
     </div>
@@ -198,10 +197,11 @@ export function Home() {
 
 /* ---------------- Faculties ---------------- */
 export function Faculties() {
+  const { t } = useLang();
   const [faculties, setFaculties] = useState(FACULTIES);
   useEffect(() => { withFallback(api.get("/faculties/"), FACULTIES).then(setFaculties); }, []);
   return (
-    <PageShell title="Our Faculties" crumb="Academics">
+    <PageShell title={t("home.ourFaculties")} crumb={t("home.academics")}>
       <div className="container section">
         <div className="fac-grid">
           {faculties.map((f) => (
@@ -209,8 +209,8 @@ export function Faculties() {
               <div className="fac-ic">{f.icon || "🎓"}</div>
               <h3>{f.name}</h3>
               <p className="muted">{f.short_desc}</p>
-              {f.head_name && <span className="muted">Head: {f.head_name}</span>}
-              <span className="fac-link">Explore →</span>
+              {f.head_name && <span className="muted">{t("fac.head")}: {f.head_name}</span>}
+              <span className="fac-link">{t("common.explore")} →</span>
             </Link>
           ))}
         </div>
@@ -220,32 +220,33 @@ export function Faculties() {
 }
 
 export function FacultyDetail() {
+  const { t } = useLang();
   const { slug } = useParams();
   const [f, setF] = useState(null);
   useEffect(() => {
     const fallback = FACULTIES.find((x) => x.slug === slug) || FACULTIES[0];
     withFallback(api.get(`/faculties/${slug}/`), fallback).then(setF);
   }, [slug]);
-  if (!f) return <PageShell title="Loading…" crumb="Academics"><div className="container section" /></PageShell>;
+  if (!f) return <PageShell title="…" crumb={t("home.academics")}><div className="container section" /></PageShell>;
   return (
-    <PageShell title={f.name} crumb="Faculties">
+    <PageShell title={f.name} crumb={t("nav.faculties")}>
       <div className="container section">
         <div className="two-col">
           <div className="card">
             <div className="fac-ic big">{f.icon || "🎓"}</div>
             <h2>{f.name}</h2>
-            {f.head_name && <p className="chip soft">Head: {f.head_name}</p>}
+            {f.head_name && <p className="chip soft">{t("fac.head")}: {f.head_name}</p>}
             <p className="muted">{f.description || f.short_desc}</p>
           </div>
           <div className="card">
-            <h3>What We Offer</h3>
+            <h3>{t("fac.whatWeOffer")}</h3>
             <ul className="tick-list">
-              <li>Experienced, qualified faculty members</li>
-              <li>Modern laboratories and learning resources</li>
-              <li>Regular assessments and personalized feedback</li>
-              <li>Co-curricular clubs and competitions</li>
+              <li>{t("fac.offer1")}</li>
+              <li>{t("fac.offer2")}</li>
+              <li>{t("fac.offer3")}</li>
+              <li>{t("fac.offer4")}</li>
             </ul>
-            <Link to="/admission"><button className="btn navy block">Apply to this Faculty</button></Link>
+            <Link to="/admission"><button className="btn navy block">{t("fac.applyTo")}</button></Link>
           </div>
         </div>
       </div>
@@ -255,6 +256,7 @@ export function FacultyDetail() {
 
 /* ---------------- Events ---------------- */
 export function Events() {
+  const { t } = useLang();
   const [events, setEvents] = useState(EVENTS);
   const [notices, setNotices] = useState(NOTICES);
   useEffect(() => {
@@ -262,7 +264,7 @@ export function Events() {
     withFallback(api.get("/posts/?kind=NOTICE"), NOTICES).then(setNotices);
   }, []);
   return (
-    <PageShell title="News & Events" crumb="Campus Life">
+    <PageShell title={t("home.latestNews")} crumb={t("home.campusLife")}>
       <div className="container section">
         <div className="event-grid">
           {events.map((e) => (
@@ -276,7 +278,7 @@ export function Events() {
             </div>
           ))}
         </div>
-        <div className="sec-head" style={{ marginTop: 50 }}><h2>All Notices</h2><div className="bar" /></div>
+        <div className="sec-head" style={{ marginTop: 50 }}><h2>{t("home.noticeBoard")}</h2><div className="bar" /></div>
         <div className="notice-list">
           {notices.map((n) => (
             <div key={n.id} className="notice-row card" style={{ marginBottom: 10 }}>
@@ -295,32 +297,28 @@ export function Events() {
 
 /* ---------------- About ---------------- */
 export function About() {
+  const { t } = useLang();
   return (
-    <PageShell title="About Us" crumb="Our Institution">
+    <PageShell title={t("about.title")} crumb={t("home.welcomeChip")}>
       <div className="container section">
         <div className="two-col">
           <div>
-            <span className="chip soft">Our Story</span>
-            <h2>Shaping Minds, Building Futures</h2>
+            <span className="chip soft">{t("about.ourStory")}</span>
+            <h2>{t("about.heading")}</h2>
             <p className="muted">
-              Founded in {SCHOOL.established}, {SCHOOL.name} has grown into one of the
-              region's most respected institutions. We combine a rigorous academic
-              curriculum with strong moral values, producing graduates who excel
-              nationally and internationally.
+              {SCHOOL.name} ({SCHOOL.established}) {t("about.body1")}
             </p>
             <p className="muted">
-              Our guiding spirit is “{SCHOOL.tagline}” ({SCHOOL.taglineEn}). Every classroom,
-              laboratory and playing field is designed to help students discover and
-              reach their full potential.
+              “{SCHOOL.tagline}” ({SCHOOL.taglineEn}).
             </p>
           </div>
           <img className="about-img" src="https://images.unsplash.com/photo-1541339907198-e08756dedf3f?auto=format&fit=crop&w=900&q=70" alt="campus" />
         </div>
         <div className="value-grid">
           {[
-            { ic: "🎯", t: "Our Mission", d: "To deliver world-class education that empowers every student." },
-            { ic: "👁️", t: "Our Vision", d: "To be the leading center of academic and moral excellence." },
-            { ic: "💎", t: "Our Values", d: "Integrity, discipline, curiosity and compassion." },
+            { ic: "🎯", t: t("about.mission"), d: t("about.missionBody") },
+            { ic: "👁️", t: t("about.vision"), d: t("about.visionBody") },
+            { ic: "💎", t: t("about.values"), d: t("about.valuesBody") },
           ].map((v) => (
             <div key={v.t} className="card value-card">
               <div className="fac-ic">{v.ic}</div>
@@ -329,7 +327,7 @@ export function About() {
             </div>
           ))}
         </div>
-        <div className="sec-head" style={{ marginTop: 56 }}><div className="kicker">Leadership</div><h2>Our Leaders</h2><div className="bar" /></div>
+        <div className="sec-head" style={{ marginTop: 56 }}><div className="kicker">{t("home.leadership")}</div><h2>{t("about.ourLeaders")}</h2><div className="bar" /></div>
         <div className="leader-grid">
           {LEADERS.map((l) => (
             <div key={l.role} className="leader-card card">
@@ -341,7 +339,7 @@ export function About() {
           ))}
         </div>
 
-        <div className="sec-head" style={{ marginTop: 56 }}><div className="kicker">Campus</div><h2>Our Facilities</h2><div className="bar" /></div>
+        <div className="sec-head" style={{ marginTop: 56 }}><div className="kicker">{t("about.facilitiesKicker")}</div><h2>{t("about.ourFacilities")}</h2><div className="bar" /></div>
         <div className="fac-grid">
           {FACILITIES.map((f) => (
             <div key={f.name} className="fac-card card">
@@ -358,16 +356,17 @@ export function About() {
 
 /* ---------------- Admission ---------------- */
 export function Admission() {
+  const { t } = useLang();
   const steps = [
-    { n: 1, t: "Register Online", d: "Create a student account on our portal." },
-    { n: 2, t: "Submit Documents", d: "Upload academic records and required papers." },
-    { n: 3, t: "Admission Test", d: "Appear for the entrance assessment / interview." },
-    { n: 4, t: "Enroll", d: "Complete payment and join your class." },
+    { n: 1, t: t("adm.step1t"), d: t("adm.step1d") },
+    { n: 2, t: t("adm.step2t"), d: t("adm.step2d") },
+    { n: 3, t: t("adm.step3t"), d: t("adm.step3d") },
+    { n: 4, t: t("adm.step4t"), d: t("adm.step4d") },
   ];
   return (
-    <PageShell title="Admission" crumb="Join Us">
+    <PageShell title={t("nav.admission")} crumb={t("home.welcomeChip")}>
       <div className="container section">
-        <div className="sec-head"><div className="kicker">How to Apply</div><h2>Admission Process</h2><div className="bar" /></div>
+        <div className="sec-head"><div className="kicker">{t("adm.howToApply")}</div><h2>{t("adm.process")}</h2><div className="bar" /></div>
         <div className="steps-grid">
           {steps.map((s) => (
             <div key={s.n} className="step-card card">
@@ -379,10 +378,10 @@ export function Admission() {
         </div>
         <div className="card admission-cta">
           <div>
-            <h2>Admissions Open for 2026</h2>
-            <p className="muted">Begin your application today and take the first step toward a brighter future.</p>
+            <h2>{t("adm.openTitle")}</h2>
+            <p className="muted">{t("adm.openBody")}</p>
           </div>
-          <Link to="/register"><button className="btn navy">Register Now</button></Link>
+          <Link to="/register"><button className="btn navy">{t("adm.registerNow")}</button></Link>
         </div>
       </div>
     </PageShell>
@@ -391,31 +390,32 @@ export function Admission() {
 
 /* ---------------- Contact ---------------- */
 export function Contact() {
+  const { t } = useLang();
   const [sent, setSent] = useState(false);
   return (
-    <PageShell title="Contact Us" crumb="Get in Touch">
+    <PageShell title={t("contact.title")} crumb={t("contact.getInTouch")}>
       <div className="container section">
         <div className="two-col">
           <div className="card">
-            <h3>Send Us a Message</h3>
+            <h3>{t("contact.sendMessage")}</h3>
             {sent ? (
-              <p className="chip approved" style={{ display: "inline-block" }}>Thanks! We'll get back to you soon.</p>
+              <p className="chip approved" style={{ display: "inline-block" }}>{t("contact.thanks")}</p>
             ) : (
               <>
-                <label>Name</label><input placeholder="Your name" />
-                <label>Email</label><input placeholder="you@example.com" />
-                <label>Message</label><textarea rows={4} placeholder="How can we help?" />
+                <label>{t("contact.name")}</label><input />
+                <label>{t("contact.email")}</label><input />
+                <label>{t("contact.message")}</label><textarea rows={4} />
                 <br /><br />
-                <button className="btn navy" onClick={() => setSent(true)}>Send Message</button>
+                <button className="btn navy" onClick={() => setSent(true)}>{t("contact.sendMessage")}</button>
               </>
             )}
           </div>
           <div className="card contact-info">
-            <h3>Reach Us</h3>
-            <p><strong>📍 Address</strong><br /><span className="muted">{SCHOOL.address}</span></p>
-            <p><strong>📞 Phone</strong><br /><span className="muted">{SCHOOL.phone}</span></p>
-            <p><strong>✉️ Email</strong><br /><span className="muted">{SCHOOL.email}</span></p>
-            <p><strong>🕐 Office Hours</strong><br /><span className="muted">Sun–Thu, 8:00 AM – 4:00 PM</span></p>
+            <h3>{t("contact.reachUs")}</h3>
+            <p><strong>📍 {t("contact.address")}</strong><br /><span className="muted">{SCHOOL.address}</span></p>
+            <p><strong>📞 {t("contact.phone")}</strong><br /><span className="muted">{SCHOOL.phone}</span></p>
+            <p><strong>✉️ {t("contact.email")}</strong><br /><span className="muted">{SCHOOL.email}</span></p>
+            <p><strong>🕐 {t("contact.hours")}</strong><br /><span className="muted">{t("contact.hoursVal")}</span></p>
           </div>
         </div>
       </div>
@@ -425,12 +425,13 @@ export function Contact() {
 
 /* ---------------- Shared page shell (banner + breadcrumb) ---------------- */
 function PageShell({ title, crumb, children }) {
+  const { t } = useLang();
   return (
     <div>
       <div className="page-banner">
         <div className="container">
           <h1>{title}</h1>
-          <div className="crumb"><Link to="/">Home</Link> <span>›</span> {crumb}</div>
+          <div className="crumb"><Link to="/">{t("nav.home")}</Link> <span>›</span> {crumb}</div>
         </div>
       </div>
       {children}

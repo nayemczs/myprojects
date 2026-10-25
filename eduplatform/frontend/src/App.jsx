@@ -8,6 +8,7 @@ import AdminPortal from "./pages/portals/AdminPortal";
 import TeacherPortal from "./pages/portals/TeacherPortal";
 import StudentPortal from "./pages/portals/StudentPortal";
 import Chat from "./pages/Chat";
+import LanguagePopup from "./components/LanguagePopup";
 import "./responsive.css"; // loaded last so it refines the other stylesheets
 
 export default function App() {
@@ -17,6 +18,7 @@ export default function App() {
 
   return (
     <>
+      <LanguagePopup />
       <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />

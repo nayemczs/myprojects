@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
+import { useLang } from "../i18n/LanguageContext";
 import { SCHOOL } from "../api/mockData";
 import "./navbar.css";
 
@@ -10,16 +11,17 @@ const PORTAL_PATH = {
 };
 
 const NAV = [
-  { to: "/", label: "Home" },
-  { to: "/about", label: "About" },
-  { to: "/faculties", label: "Faculties" },
-  { to: "/events", label: "Events" },
-  { to: "/admission", label: "Admission" },
-  { to: "/contact", label: "Contact" },
+  { to: "/", key: "nav.home" },
+  { to: "/about", key: "nav.about" },
+  { to: "/faculties", key: "nav.faculties" },
+  { to: "/events", key: "nav.events" },
+  { to: "/admission", key: "nav.admission" },
+  { to: "/contact", key: "nav.contact" },
 ];
 
 export default function Navbar() {
   const { user, logout } = useAuth();
+  const { t } = useLang();
   const navigate = useNavigate();
   const { pathname } = useLocation();
   const [open, setOpen] = useState(false);
@@ -54,22 +56,22 @@ export default function Navbar() {
               <Link key={n.to} to={n.to}
                 className={pathname === n.to ? "active" : ""}
                 onClick={() => setOpen(false)}>
-                {n.label}
+                {t(n.key)}
               </Link>
             ))}
             {user ? (
               <>
                 <Link to={PORTAL_PATH[user.role]} className="cta" onClick={() => setOpen(false)}>
-                  My Portal
+                  {t("nav.myPortal")}
                 </Link>
                 <button className="link-btn" onClick={() => { logout(); navigate("/"); setOpen(false); }}>
-                  Logout
+                  {t("nav.logout")}
                 </button>
               </>
             ) : (
               <>
-                <Link to="/register" onClick={() => setOpen(false)}>Register</Link>
-                <Link to="/login" className="cta" onClick={() => setOpen(false)}>Login</Link>
+                <Link to="/register" onClick={() => setOpen(false)}>{t("nav.register")}</Link>
+                <Link to="/login" className="cta" onClick={() => setOpen(false)}>{t("nav.login")}</Link>
               </>
             )}
           </div>

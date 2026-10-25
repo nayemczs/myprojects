@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
+import { useLang } from "../i18n/LanguageContext";
 import api from "../api/client";
 import { SCHOOL } from "../api/mockData";
 import "./auth.css";
@@ -30,6 +31,7 @@ function AuthShell({ children }) {
 
 export function Login() {
   const { login } = useAuth();
+  const { t } = useLang();
   const navigate = useNavigate();
   const [form, setForm] = useState({ username: "", password: "" });
   const [err, setErr] = useState("");
@@ -41,25 +43,25 @@ export function Login() {
       const user = await login(form.username, form.password);
       navigate(PORTAL_PATH[user.role]);
     } catch (e) {
-      setErr(e.response?.data?.detail || "Login failed. Check credentials or approval status.");
+      setErr(e.response?.data?.detail || t("auth.loginFailed"));
     } finally { setBusy(false); }
   };
 
   return (
     <AuthShell>
-      <h1>Welcome Back</h1>
-      <p className="muted">Sign in to your portal.</p>
-      <label>Username</label>
+      <h1>{t("auth.welcomeBack")}</h1>
+      <p className="muted">{t("auth.signIn")}</p>
+      <label>{t("auth.username")}</label>
       <input value={form.username} onChange={(e) => setForm({ ...form, username: e.target.value })} />
-      <label>Password</label>
+      <label>{t("auth.password")}</label>
       <input type="password" value={form.password}
         onChange={(e) => setForm({ ...form, password: e.target.value })}
         onKeyDown={(e) => e.key === "Enter" && submit()} />
       {err && <p className="error-msg">{err}</p>}
       <button className="btn navy block" style={{ marginTop: 18 }} onClick={submit} disabled={busy}>
-        {busy ? "Signing in…" : "Login"}
+        {busy ? t("auth.signingIn") : t("nav.login")}
       </button>
-      <p className="muted auth-foot">No account? <Link to="/register">Register here</Link></p>
+      <p className="muted auth-foot">{t("auth.noAccount")} <Link to="/register">{t("auth.registerHere")}</Link></p>
       <div className="demo-box">
         <strong>Demo logins</strong> (password: <code>password123</code>)
         <span>principal · admin1 · teacher_physics · student1</span>
@@ -69,6 +71,7 @@ export function Login() {
 }
 
 export function Register() {
+  const { t } = useLang();
   const navigate = useNavigate();
   const [form, setForm] = useState({ username: "", email: "", password: "", first_name: "", last_name: "", classroom: "" });
   const [classrooms, setClassrooms] = useState([]);
@@ -94,32 +97,32 @@ export function Register() {
       <AuthShell>
         <div className="center">
           <div className="success-ic">✓</div>
-          <h1>Registration Submitted</h1>
-          <p className="muted">Your account is pending approval by the administration. You'll be able to log in once approved.</p>
-          <button className="btn navy" onClick={() => navigate("/login")}>Go to Login</button>
+          <h1>{t("auth.regSubmitted")}</h1>
+          <p className="muted">{t("auth.pending")}</p>
+          <button className="btn navy" onClick={() => navigate("/login")}>{t("auth.goLogin")}</button>
         </div>
       </AuthShell>
     );
 
   return (
     <AuthShell>
-      <h1>Student Registration</h1>
-      <p className="muted">Create your account to get started.</p>
+      <h1>{t("auth.studentReg")}</h1>
+      <p className="muted">{t("auth.createAccount")}</p>
       <div className="form-2col">
-        <div><label>First name</label><input value={form.first_name} onChange={(e) => setForm({ ...form, first_name: e.target.value })} /></div>
-        <div><label>Last name</label><input value={form.last_name} onChange={(e) => setForm({ ...form, last_name: e.target.value })} /></div>
+        <div><label>{t("auth.firstName")}</label><input value={form.first_name} onChange={(e) => setForm({ ...form, first_name: e.target.value })} /></div>
+        <div><label>{t("auth.lastName")}</label><input value={form.last_name} onChange={(e) => setForm({ ...form, last_name: e.target.value })} /></div>
       </div>
-      <label>Username</label><input value={form.username} onChange={(e) => setForm({ ...form, username: e.target.value })} />
-      <label>Email</label><input value={form.email} onChange={(e) => setForm({ ...form, email: e.target.value })} />
-      <label>Password</label><input type="password" value={form.password} onChange={(e) => setForm({ ...form, password: e.target.value })} />
-      <label>Class (optional)</label>
+      <label>{t("auth.username")}</label><input value={form.username} onChange={(e) => setForm({ ...form, username: e.target.value })} />
+      <label>{t("contact.email")}</label><input value={form.email} onChange={(e) => setForm({ ...form, email: e.target.value })} />
+      <label>{t("auth.password")}</label><input type="password" value={form.password} onChange={(e) => setForm({ ...form, password: e.target.value })} />
+      <label>{t("auth.class")}</label>
       <select value={form.classroom} onChange={(e) => setForm({ ...form, classroom: e.target.value })}>
-        <option value="">— select —</option>
+        <option value="">—</option>
         {classrooms.map((c) => <option key={c.id} value={c.id}>{c.name} {c.section}</option>)}
       </select>
       {err && <p className="error-msg">{err}</p>}
-      <button className="btn navy block" style={{ marginTop: 18 }} onClick={submit}>Register</button>
-      <p className="muted auth-foot">Already have an account? <Link to="/login">Login</Link></p>
+      <button className="btn navy block" style={{ marginTop: 18 }} onClick={submit}>{t("nav.register")}</button>
+      <p className="muted auth-foot">{t("auth.noAccount")} <Link to="/login">{t("nav.login")}</Link></p>
     </AuthShell>
   );
 }

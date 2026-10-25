@@ -5,19 +5,21 @@ import {
   ADMIN_STATS, ENROLLMENT_TREND, ENROLLMENT_LABELS, GRADE_DIST, NOTICES, withFallback,
 } from "../../api/mockData";
 import { useAuth } from "../../context/AuthContext";
+import { useLang } from "../../i18n/LanguageContext";
 
 export default function AdminPortal() {
   const { user } = useAuth();
+  const { t } = useLang();
   const [tab, setTab] = useState("overview");
   const nav = [
-    { key: "overview", label: "Overview", icon: "📊" },
-    { key: "content", label: "Content", icon: "📝" },
-    { key: "approvals", label: "Approvals", icon: "✅" },
-    { key: "marks", label: "Marks", icon: "🎯" },
+    { key: "overview", label: t("dash.overview"), icon: "📊" },
+    { key: "content", label: t("dash.content"), icon: "📝" },
+    { key: "approvals", label: t("dash.approvals"), icon: "✅" },
+    { key: "marks", label: t("dash.marks"), icon: "🎯" },
   ];
-  if (user.role === "PRINCIPAL") nav.push({ key: "admins", label: "Admins", icon: "👥" });
+  if (user.role === "PRINCIPAL") nav.push({ key: "admins", label: t("dash.admins"), icon: "👥" });
 
-  const titles = { overview: "Dashboard Overview", content: "Manage Content", approvals: "Student Approvals", marks: "Approve Marks", admins: "Manage Administrators" };
+  const titles = { overview: t("dash.adminDash"), content: t("admin.published"), approvals: t("admin.pendingStudents"), marks: t("admin.marksAwaiting"), admins: t("admin.addAdmin") };
 
   return (
     <DashShell title={titles[tab]} nav={nav} active={tab} onNav={setTab}>

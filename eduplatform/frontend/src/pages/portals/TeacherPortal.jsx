@@ -3,21 +3,23 @@ import { useNavigate } from "react-router-dom";
 import api from "../../api/client";
 import { DashShell, StatCards, BarChart, Panel } from "../../components/Dashboard";
 import PaperViewer from "../../components/PaperViewer";
+import { useLang } from "../../i18n/LanguageContext";
 import {
   TEACHER_STATS, CLASS_PERFORMANCE, CLASS_LABELS, withFallback,
   CLASSES, CLASS_ASSIGNMENTS,
 } from "../../api/mockData";
 
 export default function TeacherPortal() {
+  const { t } = useLang();
   const [tab, setTab] = useState("overview");
   const navigate = useNavigate();
   const nav = [
-    { key: "overview", label: "Overview", icon: "📊" },
-    { key: "marks", label: "Submit Marks", icon: "🎯" },
-    { key: "assignments", label: "Assignments", icon: "📝" },
-    { key: "chat", label: "Group Chat", icon: "💬" },
+    { key: "overview", label: t("dash.overview"), icon: "📊" },
+    { key: "marks", label: t("dash.submitMarks"), icon: "🎯" },
+    { key: "assignments", label: t("dash.assignments"), icon: "📝" },
+    { key: "chat", label: t("dash.groupChat"), icon: "💬" },
   ];
-  const titles = { overview: "Teacher Dashboard", marks: "Submit Marks", assignments: "Assignments" };
+  const titles = { overview: t("dash.teacherDash"), marks: t("dash.submitMarks"), assignments: t("dash.assignments") };
   const onNav = (k) => { if (k === "chat") navigate("/chat"); else setTab(k); };
   return (
     <DashShell title={titles[tab]} nav={nav} active={tab} onNav={onNav}>

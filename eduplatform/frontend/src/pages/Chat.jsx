@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import api from "../api/client";
 import { useAuth } from "../context/AuthContext";
+import { useLang } from "../i18n/LanguageContext";
 import {
   CHAT_GROUPS, CHAT_MESSAGES, CLASSES, CLASS_STUDENTS, withFallback,
 } from "../api/mockData";
@@ -11,6 +12,7 @@ const EMOJIS = ["😀", "😂", "😊", "👍", "🙏", "❤️", "🎉", "🔥"
 
 export default function Chat() {
   const { user } = useAuth();
+  const { t } = useLang();
   const navigate = useNavigate();
   const canCreate = user && ["TEACHER", "PRINCIPAL", "ADMIN"].includes(user.role);
 
@@ -130,14 +132,14 @@ export default function Chat() {
             <button className="wa-icon" title="Back" onClick={() => navigate(-1)}>✕</button>
           </div>
         </div>
-        <div className="wa-search"><input placeholder="Search chats…" value={search} onChange={(e) => setSearch(e.target.value)} /></div>
+        <div className="wa-search"><input placeholder={t("chat.searchChats")} value={search} onChange={(e) => setSearch(e.target.value)} /></div>
         <div className="wa-chats">
           {filteredGroups.map((g) => (
             <button key={g.id} className={`wa-chat ${active?.id === g.id ? "on" : ""}`} onClick={() => { setActive(g); setShowList(false); setMsgSearch(""); setShowMsgSearch(false); }}>
               <div className="wa-avatar" style={{ background: g.color }}>{g.avatar}{g.online && <i className="dot" />}</div>
               <div className="wa-chat-mid">
                 <strong>{g.name}</strong>
-                <span className="muted">{g.online ? "online" : "tap to open"}</span>
+                <span className="muted">{g.online ? t("chat.online") : t("chat.typeMessage")}</span>
               </div>
               <div className="wa-chat-end">
                 <span className="wa-time">{g.lastTime}</span>
@@ -157,7 +159,7 @@ export default function Chat() {
               <div className="wa-avatar sm" style={{ background: active.color }}>{active.avatar}</div>
               <div className="wa-conv-title">
                 <strong>{active.name}</strong>
-                <span className="muted">{typing ? "typing…" : active.online ? "online" : "last seen recently"}</span>
+                <span className="muted">{typing ? t("chat.typing") : active.online ? t("chat.online") : t("chat.lastSeen")}</span>
               </div>
               <div className="spacer" />
               <button className="wa-icon dark" title="Search" onClick={() => setShowMsgSearch((s) => !s)}>🔍</button>
@@ -214,7 +216,7 @@ export default function Chat() {
               <button className="wa-icon" title="Emoji" onClick={() => setShowEmoji((s) => !s)}>😊</button>
               <button className="wa-icon" title="Attach" onClick={() => fileRef.current?.click()}>📎</button>
               <input type="file" ref={fileRef} hidden onChange={attach} />
-              <input placeholder="Type a message" value={text}
+              <input placeholder={t("chat.typeMessage")} value={text}
                 onChange={(e) => setText(e.target.value)}
                 onKeyDown={(e) => e.key === "Enter" && send()} />
               <button className="wa-send" onClick={send}>{editing ? "✓" : "➤"}</button>
