@@ -4,6 +4,7 @@ import api from "../api/client";
 import {
   SCHOOL, HERO_SLIDES, STATS, NOTICES, LEADERS, ALUMNI, EVENTS, FACULTIES, FACILITIES, withFallback,
 } from "../api/mockData";
+import Avatar from "../components/Avatar";
 import "./public.css";
 
 /* ---------------- Home ---------------- */
@@ -127,7 +128,7 @@ export function Home() {
           <div className="leader-grid">
             {LEADERS.map((l) => (
               <div key={l.role} className="leader-card card">
-                <img src={l.photo} alt={l.name} className="leader-img" />
+                <Avatar name={l.name} image={l.photo} size={96} style={{ margin: "0 auto 12px", border: "4px solid #eef2fb" }} />
                 <span className="chip gold">{l.role}</span>
                 <h3>{l.name}</h3>
                 <p className="muted">“{l.msg}”</p>
@@ -148,7 +149,7 @@ export function Home() {
           <div className="alumni-grid">
             {ALUMNI.map((a) => (
               <div key={a.name} className="alumni-card card">
-                <img src={a.photo} alt={a.name} />
+                <Avatar name={a.name} image={a.photo} size={80} style={{ margin: "0 auto 10px" }} />
                 <h4>{a.name}</h4>
                 <p className="chip soft">{a.admitted}</p>
                 <span className="muted">Batch {a.year}</span>
@@ -332,7 +333,7 @@ export function About() {
         <div className="leader-grid">
           {LEADERS.map((l) => (
             <div key={l.role} className="leader-card card">
-              <img src={l.photo} alt={l.name} className="leader-img" />
+              <Avatar name={l.name} image={l.photo} size={96} style={{ margin: "0 auto 12px", border: "4px solid #eef2fb" }} />
               <span className="chip gold">{l.role}</span>
               <h3>{l.name}</h3>
               <p className="muted">“{l.msg}”</p>
