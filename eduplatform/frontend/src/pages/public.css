@@ -14,7 +14,7 @@
 
 /* Stats band */
 .stats-band { background: linear-gradient(135deg, var(--navy), var(--navy-600)); }
-.stats-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 20px; padding: 40px 20px 48px; }
+.stats-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 20px; padding: 64px 20px 72px; }
 .stat-item { display: flex; align-items: center; gap: 14px; color: #fff; }
 .stat-ic { font-size: 30px; background: rgba(255,255,255,.12); width: 56px; height: 56px; border-radius: 14px; display: grid; place-items: center; }
 .stat-item strong { display: block; font-size: 26px; color: var(--gold); }
@@ -69,7 +69,7 @@
 
 /* CTA band */
 .cta-band { background: linear-gradient(135deg, var(--gold), var(--gold-600)); }
-.cta-in { display: flex; align-items: center; gap: 24px; padding: 52px 20px 56px; }
+.cta-in { display: flex; align-items: center; gap: 24px; padding: 80px 20px 88px; }
 .cta-in h2 { color: #1a1200; margin: 0 0 6px; }
 .cta-in p { color: #4a3800; margin: 0; }
 .cta-in a { margin-left: auto; }

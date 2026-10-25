@@ -47,19 +47,19 @@ export const NOTICES = [
 ];
 
 export const LEADERS = [
-  { role: "Chairman", name: "Eng. M. A. Rashid", photo: "https://i.pravatar.cc/200?img=12", msg: "When I used to close my eyes before establishing South Point School & College, I dreamed of an institution where students grow far beyond formal education." },
-  { role: "Founder Principal", name: "Mrs. Hamida Ali", photo: "https://i.pravatar.cc/200?img=45", msg: "Education is the key to carry a nation forward. Our aim has always been to build character alongside knowledge." },
-  { role: "Principal", name: "Air Cdre (Retd) Kazi Abdul Moyen", photo: "https://i.pravatar.cc/200?img=52", msg: "It is a matter of great pride to lead this institution — a strong and trusted name in secondary and higher secondary education." },
-  { role: "Headmistress", name: "Debosree Sarker", photo: "https://i.pravatar.cc/200?img=47", msg: "South Point stands as a benchmark for excellence in secondary and higher secondary education in our country." },
+  { role: "Chairman", name: "Eng. M. A. Rashid", photo: "", msg: "When I used to close my eyes before establishing South Point School & College, I dreamed of an institution where students grow far beyond formal education." },
+  { role: "Founder Principal", name: "Mrs. Hamida Ali", photo: "", msg: "Education is the key to carry a nation forward. Our aim has always been to build character alongside knowledge." },
+  { role: "Principal", name: "Air Cdre (Retd) Kazi Abdul Moyen", photo: "", msg: "It is a matter of great pride to lead this institution — a strong and trusted name in secondary and higher secondary education." },
+  { role: "Headmistress", name: "Debosree Sarker", photo: "", msg: "South Point stands as a benchmark for excellence in secondary and higher secondary education in our country." },
 ];
 
 export const ALUMNI = [
-  { name: "Ashfia Khan Tuski", admitted: "Sahabuddin Medical College", year: "2024", photo: "https://i.pravatar.cc/150?img=20" },
-  { name: "Mumtazah Nawar", admitted: "University of Dhaka", year: "2024", photo: "https://i.pravatar.cc/150?img=24" },
-  { name: "Arufa Rifaat", admitted: "KUET — Engineering", year: "2024", photo: "https://i.pravatar.cc/150?img=16" },
-  { name: "Nabila Hossen Naba", admitted: "Sir Salimullah Medical College", year: "2024", photo: "https://i.pravatar.cc/150?img=29" },
-  { name: "Afrah Tasnim", admitted: "Mugda Medical College", year: "2024", photo: "https://i.pravatar.cc/150?img=5" },
-  { name: "Nur-E-Sabah", admitted: "Shaheed Tajuddin Ahmed Medical College", year: "2024", photo: "https://i.pravatar.cc/150?img=32" },
+  { name: "Ashfia Khan Tuski", admitted: "Sahabuddin Medical College", year: "2024", photo: "" },
+  { name: "Mumtazah Nawar", admitted: "University of Dhaka", year: "2024", photo: "" },
+  { name: "Arufa Rifaat", admitted: "KUET — Engineering", year: "2024", photo: "" },
+  { name: "Nabila Hossen Naba", admitted: "Sir Salimullah Medical College", year: "2024", photo: "" },
+  { name: "Afrah Tasnim", admitted: "Mugda Medical College", year: "2024", photo: "" },
+  { name: "Nur-E-Sabah", admitted: "Shaheed Tajuddin Ahmed Medical College", year: "2024", photo: "" },
 ];
 
 export const EVENTS = [
