@@ -13,14 +13,8 @@ export default function LanguagePopup() {
         <h2 className="lang-q">আপনি কোন ভাষায় ওয়েবসাইটটি দেখতে চান?</h2>
         <p className="lang-q-en">Which language do you prefer?</p>
         <div className="lang-btns">
-          <button className="lang-btn" onClick={() => choose("en")}>
-            <span className="flag">🇬🇧</span>
-            <span>English</span>
-          </button>
-          <button className="lang-btn bn" onClick={() => choose("bn")}>
-            <span className="flag">🇧🇩</span>
-            <span>বাংলা</span>
-          </button>
+          <button className="lang-btn" onClick={() => choose("en")}>English</button>
+          <button className="lang-btn bn" onClick={() => choose("bn")}>বাংলা</button>
         </div>
       </div>
     </div>

@@ -3,7 +3,7 @@ import { useNavigate, Link } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 import { useLang } from "../i18n/LanguageContext";
 import api from "../api/client";
-import { SCHOOL } from "../api/mockData";
+import { SCHOOL, CLASSES, withFallback } from "../api/mockData";
 import "./auth.css";
 
 const PORTAL_PATH = {
@@ -62,10 +62,6 @@ export function Login() {
         {busy ? t("auth.signingIn") : t("nav.login")}
       </button>
       <p className="muted auth-foot">{t("auth.noAccount")} <Link to="/register">{t("auth.registerHere")}</Link></p>
-      <div className="demo-box">
-        <strong>Demo logins</strong> (password: <code>password123</code>)
-        <span>principal · admin1 · teacher_physics · student1</span>
-      </div>
     </AuthShell>
   );
 }
@@ -78,7 +74,7 @@ export function Register() {
   const [done, setDone] = useState(false);
   const [err, setErr] = useState("");
 
-  useEffect(() => { api.get("/classrooms/").then((r) => setClassrooms(r.data)).catch(() => {}); }, []);
+  useEffect(() => { withFallback(api.get("/classrooms/"), CLASSES).then(setClassrooms); }, []);
 
   const submit = async () => {
     setErr("");

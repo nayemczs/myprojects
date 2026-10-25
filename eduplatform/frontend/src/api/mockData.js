@@ -32,49 +32,56 @@ export const HERO_SLIDES = [
 ];
 
 export const STATS = [
-  { label: "Board Exam Success", value: "100%", icon: "🎓" },
-  { label: "Qualified Faculty", value: "67+", icon: "👩‍🏫" },
-  { label: "Awards Won", value: "30", icon: "🏆" },
-  { label: "Graduates", value: "95+", icon: "🌟" },
+  { label: "Board Exam Success", label_bn: "বোর্ড পরীক্ষায় সাফল্য", value: "100%", icon: "🎓" },
+  { label: "Qualified Faculty", label_bn: "যোগ্য শিক্ষক", value: "67+", icon: "👩‍🏫" },
+  { label: "Awards Won", label_bn: "অর্জিত পুরস্কার", value: "30", icon: "🏆" },
+  { label: "Graduates", label_bn: "গ্র্যাজুয়েট", value: "95+", icon: "🌟" },
 ];
 
+// Pick the Bangla field (field + "_bn") when the language is bn and it exists.
+export function L(item, field, lang) {
+  if (!item) return "";
+  if (lang === "bn" && item[field + "_bn"]) return item[field + "_bn"];
+  return item[field];
+}
+
 export const NOTICES = [
-  { id: 1, title: "New Admission Form Distribution", body: "Admission forms for the upcoming session are now being distributed from the school office.", created_at: "2026-10-04", kind: "NOTICE" },
-  { id: 2, title: "Holiday for Durga Puja and Laxmi Puja", body: "The institution will remain closed for Durga Puja and Laxmi Puja holidays.", created_at: "2026-10-17", kind: "NOTICE" },
-  { id: 3, title: "বার্ষিক সাংস্কৃতিক প্রতিযোগিতা – ২০২৬", body: "Annual cultural competition 2026 — students are invited to register for the events.", created_at: "2026-09-21", kind: "NOTICE" },
-  { id: 4, title: "Notice for Tuition Fee Payment for September", body: "Guardians are requested to pay the September tuition fees within the stipulated time.", created_at: "2026-09-05", kind: "NOTICE" },
-  { id: 5, title: "SSC Result-2026", body: "Congratulations to all our students for their outstanding results in the SSC examination 2026.", created_at: "2026-08-10", kind: "NOTICE" },
+  { id: 1, title: "New Admission Form Distribution", title_bn: "নতুন ভর্তি ফরম বিতরণ", body: "Admission forms for the upcoming session are now being distributed from the school office.", body_bn: "আসন্ন সেশনের ভর্তি ফরম স্কুল অফিস থেকে বিতরণ করা হচ্ছে।", created_at: "2026-10-04", kind: "NOTICE" },
+  { id: 2, title: "Holiday for Durga Puja and Laxmi Puja", title_bn: "দুর্গাপূজা ও লক্ষ্মীপূজার ছুটি", body: "The institution will remain closed for Durga Puja and Laxmi Puja holidays.", body_bn: "দুর্গাপূজা ও লক্ষ্মীপূজা উপলক্ষে প্রতিষ্ঠান বন্ধ থাকবে।", created_at: "2026-10-17", kind: "NOTICE" },
+  { id: 3, title: "বার্ষিক সাংস্কৃতিক প্রতিযোগিতা – ২০২৬", title_bn: "বার্ষিক সাংস্কৃতিক প্রতিযোগিতা – ২০২৬", body: "Annual cultural competition 2026 — students are invited to register for the events.", body_bn: "বার্ষিক সাংস্কৃতিক প্রতিযোগিতা ২০২৬ — শিক্ষার্থীদের অংশগ্রহণের জন্য নিবন্ধন করতে অনুরোধ করা হলো।", created_at: "2026-09-21", kind: "NOTICE" },
+  { id: 4, title: "Notice for Tuition Fee Payment for September", title_bn: "সেপ্টেম্বর মাসের বেতন পরিশোধের নোটিশ", body: "Guardians are requested to pay the September tuition fees within the stipulated time.", body_bn: "অভিভাবকদের নির্ধারিত সময়ের মধ্যে সেপ্টেম্বর মাসের বেতন পরিশোধ করতে অনুরোধ করা হলো।", created_at: "2026-09-05", kind: "NOTICE" },
+  { id: 5, title: "SSC Result-2026", title_bn: "এসএসসি ফলাফল-২০২৬", body: "Congratulations to all our students for their outstanding results in the SSC examination 2026.", body_bn: "এসএসসি পরীক্ষা ২০২৬-এ অসাধারণ ফলাফলের জন্য আমাদের সকল শিক্ষার্থীকে অভিনন্দন।", created_at: "2026-08-10", kind: "NOTICE" },
 ];
 
 export const LEADERS = [
-  { role: "Chairman", name: "Eng. M. A. Rashid", photo: "", msg: "When I used to close my eyes before establishing South Point School & College, I dreamed of an institution where students grow far beyond formal education." },
-  { role: "Founder Principal", name: "Mrs. Hamida Ali", photo: "", msg: "Education is the key to carry a nation forward. Our aim has always been to build character alongside knowledge." },
-  { role: "Principal", name: "Air Cdre (Retd) Kazi Abdul Moyen", photo: "", msg: "It is a matter of great pride to lead this institution — a strong and trusted name in secondary and higher secondary education." },
-  { role: "Headmistress", name: "Debosree Sarker", photo: "", msg: "South Point stands as a benchmark for excellence in secondary and higher secondary education in our country." },
+  { role: "Chairman", role_bn: "চেয়ারম্যান", name: "Eng. M. A. Rashid", name_bn: "ইঞ্জি. এম. এ. রশিদ", photo: "", msg: "When I used to close my eyes before establishing South Point School & College, I dreamed of an institution where students grow far beyond formal education.", msg_bn: "সাউথ পয়েন্ট স্কুল অ্যান্ড কলেজ প্রতিষ্ঠার আগে আমি এমন একটি প্রতিষ্ঠানের স্বপ্ন দেখতাম, যেখানে শিক্ষার্থীরা প্রথাগত শিক্ষার বাইরেও গড়ে উঠবে।" },
+  { role: "Founder Principal", role_bn: "প্রতিষ্ঠাতা অধ্যক্ষ", name: "Mrs. Hamida Ali", name_bn: "মিসেস হামিদা আলী", photo: "", msg: "Education is the key to carry a nation forward. Our aim has always been to build character alongside knowledge.", msg_bn: "শিক্ষা একটি জাতিকে এগিয়ে নেওয়ার চাবিকাঠি। জ্ঞানের পাশাপাশি চরিত্র গঠনই সর্বদা আমাদের লক্ষ্য।" },
+  { role: "Principal", role_bn: "অধ্যক্ষ", name: "Air Cdre (Retd) Kazi Abdul Moyen", name_bn: "এয়ার কমোডর (অব.) কাজী আব্দুল মঈন", photo: "", msg: "It is a matter of great pride to lead this institution — a strong and trusted name in secondary and higher secondary education.", msg_bn: "মাধ্যমিক ও উচ্চ মাধ্যমিক শিক্ষায় একটি শক্তিশালী ও নির্ভরযোগ্য নাম এই প্রতিষ্ঠানের নেতৃত্ব দেওয়া অত্যন্ত গর্বের বিষয়।" },
+  { role: "Headmistress", role_bn: "প্রধান শিক্ষিকা", name: "Debosree Sarker", name_bn: "দেবশ্রী সরকার", photo: "", msg: "South Point stands as a benchmark for excellence in secondary and higher secondary education in our country.", msg_bn: "সাউথ পয়েন্ট আমাদের দেশে মাধ্যমিক ও উচ্চ মাধ্যমিক শিক্ষায় শ্রেষ্ঠত্বের এক মানদণ্ড।" },
 ];
 
 export const ALUMNI = [
-  { name: "Ashfia Khan Tuski", admitted: "Sahabuddin Medical College", year: "2024", photo: "" },
-  { name: "Mumtazah Nawar", admitted: "University of Dhaka", year: "2024", photo: "" },
-  { name: "Arufa Rifaat", admitted: "KUET — Engineering", year: "2024", photo: "" },
-  { name: "Nabila Hossen Naba", admitted: "Sir Salimullah Medical College", year: "2024", photo: "" },
-  { name: "Afrah Tasnim", admitted: "Mugda Medical College", year: "2024", photo: "" },
-  { name: "Nur-E-Sabah", admitted: "Shaheed Tajuddin Ahmed Medical College", year: "2024", photo: "" },
+  { name: "Ashfia Khan Tuski", name_bn: "আশফিয়া খান তুস্কি", admitted: "Sahabuddin Medical College", admitted_bn: "সাহাবুদ্দিন মেডিকেল কলেজ", year: "2024", photo: "" },
+  { name: "Mumtazah Nawar", name_bn: "মুমতাজাহ নওয়ার", admitted: "University of Dhaka", admitted_bn: "ঢাকা বিশ্ববিদ্যালয়", year: "2024", photo: "" },
+  { name: "Arufa Rifaat", name_bn: "আরুফা রিফাত", admitted: "KUET — Engineering", admitted_bn: "কুয়েট — প্রকৌশল", year: "2024", photo: "" },
+  { name: "Nabila Hossen Naba", name_bn: "নাবিলা হোসেন নাবা", admitted: "Sir Salimullah Medical College", admitted_bn: "স্যার সলিমুল্লাহ মেডিকেল কলেজ", year: "2024", photo: "" },
+  { name: "Afrah Tasnim", name_bn: "আফরাহ তাসনিম", admitted: "Mugda Medical College", admitted_bn: "মুগদা মেডিকেল কলেজ", year: "2024", photo: "" },
+  { name: "Nur-E-Sabah", name_bn: "নূর-ই-সাবাহ", admitted: "Shaheed Tajuddin Ahmed Medical College", admitted_bn: "শহীদ তাজউদ্দিন আহমদ মেডিকেল কলেজ", year: "2024", photo: "" },
 ];
 
 export const EVENTS = [
-  { id: 1, title: "A Proud Achievement of Our Young Debaters!", body: "Our debate team brought home honours from a recent inter-school competition.", event_date: "2026-08-28T10:00:00", category: "General", img: "https://images.unsplash.com/photo-1475721027785-f74eccf877e2?auto=format&fit=crop&w=800&q=70" },
-  { id: 2, title: "বাংলা নববর্ষ ১৪৩৩ উপলক্ষে বর্ষবরণ অনুষ্ঠান", body: "A vibrant celebration of the Bengali New Year 1433 with music, colour and tradition.", event_date: "2026-04-14T09:00:00", category: "Cultural", img: "https://images.unsplash.com/photo-1511578314322-379afb476865?auto=format&fit=crop&w=800&q=70" },
-  { id: 3, title: "আন্তর্জাতিক মাতৃভাষা ও শহীদ দিবস উদযাপন", body: "Observance of International Mother Language Day and Martyrs' Day with due solemnity.", event_date: "2026-02-21T08:00:00", category: "Cultural", img: "https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&w=800&q=70" },
-  { id: 4, title: "Inter Class Football Tournament 2025", body: "Students competed in an energetic inter-class football tournament.", event_date: "2025-07-10T09:00:00", category: "Sports", img: "https://images.unsplash.com/photo-1461896836934-ffe607ba8211?auto=format&fit=crop&w=800&q=70" },
+  { id: 1, title: "A Proud Achievement of Our Young Debaters!", title_bn: "আমাদের তরুণ বিতার্কিকদের গর্বের অর্জন!", body: "Our debate team brought home honours from a recent inter-school competition.", body_bn: "সাম্প্রতিক আন্তঃস্কুল প্রতিযোগিতায় আমাদের বিতর্ক দল সম্মান বয়ে এনেছে।", event_date: "2026-08-28T10:00:00", category: "General", category_bn: "সাধারণ", img: "https://images.unsplash.com/photo-1475721027785-f74eccf877e2?auto=format&fit=crop&w=800&q=70" },
+  { id: 2, title: "বাংলা নববর্ষ ১৪৩৩ উপলক্ষে বর্ষবরণ অনুষ্ঠান", title_bn: "বাংলা নববর্ষ ১৪৩৩ উপলক্ষে বর্ষবরণ অনুষ্ঠান", body: "A vibrant celebration of the Bengali New Year 1433 with music, colour and tradition.", body_bn: "সংগীত, রং ও ঐতিহ্যে বাংলা নববর্ষ ১৪৩৩-এর প্রাণবন্ত উদযাপন।", event_date: "2026-04-14T09:00:00", category: "Cultural", category_bn: "সাংস্কৃতিক", img: "https://images.unsplash.com/photo-1511578314322-379afb476865?auto=format&fit=crop&w=800&q=70" },
+  { id: 3, title: "আন্তর্জাতিক মাতৃভাষা ও শহীদ দিবস উদযাপন", title_bn: "আন্তর্জাতিক মাতৃভাষা ও শহীদ দিবস উদযাপন", body: "Observance of International Mother Language Day and Martyrs' Day with due solemnity.", body_bn: "যথাযোগ্য মর্যাদায় আন্তর্জাতিক মাতৃভাষা ও শহীদ দিবস পালন।", event_date: "2026-02-21T08:00:00", category: "Cultural", category_bn: "সাংস্কৃতিক", img: "https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&w=800&q=70" },
+  { id: 4, title: "Inter Class Football Tournament 2025", title_bn: "আন্তঃশ্রেণি ফুটবল টুর্নামেন্ট ২০২৫", body: "Students competed in an energetic inter-class football tournament.", body_bn: "শিক্ষার্থীরা প্রাণবন্ত আন্তঃশ্রেণি ফুটবল টুর্নামেন্টে প্রতিযোগিতা করে।", event_date: "2025-07-10T09:00:00", category: "Sports", category_bn: "ক্রীড়া", img: "https://images.unsplash.com/photo-1461896836934-ffe607ba8211?auto=format&fit=crop&w=800&q=70" },
 ];
 
 // At South Point these are the academic streams offered at secondary & higher secondary level.
 export const FACULTIES = [
-  { id: 1, slug: "science", name: "Science Group", short_desc: "Physics, Chemistry, Biology & Higher Mathematics", head_name: "Head of Science", icon: "🔬", description: "The Science group prepares students for medical, engineering and university admission with fully-equipped physics, chemistry and biology laboratories." },
-  { id: 2, slug: "business-studies", name: "Business Studies Group", short_desc: "Accounting, Finance, Business Entrepreneurship & Economics", head_name: "Head of Business Studies", icon: "📊", description: "The Business Studies group builds strong foundations in accounting, management and economics for future business leaders." },
-  { id: 3, slug: "humanities", name: "Humanities Group", short_desc: "Bengali, English, Civics, Geography & History", head_name: "Head of Humanities", icon: "📚", description: "The Humanities group develops critical thinking, language skills and social awareness." },
-  { id: 4, slug: "primary", name: "Primary & Junior Section", short_desc: "Nursery to Class VIII — foundation years", head_name: "Headmistress", icon: "🧒", description: "Our primary and junior section nurtures young learners with care, discipline and a strong academic foundation." },
+  { id: 1, slug: "science", name: "Science Group", name_bn: "বিজ্ঞান বিভাগ", short_desc: "Physics, Chemistry, Biology & Higher Mathematics", short_desc_bn: "পদার্থ, রসায়ন, জীববিজ্ঞান ও উচ্চতর গণিত", head_name: "Head of Science", head_name_bn: "বিজ্ঞান বিভাগের প্রধান", icon: "🔬", description: "The Science group prepares students for medical, engineering and university admission with fully-equipped physics, chemistry and biology laboratories.", description_bn: "বিজ্ঞান বিভাগ সুসজ্জিত পদার্থ, রসায়ন ও জীববিজ্ঞান গবেষণাগারের মাধ্যমে শিক্ষার্থীদের মেডিকেল, প্রকৌশল ও বিশ্ববিদ্যালয় ভর্তির জন্য প্রস্তুত করে।" },
+  { id: 2, slug: "business-studies", name: "Business Studies Group", name_bn: "ব্যবসায় শিক্ষা বিভাগ", short_desc: "Accounting, Finance, Business Entrepreneurship & Economics", short_desc_bn: "হিসাববিজ্ঞান, ফিন্যান্স, উদ্যোক্তা ও অর্থনীতি", head_name: "Head of Business Studies", head_name_bn: "ব্যবসায় শিক্ষা বিভাগের প্রধান", icon: "📊", description: "The Business Studies group builds strong foundations in accounting, management and economics for future business leaders.", description_bn: "ব্যবসায় শিক্ষা বিভাগ ভবিষ্যৎ ব্যবসায়ী নেতাদের জন্য হিসাববিজ্ঞান, ব্যবস্থাপনা ও অর্থনীতিতে দৃঢ় ভিত্তি গড়ে তোলে।" },
+  { id: 3, slug: "humanities", name: "Humanities Group", name_bn: "মানবিক বিভাগ", short_desc: "Bengali, English, Civics, Geography & History", short_desc_bn: "বাংলা, ইংরেজি, পৌরনীতি, ভূগোল ও ইতিহাস", head_name: "Head of Humanities", head_name_bn: "মানবিক বিভাগের প্রধান", icon: "📚", description: "The Humanities group develops critical thinking, language skills and social awareness.", description_bn: "মানবিক বিভাগ সমালোচনামূলক চিন্তা, ভাষাদক্ষতা ও সামাজিক সচেতনতা গড়ে তোলে।" },
+  { id: 4, slug: "primary", name: "Primary & Junior Section", name_bn: "প্রাথমিক ও জুনিয়র শাখা", short_desc: "Nursery to Class VIII — foundation years", short_desc_bn: "নার্সারি থেকে অষ্টম শ্রেণি — ভিত্তির বছরগুলো", head_name: "Headmistress", head_name_bn: "প্রধান শিক্ষিকা", icon: "🧒", description: "Our primary and junior section nurtures young learners with care, discipline and a strong academic foundation.", description_bn: "আমাদের প্রাথমিক ও জুনিয়র শাখা যত্ন, শৃঙ্খলা ও দৃঢ় শিক্ষাগত ভিত্তির মাধ্যমে ছোট শিক্ষার্থীদের গড়ে তোলে।" },
 ];
 
 // Real facilities listed by South Point School & College.

@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import api from "../api/client";
 import {
-  SCHOOL, HERO_SLIDES, STATS, NOTICES, LEADERS, ALUMNI, EVENTS, FACULTIES, FACILITIES, withFallback,
+  SCHOOL, HERO_SLIDES, STATS, NOTICES, LEADERS, ALUMNI, EVENTS, FACULTIES, FACILITIES, withFallback, L,
 } from "../api/mockData";
 import Avatar from "../components/Avatar";
 import { useLang } from "../i18n/LanguageContext";
@@ -10,7 +10,7 @@ import "./public.css";
 
 /* ---------------- Home ---------------- */
 export function Home() {
-  const { t } = useLang();
+  const { t, lang } = useLang();
   const [slide, setSlide] = useState(0);
   const [notices, setNotices] = useState(NOTICES);
   const [events, setEvents] = useState(EVENTS);
@@ -58,7 +58,7 @@ export function Home() {
           {STATS.map((s) => (
             <div key={s.label} className="stat-item">
               <div className="stat-ic">{s.icon}</div>
-              <div><strong>{s.value}</strong><span>{s.label}</span></div>
+              <div><strong>{s.value}</strong><span>{L(s, "label", lang)}</span></div>
             </div>
           ))}
         </div>
@@ -77,8 +77,8 @@ export function Home() {
                     <span>{new Date(n.created_at).toLocaleString("en", { month: "short" })}</span>
                   </div>
                   <div>
-                    <h4>{n.title}</h4>
-                    <p className="muted">{(n.body || "").slice(0, 110)}…</p>
+                    <h4>{L(n, "title", lang)}</h4>
+                    <p className="muted">{(L(n, "body", lang) || "").slice(0, 110)}…</p>
                   </div>
                 </div>
               ))}
@@ -107,8 +107,8 @@ export function Home() {
             {faculties.map((f) => (
               <Link to={`/faculties/${f.slug}`} key={f.id} className="fac-card card">
                 <div className="fac-ic">{f.icon || "🎓"}</div>
-                <h3>{f.name}</h3>
-                <p className="muted">{f.short_desc}</p>
+                <h3>{L(f, "name", lang)}</h3>
+                <p className="muted">{L(f, "short_desc", lang)}</p>
                 <span className="fac-link">{t("common.explore")} →</span>
               </Link>
             ))}
@@ -128,9 +128,9 @@ export function Home() {
             {LEADERS.map((l) => (
               <div key={l.role} className="leader-card card">
                 <Avatar name={l.name} image={l.photo} size={96} style={{ margin: "0 auto 12px", border: "4px solid #eef2fb" }} />
-                <span className="chip gold">{l.role}</span>
-                <h3>{l.name}</h3>
-                <p className="muted">“{l.msg}”</p>
+                <span className="chip gold">{L(l, "role", lang)}</span>
+                <h3>{L(l, "name", lang)}</h3>
+                <p className="muted">“{L(l, "msg", lang)}”</p>
               </div>
             ))}
           </div>
@@ -149,8 +149,8 @@ export function Home() {
             {ALUMNI.map((a) => (
               <div key={a.name} className="alumni-card card">
                 <Avatar name={a.name} image={a.photo} size={80} style={{ margin: "0 auto 10px" }} />
-                <h4>{a.name}</h4>
-                <p className="chip soft">{a.admitted}</p>
+                <h4>{L(a, "name", lang)}</h4>
+                <p className="chip soft">{L(a, "admitted", lang)}</p>
                 <span className="muted">{t("home.batch")} {a.year}</span>
               </div>
             ))}
@@ -169,11 +169,11 @@ export function Home() {
           <div className="event-grid">
             {events.slice(0, 3).map((e) => (
               <div key={e.id} className="event-card card">
-                {e.img && <div className="event-img" style={{ backgroundImage: `url(${e.img})` }}><span className="chip gold">{e.category || "Event"}</span></div>}
+                {e.img && <div className="event-img" style={{ backgroundImage: `url(${e.img})` }}><span className="chip gold">{L(e, "category", lang) || "Event"}</span></div>}
                 <div className="event-body">
                   {e.event_date && <span className="muted event-date">📅 {new Date(e.event_date).toLocaleDateString()}</span>}
-                  <h3>{e.title}</h3>
-                  <p className="muted">{(e.body || "").slice(0, 90)}…</p>
+                  <h3>{L(e, "title", lang)}</h3>
+                  <p className="muted">{(L(e, "body", lang) || "").slice(0, 90)}…</p>
                 </div>
               </div>
             ))}
@@ -197,7 +197,7 @@ export function Home() {
 
 /* ---------------- Faculties ---------------- */
 export function Faculties() {
-  const { t } = useLang();
+  const { t, lang } = useLang();
   const [faculties, setFaculties] = useState(FACULTIES);
   useEffect(() => { withFallback(api.get("/faculties/"), FACULTIES).then(setFaculties); }, []);
   return (
@@ -207,9 +207,9 @@ export function Faculties() {
           {faculties.map((f) => (
             <Link to={`/faculties/${f.slug}`} key={f.id} className="fac-card card">
               <div className="fac-ic">{f.icon || "🎓"}</div>
-              <h3>{f.name}</h3>
-              <p className="muted">{f.short_desc}</p>
-              {f.head_name && <span className="muted">{t("fac.head")}: {f.head_name}</span>}
+              <h3>{L(f, "name", lang)}</h3>
+              <p className="muted">{L(f, "short_desc", lang)}</p>
+              {f.head_name && <span className="muted">{t("fac.head")}: {L(f, "head_name", lang)}</span>}
               <span className="fac-link">{t("common.explore")} →</span>
             </Link>
           ))}
@@ -220,7 +220,7 @@ export function Faculties() {
 }
 
 export function FacultyDetail() {
-  const { t } = useLang();
+  const { t, lang } = useLang();
   const { slug } = useParams();
   const [f, setF] = useState(null);
   useEffect(() => {
@@ -229,14 +229,14 @@ export function FacultyDetail() {
   }, [slug]);
   if (!f) return <PageShell title="…" crumb={t("home.academics")}><div className="container section" /></PageShell>;
   return (
-    <PageShell title={f.name} crumb={t("nav.faculties")}>
+    <PageShell title={L(f, "name", lang)} crumb={t("nav.faculties")}>
       <div className="container section">
         <div className="two-col">
           <div className="card">
             <div className="fac-ic big">{f.icon || "🎓"}</div>
-            <h2>{f.name}</h2>
-            {f.head_name && <p className="chip soft">{t("fac.head")}: {f.head_name}</p>}
-            <p className="muted">{f.description || f.short_desc}</p>
+            <h2>{L(f, "name", lang)}</h2>
+            {f.head_name && <p className="chip soft">{t("fac.head")}: {L(f, "head_name", lang)}</p>}
+            <p className="muted">{L(f, "description", lang) || L(f, "short_desc", lang)}</p>
           </div>
           <div className="card">
             <h3>{t("fac.whatWeOffer")}</h3>
@@ -256,7 +256,7 @@ export function FacultyDetail() {
 
 /* ---------------- Events ---------------- */
 export function Events() {
-  const { t } = useLang();
+  const { t, lang } = useLang();
   const [events, setEvents] = useState(EVENTS);
   const [notices, setNotices] = useState(NOTICES);
   useEffect(() => {
@@ -269,11 +269,11 @@ export function Events() {
         <div className="event-grid">
           {events.map((e) => (
             <div key={e.id} className="event-card card">
-              {e.img && <div className="event-img" style={{ backgroundImage: `url(${e.img})` }}><span className="chip gold">{e.category || "Event"}</span></div>}
+              {e.img && <div className="event-img" style={{ backgroundImage: `url(${e.img})` }}><span className="chip gold">{L(e, "category", lang) || "Event"}</span></div>}
               <div className="event-body">
                 {e.event_date && <span className="muted event-date">📅 {new Date(e.event_date).toLocaleString()}</span>}
-                <h3>{e.title}</h3>
-                <p className="muted">{e.body}</p>
+                <h3>{L(e, "title", lang)}</h3>
+                <p className="muted">{L(e, "body", lang)}</p>
               </div>
             </div>
           ))}
@@ -286,7 +286,7 @@ export function Events() {
                 <strong>{new Date(n.created_at).getDate()}</strong>
                 <span>{new Date(n.created_at).toLocaleString("en", { month: "short" })}</span>
               </div>
-              <div><h4>{n.title}</h4><p className="muted">{n.body}</p></div>
+              <div><h4>{L(n, "title", lang)}</h4><p className="muted">{L(n, "body", lang)}</p></div>
             </div>
           ))}
         </div>
@@ -297,7 +297,7 @@ export function Events() {
 
 /* ---------------- About ---------------- */
 export function About() {
-  const { t } = useLang();
+  const { t, lang } = useLang();
   return (
     <PageShell title={t("about.title")} crumb={t("home.welcomeChip")}>
       <div className="container section">
@@ -332,9 +332,9 @@ export function About() {
           {LEADERS.map((l) => (
             <div key={l.role} className="leader-card card">
               <Avatar name={l.name} image={l.photo} size={96} style={{ margin: "0 auto 12px", border: "4px solid #eef2fb" }} />
-              <span className="chip gold">{l.role}</span>
-              <h3>{l.name}</h3>
-              <p className="muted">“{l.msg}”</p>
+              <span className="chip gold">{L(l, "role", lang)}</span>
+              <h3>{L(l, "name", lang)}</h3>
+              <p className="muted">“{L(l, "msg", lang)}”</p>
             </div>
           ))}
         </div>

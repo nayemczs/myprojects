@@ -15,14 +15,14 @@
 .lang-q-en { color: var(--muted); font-size: 15px; margin: 0 0 26px; }
 .lang-btns { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
 .lang-btn {
-  display: flex; flex-direction: column; align-items: center; gap: 8px;
+  display: flex; align-items: center; justify-content: center;
   padding: 22px 12px; border: 2px solid var(--line); border-radius: 14px;
-  background: #fff; cursor: pointer; font-size: 18px; font-weight: 700; color: var(--navy);
+  background: #fff; cursor: pointer; font-size: 20px; font-weight: 700; color: var(--navy);
+  font-family: var(--font); line-height: 1;
   transition: transform .12s, border-color .12s, box-shadow .12s;
 }
 .lang-btn:hover { transform: translateY(-3px); border-color: var(--navy); box-shadow: var(--shadow-lg); }
 .lang-btn.bn:hover { border-color: var(--green); }
-.lang-btn .flag { font-size: 34px; }
 @media (max-width: 420px) {
   .lang-box { padding: 30px 22px; }
   .lang-q { font-size: 18px; }

@@ -22,3 +22,16 @@
   .auth-side { display: none; }
   .auth-main { padding: 36px 24px; }
 }
+
+/* Solid, clearly-visible inputs on the sign-in / register form */
+.auth-main input, .auth-main select, .auth-main textarea {
+  background: #fff;
+  border: 1.5px solid #cdd6e4;
+  color: var(--ink);
+}
+.auth-main input:focus, .auth-main select:focus, .auth-main textarea:focus {
+  background: #fff;
+  border-color: var(--navy-600);
+  box-shadow: 0 0 0 3px rgba(10,74,136,.15);
+}
+.auth-main select { cursor: pointer; }
