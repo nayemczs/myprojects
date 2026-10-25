@@ -183,7 +183,7 @@ export function Home() {
       </section>
 
       {/* CTA */}
-      <section className="cta-band">
+      <section className="cta-band ">
         <div className="container cta-in">
           <div>
             <h2>Ready to Begin Your Journey?</h2>

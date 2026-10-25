@@ -19,8 +19,21 @@ function colourFor(seed) {
   return PALETTE[h % PALETTE.length];
 }
 
+// Titles/honorifics to ignore when building initials.
+const TITLES = new Set([
+  "mr", "mrs", "ms", "miss", "dr", "prof", "professor", "eng", "engr", "er",
+  "md", "mohd", "sir", "late", "air", "cdre", "capt", "maj", "col", "lt",
+  "retd", "hon", "rev", "mx",
+]);
+
 function initialsOf(name) {
-  const parts = name.trim().split(/\s+/).filter(Boolean);
+  // strip trailing dots and parentheticals like "(Retd)", then drop title words
+  const cleaned = name.replace(/\([^)]*\)/g, " ");
+  const parts = cleaned
+    .trim()
+    .split(/\s+/)
+    .map((w) => w.replace(/\./g, ""))
+    .filter((w) => w && !TITLES.has(w.toLowerCase()));
   if (parts.length === 0) return "?";
   if (parts.length === 1) return parts[0].slice(0, 2).toUpperCase();
   return (parts[0][0] + parts[parts.length - 1][0]).toUpperCase();

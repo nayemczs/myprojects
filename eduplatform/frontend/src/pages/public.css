@@ -13,7 +13,7 @@
 .hero-dots button.on { background: var(--gold); width: 28px; border-radius: 6px; }
 
 /* Stats band */
-.stats-band { background: linear-gradient(135deg, var(--navy), var(--navy-600)); }
+.stats-band { background: linear-gradient(135deg, var(--navy), var(--navy-600)); padding: 20px; }
 .stats-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 20px; padding: 64px 20px 72px; }
 .stat-item { display: flex; align-items: center; gap: 14px; color: #fff; }
 .stat-ic { font-size: 30px; background: rgba(255,255,255,.12); width: 56px; height: 56px; border-radius: 14px; display: grid; place-items: center; }
@@ -68,7 +68,7 @@
 .event-body h3 { font-size: 18px; margin: 6px 0; }
 
 /* CTA band */
-.cta-band { background: linear-gradient(135deg, var(--gold), var(--gold-600)); }
+.cta-band { background: linear-gradient(135deg, var(--gold), var(--gold-600)); padding: 20px; }
 .cta-in { display: flex; align-items: center; gap: 24px; padding: 80px 20px 88px; }
 .cta-in h2 { color: #1a1200; margin: 0 0 6px; }
 .cta-in p { color: #4a3800; margin: 0; }
